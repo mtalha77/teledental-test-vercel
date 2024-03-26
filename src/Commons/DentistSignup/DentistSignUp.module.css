@@ -1,0 +1,20 @@
+.h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.questionsLabel {
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+.cancelBtn,
+.sendBtn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #686767;
+  color: #fff;
+}
+.sendBtn {
+  background-color: #1f2c3d;
+  color: #fff;
+}
