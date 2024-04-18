@@ -24,6 +24,8 @@ import { makeStyles } from "@material-ui/core";
 import MedicalHistoryWizard from "../Patient/MedicalHistoryWizard";
 import React, { useEffect } from "react";
 import { getMedicalHistory } from "./apis/patientV1";
+import { getSubscription } from "../Commons/apis/commonV1"
+import Subscription from "../Commons/Subscription";
 
 const useStyles = makeStyles((theme) => ({
   cardCtn: {
@@ -35,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Dashboard() {
-  const classes = useStyles();
   const { user } = useUserContext();
+  const classes = useStyles();
   const { data, isLoading } = useQuery("requests-dashboard", async () => {
     const res = await getRequests({ queryParam: { limit: 20 } });
     return res.data;
@@ -52,9 +54,12 @@ function Dashboard() {
   const { updateRequestFn } = useRequestUpdate("requests-dashboard");
   const [isMedicalHistoryWizardModalVisible, setMedicalHistoryWizardModalVisible] =
   React.useState(false);
+  const [isSubscriptionModalVisible, setSubscriptionModalVisible] =
+  React.useState(false);
+  const [isTrialGet, setTrialGet] =
+  React.useState(false);
 
-
-  useEffect(() => {
+  useEffect(async () => {
     let mounted = true;
     getMedicalHistory(user?._id)
       .then(items => {
@@ -64,6 +69,20 @@ function Dashboard() {
           setMedicalHistoryWizardModalVisible(false);
         }
       })
+    if (process.env.REACT_APP_IS_SUBSCRIPTION == "true") {
+      getSubscription(user?._id, user?.model)
+        .then(items => {
+          if(mounted && items != null && items.message == "Success!") {
+            setTrialGet(true);
+            if (new Date(items.data.endDate) < new Date())
+              setSubscriptionModalVisible(true);
+          } else {
+            setSubscriptionModalVisible(true);
+          }
+        });
+      } else {
+        setSubscriptionModalVisible(true);
+      }
     return () => mounted = false;
 
   }, []);
@@ -281,7 +300,14 @@ function Dashboard() {
           isModalVisible={isMedicalHistoryWizardModalVisible}
           setIsModalVisible={setMedicalHistoryWizardModalVisible}
         />
+
+    <Subscription
+          isModalVisible={isSubscriptionModalVisible}
+          setIsModalVisible={setSubscriptionModalVisible}
+          isTrialGet={isTrialGet}
+        />
     </>
+    
   );
 }
 

@@ -7138,6 +7138,127 @@ section#advertisers {
 }
 
 
+
+.heading-text {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 2px solid #0071bc;
+}
+
+.main-heading {
+	color: #0071bc;
+	font-size: 3rem;
+	margin-block: 1rem;
+}
+
+.heading-text p {
+	color: #0071bc;
+	font-size: 1.75rem;
+	margin-block: 0.5rem;
+}
+
+.heading-text h6 {
+	color: #0071bc;
+	font-size: 1.75rem;
+	margin-block: 0.5rem;
+}
+
+.cards {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+  gap: 15px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+	width: 400px;
+	height: 600px;
+	border-radius: 0.75rem;
+	border: 2px solid #0071bc;
+  overflow: hidden;
+}
+
+.card-body-header {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+  background-color: #0071bc;
+}
+
+.card-body-header h6 {
+	margin-block: 1rem;
+	font-size: 22px;
+	color: white;
+}
+
+.card-body-header h3 {
+  font-size: 40px;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-block: auto;
+  gap: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0071bc;
+}
+
+.purchase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 500;
+  background-color: #0071bc;
+  border-radius: 2rem;
+  margin: 1rem;
+  margin-inline: 2rem;
+  height: 50px;
+}
+
+#elite.card {
+  border: 2px solid #4700bc;
+}
+
+#elite .card-body-header {
+  background-color: #4700bc;
+}
+
+#elite .card-body {
+  color: #4700bc;
+}
+
+#elite .purchase {
+  background-color: #4700bc;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer h6 {
+  margin-block: 0.35rem;
+  color: #0071bc;
+	font-size: 22px;
+}
+
+
+
+
 .n_signup_wrapper{ width: 100%; min-height: 100vh; background: url(../../assets/img/d_reg_bg.png) no-repeat center center; background-size: cover; display: flex; justify-content: space-between; align-items: center; padding:30px 40px; position: relative; overflow: hidden; }
 
 .n_signup_wrapper:after{ content: ""; width: 56%; left: 0px; height: 140%; top: -20%; position: absolute; background: #fff; border-radius: 0px 50% 50% 0px; }

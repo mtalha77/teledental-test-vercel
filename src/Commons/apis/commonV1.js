@@ -75,3 +75,15 @@ export const confirmVerifiedAccount = async (email) => {
 export const verifyEmail = async (email) => {
   return client.get(`/api/v1/public/verifyemails?email=${email}`);
 }
+
+export const getSubscription = async (id, model) => {
+  return client.get(`/api/v1/public/getsubscription?id=${id}&model=${model}`);
+}
+
+export const addSubscription = async (body) => {
+  return client.post("/api/v1/public/addsubscription", body);
+};
+
+export const updateSubscription = async (body) => {
+  return client.post("/api/v1/public/updatesubscription", body);
+};
