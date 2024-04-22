@@ -7220,11 +7220,14 @@ section#advertisers {
   align-items: center;
   color: white;
   font-weight: 500;
-  background-color: #0071bc;
-  border-radius: 2rem;
+  background: #0071bc !important;
+  border-radius: 2rem !important;
   margin: 1rem;
   margin-inline: 2rem;
   height: 50px;
+  span {
+    all: unset !important;
+  }
 }
 
 #elite.card {
@@ -7240,7 +7243,7 @@ section#advertisers {
 }
 
 #elite .purchase {
-  background-color: #4700bc;
+  background: #4700bc !important;
 }
 
 .footer {

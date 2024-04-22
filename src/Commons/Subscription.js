@@ -181,9 +181,10 @@ export default function Subscription({
                     amount={priceForStripe}
                     description={`Your subscription charges is $250`}
                     token={payNowMonthly}
-                    className="signInButton  brix---btn-secondary w-button d-inline-flex justify-content-center align-items-center"
+                    id="elite"
+                    className="signInButton  brix---btn-secondary w-button d-inline-flex justify-content-center align-items-center purchase"
                 />
-            <div className="purchase" style={{ cursor: 'pointer', pointerEvents: isTrialGet ? "none": ""}}  onClick={() => saveSubscription('monthly')}>Purchase Plan</div>
+            {/* <div className="purchase" style={{ cursor: 'pointer', pointerEvents: isTrialGet ? "none": ""}}  onClick={() => saveSubscription('monthly')}>Purchase Plan</div> */}
             </div>
             <div className="card"
                 id="elite">
@@ -205,9 +206,10 @@ export default function Subscription({
                     amount={priceForStripeYearly}
                     description={`Your subscription charges is $500`}
                     token={payNowYearly}
-                    className="signInButton  brix---btn-secondary w-button d-inline-flex justify-content-center align-items-center"
+                    id="elite"
+                    className="signInButton  brix---btn-secondary w-button d-inline-flex justify-content-center align-items-center purchase"
                 />
-            <div className="purchase" style={{ cursor: 'pointer', pointerEvents: isTrialGet ? "none": ""}}>Purchase Plan</div>
+            {/* <div className="purchase" style={{ cursor: 'pointer', pointerEvents: isTrialGet ? "none": ""}}>Purchase Plan</div> */}
             </div>
         </div>
         <div className="footer">
