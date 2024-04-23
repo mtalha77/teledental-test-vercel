@@ -45,7 +45,9 @@ export const getAdminProfile = async () => {
 };
 
 export const getRequestStatsForAdmin = async ({ id }) => {
-  return client.get(`/api/v1/requests/stats/admin/${id}`);
+  if (id != undefined) {
+    return client.get(`/api/v1/requests/stats/admin/${id}`);
+  }
 };
 
 export const getMeetingLink = async ({ id }) => {

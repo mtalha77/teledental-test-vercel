@@ -16,6 +16,8 @@ import ChatHeads from "./ChatHeads";
 import HowChatWorksModal from "./HowChatWorksModal";
 import Header from "./Header";
 import { useHistory } from "react-router-dom";
+import { getSubscription } from "../Commons/apis/commonV1"
+import Subscription from "../Commons/Subscription";
 
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocale);
@@ -91,6 +93,11 @@ export default function Inbox() {
   const [activeChat, setActiveChat] = React.useState(null);
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [isChatHeadClicked, setIsChatHeadClicked] = React.useState(false);
+  const [isSubscriptionModalVisible, setSubscriptionModalVisible] =
+  React.useState(false);
+  const [isTrialGet, setTrialGet] =
+  React.useState(false);
+
 
   const showModal = () => {
     // setIsModalVisible(true);
@@ -141,8 +148,26 @@ export default function Inbox() {
   const { data: adminUser } = useAdminData({
     enabled: Boolean(activeChat),
   });
-
-  React.useEffect(() => {
+ 
+  React.useEffect(() => { 
+    let mounted = true;
+    if (process.env.REACT_APP_IS_SUBSCRIPTION == "true" && user?.model != "patients") {
+      getSubscription(user?._id, user?.model)
+        .then(items => {
+          if(mounted && items != null && items.message == "Success!") {
+            setTrialGet(true);
+            if (new Date(items.data.endDate) < new Date())
+              setSubscriptionModalVisible(true);
+          } else {
+            setSubscriptionModalVisible(true);
+          }
+        });
+      } else {
+        if (user?.model != "patients")
+          setSubscriptionModalVisible(true);  
+        else
+          setSubscriptionModalVisible(false);
+      }
     let _activeChatId =
       // ?.filter((request) => request.assignedTo)
       id && requests?.pages?.flat()?.find((request) => request._id === id)
@@ -156,6 +181,7 @@ export default function Inbox() {
     setAppoint(
       user?.model === "dentists" ? "hidden" : "visible"
     );
+    return () => mounted = false;
   }, [id, requests]);
 
   return (
@@ -273,6 +299,12 @@ export default function Inbox() {
         isModalVisible={isModalVisible}
         handleCancel={handleCancel}
       />
+
+      <Subscription
+          isModalVisible={isSubscriptionModalVisible}
+          setIsModalVisible={setSubscriptionModalVisible}
+          isTrialGet={isTrialGet}
+        />
     </>
   );
 }
