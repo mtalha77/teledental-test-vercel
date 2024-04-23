@@ -10,6 +10,8 @@ import Pagination from '../Commons/Pagination';
 import { CameraOutlined, RightOutlined } from "@ant-design/icons";
 import { useMemo } from 'react';
 import PatientAppointmentDetails from "../Patient/PatientAppointmentDetails";
+import { getSubscription } from "../Commons/apis/commonV1"
+import Subscription from "../Commons/Subscription";
 
 const { Step } = Steps;
 
@@ -28,6 +30,11 @@ const UnApprovedAppointments = () => {
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = dentists?.data?.slice(indexOfFirstPost, indexOfLastPost);
     const paginate = pageNumber => setCurrentPage(pageNumber);
+    const [isSubscriptionModalVisible, setSubscriptionModalVisible] =
+    React.useState(false);
+    const [isTrialGet, setTrialGet] =
+    React.useState(false);
+  
 
     useEffect(() => {
      let mounted = true;
@@ -37,6 +44,23 @@ const UnApprovedAppointments = () => {
            setList(items)
          }
        })
+       if (process.env.REACT_APP_IS_SUBSCRIPTION == "true" && user?.model != "patients") {
+        getSubscription(user?._id, user?.model)
+          .then(items => {
+            if(mounted && items != null && items.message == "Success!") {
+              setTrialGet(true);
+              if (new Date(items.data.endDate) < new Date())
+                setSubscriptionModalVisible(true);
+            } else {
+              setSubscriptionModalVisible(true);
+            }
+          });
+        } else {
+          if (user?.model != "patients")
+            setSubscriptionModalVisible(true);  
+          else
+            setSubscriptionModalVisible(false);
+        }
      return () => mounted = false;
    }, []);
    
@@ -175,7 +199,13 @@ const UnApprovedAppointments = () => {
           setIsModalVisible={setIsAppointmentModalVisible}
           appointmentId={patientIdForData}
         />}
-      </Card></>
+      </Card>
+      <Subscription
+          isModalVisible={isSubscriptionModalVisible}
+          setIsModalVisible={setSubscriptionModalVisible}
+          isTrialGet={isTrialGet}
+        />
+      </>
   );
 };
 

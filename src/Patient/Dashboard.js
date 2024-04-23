@@ -24,8 +24,6 @@ import { makeStyles } from "@material-ui/core";
 import MedicalHistoryWizard from "../Patient/MedicalHistoryWizard";
 import React, { useEffect } from "react";
 import { getMedicalHistory } from "./apis/patientV1";
-import { getSubscription } from "../Commons/apis/commonV1"
-import Subscription from "../Commons/Subscription";
 
 const useStyles = makeStyles((theme) => ({
   cardCtn: {
@@ -54,10 +52,6 @@ function Dashboard() {
   const { updateRequestFn } = useRequestUpdate("requests-dashboard");
   const [isMedicalHistoryWizardModalVisible, setMedicalHistoryWizardModalVisible] =
   React.useState(false);
-  const [isSubscriptionModalVisible, setSubscriptionModalVisible] =
-  React.useState(false);
-  const [isTrialGet, setTrialGet] =
-  React.useState(false);
 
   useEffect(async () => {
     let mounted = true;
@@ -69,20 +63,6 @@ function Dashboard() {
           setMedicalHistoryWizardModalVisible(false);
         }
       })
-    if (process.env.REACT_APP_IS_SUBSCRIPTION == "true") {
-      getSubscription(user?._id, user?.model)
-        .then(items => {
-          if(mounted && items != null && items.message == "Success!") {
-            setTrialGet(true);
-            if (new Date(items.data.endDate) < new Date())
-              setSubscriptionModalVisible(true);
-          } else {
-            setSubscriptionModalVisible(true);
-          }
-        });
-      } else {
-        setSubscriptionModalVisible(true);
-      }
     return () => mounted = false;
 
   }, []);
@@ -301,11 +281,6 @@ function Dashboard() {
           setIsModalVisible={setMedicalHistoryWizardModalVisible}
         />
 
-    <Subscription
-          isModalVisible={isSubscriptionModalVisible}
-          setIsModalVisible={setSubscriptionModalVisible}
-          isTrialGet={isTrialGet}
-        />
     </>
     
   );
