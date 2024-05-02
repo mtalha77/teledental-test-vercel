@@ -1,6 +1,5 @@
 import React from "react";
-import HelmetComponent from "./HelmetComponent";
-import Header from "./Header";
+import { Form, Input, Button, Alert } from "antd";
 
 function SubscriptionSecond() {
 	return (
@@ -44,7 +43,94 @@ function SubscriptionSecond() {
           please fill out this form to get more information. </p>
       </div>
       <div className="forms2">
-        <div className="form-items"></div>
+        <div className="form-items">
+            <div className="row d-flex business- ">
+                <div className="col-sm-12 col-lg-6">
+                    <div className="mb-3">
+                        <Form.Item
+                        name="name"
+                        placeholder="Name"
+                        rules={[
+                            {
+                            message: "Please input your first name!",
+                            },
+                        ]}
+                        >
+                        <Input placeholder="Lorem Ipsum" />
+                        </Form.Item>
+                    </div>
+                </div>
+                <div className="col-sm-12 col-lg-6">
+                    <div className="mb-3">
+                        <Form.Item
+                        name="companyName"
+                        placeholder="Company Name"
+                        rules={[
+                            {
+                            message: "Please input your first name!",
+                            },
+                        ]}
+                        >
+                        <Input placeholder="Company Name" />
+                        </Form.Item>
+                    </div>
+                </div>
+            </div>
+            <div className="row d-flex business- ">
+            <div className="col-sm-12 col-lg-6">
+              <div className="mb-3">
+                <Form.Item
+                  name="position"
+                  placeholder="Position"
+                >
+                  <Input placeholder="Position" />
+                </Form.Item>
+              </div>
+            </div>
+            <div className="col-sm-12 col-lg-6">
+              <div className="mb-3">
+                <Form.Item
+                  name="phoneNumber"
+                  placeholder="Phone Number"
+                >
+                  <Input placeholder="Phone Number" />
+                </Form.Item>
+              </div>
+            </div>
+            </div>
+            <div className="row d-flex business- ">
+            <div className="col-sm-12 col-lg-6">
+              <div className="mb-3">
+                <Form.Item
+                  name="email"
+                  placeholder="Email"
+                >
+                  <Input placeholder="Email" />
+                </Form.Item>
+              </div>
+            </div>
+            <div className="col-sm-12 col-lg-6">
+              <div className="mb-3">
+                <Form.Item
+                  name="confirmEmail"
+                  placeholder="Confirm Email"
+                >
+                  <Input placeholder="Confirm Email" />
+                </Form.Item>
+              </div>
+            </div>
+            </div>
+            <div className="col-sm-12 col-lg-6">
+              <div className="mb-3">
+                <Form.Item
+                  name="officeLocation"
+                  placeholder="Office Location"
+                >
+                  <Input placeholder="Office Location" />
+                </Form.Item>
+              </div>
+            </div>
+        </div>
         <div className="submit2">Submit</div>
       </div>
       <div className="footer2">
