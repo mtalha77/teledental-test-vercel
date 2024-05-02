@@ -150,23 +150,25 @@ export default function Inbox() {
   });
  
   React.useEffect(() => { 
-    let mounted = true;
     if (process.env.REACT_APP_IS_SUBSCRIPTION == "true" && user?.model != "patients") {
       getSubscription(user?._id, user?.model)
         .then(items => {
-          if(mounted && items != null && items.message == "Success!") {
+          if(items != null && items.message == "Success!") {
             setTrialGet(true);
-            if (new Date(items.data.endDate) < new Date())
+            if (new Date(items.data.endDate) < new Date()) {
               setSubscriptionModalVisible(true);
+            }
           } else {
             setSubscriptionModalVisible(true);
           }
         });
       } else {
-        if (user?.model != "patients")
+        if (user?.model != "patients") {
           setSubscriptionModalVisible(true);  
-        else
+        }
+        else {
           setSubscriptionModalVisible(false);
+        }
       }
     let _activeChatId =
       // ?.filter((request) => request.assignedTo)
@@ -181,7 +183,6 @@ export default function Inbox() {
     setAppoint(
       user?.model === "dentists" ? "hidden" : "visible"
     );
-    return () => mounted = false;
   }, [id, requests]);
 
   return (

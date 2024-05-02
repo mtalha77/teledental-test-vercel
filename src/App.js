@@ -66,6 +66,8 @@ import ToothCavity from "./Commons/ToothCavity";
 import LiveDental from "./Commons/LiveDental";
 import DentalInsurance from "./Commons/DentalInsurance";
 import SignupSuccess from "./Commons/SignupSuccess/SignupSuccess";
+import SubscriptionOne from "./Commons/SubscriptionOne";
+import SubscriptionSecond from "./Commons/SubscriptionSecond";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -264,6 +266,16 @@ function App() {
               exact
               path="/dental-insurance"
               component={DentalInsurance}
+            />
+            <PublicRoute
+              exact
+              path="/best-teledental-dentists-sign-up-subscription-one"
+              component={SubscriptionOne}
+            />
+            <PublicRoute
+              exact
+              path="/dental-office-sign-up-teledental-subscription"
+              component={SubscriptionSecond}
             />
             <PatientRoute
               exact
