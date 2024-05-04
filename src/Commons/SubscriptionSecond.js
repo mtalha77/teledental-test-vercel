@@ -14,8 +14,8 @@ function SubscriptionSecond() {
           <p>Save time and increase your office income </p>
         </div>
         <h6>Directory listings, get patient leads, dental SEO marketing, Teledental services, add chatbot, smart dental
-          technology, and many more specials. </h6>
-        <h6>The #1 dental ecosystem and best multiservice place for dentists and dental practices. No company can match all
+          technology, and <span>many more specials.</span> </h6>
+        <h6>The <span>#1 dental ecosystem and best multiservice</span> place for dentists and dental practices. No company can match all
           that we can offer your practice. </h6>
       </div>
       <div className="cards2">
@@ -44,9 +44,9 @@ function SubscriptionSecond() {
       </div>
       <div className="forms2">
         <div className="form-items">
-            <div className="row d-flex business- ">
-                <div className="col-sm-12 col-lg-6">
-                    <div className="mb-3">
+            <div className="row d-flex m-0 business- ">
+                <div className="col-sm-12 col-lg-6 pl-0 pr-3">
+                    <div className="form-wrap">
                         <Form.Item
                         name="name"
                         placeholder="Name"
@@ -60,8 +60,8 @@ function SubscriptionSecond() {
                         </Form.Item>
                     </div>
                 </div>
-                <div className="col-sm-12 col-lg-6">
-                    <div className="mb-3">
+                <div className="col-sm-12 col-lg-6 p-0">
+                    <div className="form-wrap">
                         <Form.Item
                         name="companyName"
                         placeholder="Company Name"
@@ -76,9 +76,9 @@ function SubscriptionSecond() {
                     </div>
                 </div>
             </div>
-            <div className="row d-flex business- ">
-            <div className="col-sm-12 col-lg-6">
-              <div className="mb-3">
+            <div className="row d-flex m-0 business- ">
+            <div className="col-sm-12 col-lg-6 pl-0 pr-3">
+              <div className="form-wrap">
                 <Form.Item
                   name="position"
                   placeholder="Position"
@@ -87,8 +87,8 @@ function SubscriptionSecond() {
                 </Form.Item>
               </div>
             </div>
-            <div className="col-sm-12 col-lg-6">
-              <div className="mb-3">
+            <div className="col-sm-12 col-lg-6 p-0">
+              <div className="form-wrap">
                 <Form.Item
                   name="phoneNumber"
                   placeholder="Phone Number"
@@ -98,9 +98,9 @@ function SubscriptionSecond() {
               </div>
             </div>
             </div>
-            <div className="row d-flex business- ">
-            <div className="col-sm-12 col-lg-6">
-              <div className="mb-3">
+            <div className="row d-flex m-0 business- ">
+            <div className="col-sm-12 col-lg-6 pl-0 pr-3">
+              <div className="form-wrap">
                 <Form.Item
                   name="email"
                   placeholder="Email"
@@ -109,8 +109,8 @@ function SubscriptionSecond() {
                 </Form.Item>
               </div>
             </div>
-            <div className="col-sm-12 col-lg-6">
-              <div className="mb-3">
+            <div className="col-sm-12 col-lg-6 p-0">
+              <div className="form-wrap">
                 <Form.Item
                   name="confirmEmail"
                   placeholder="Confirm Email"
@@ -120,14 +120,16 @@ function SubscriptionSecond() {
               </div>
             </div>
             </div>
-            <div className="col-sm-12 col-lg-6">
-              <div className="mb-3">
-                <Form.Item
-                  name="officeLocation"
-                  placeholder="Office Location"
-                >
-                  <Input placeholder="Office Location" />
-                </Form.Item>
+            <div class="row d-flex">
+              <div className="col-12 p-0">
+                <div className="form-wrap">
+                  <Form.Item
+                    name="officeLocation"
+                    placeholder="Office Location"
+                  >
+                    <Input placeholder="Office Location" />
+                  </Form.Item>
+                </div>
               </div>
             </div>
         </div>

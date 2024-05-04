@@ -7155,14 +7155,21 @@ section#advertisers {
 
 .heading-text p {
 	color: #0071bc;
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 	margin-block: 0.5rem;
+  line-height: 1;
+  font-weight: 600;
 }
 
 .heading-text h6 {
 	color: #0071bc;
-	font-size: 1.75rem;
+	font-size: 1.25rem;
 	margin-block: 0.5rem;
+  font-weight: 500;
+}
+
+.heading-text h6 span {
+  font-weight: 700 !important;
 }
 
 .cards {
@@ -7276,7 +7283,7 @@ section#advertisers {
 }
 .perks2 p:not(:last-child) {
 	padding-right: 0.5rem;
-	border-right: 1.5px solid #0071bc;
+	border-right: 2px solid #0071bc;
 }
 
 .main-heading2 {
@@ -7287,8 +7294,9 @@ section#advertisers {
 
 .heading-text2 p {
 	color: #0071bc;
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 	margin-block: 0.5rem;
+  list-style: none;
 }
 
 .heading-text2 h6 {
@@ -7341,6 +7349,7 @@ section#advertisers {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 .footer2 h6 {
@@ -7384,7 +7393,19 @@ section#advertisers {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
 
+.form-items {
+  height: 100%;
+}
+
+.form-items .ant-input {
+  height: 54px;
+}
+
+.form-wrap {
+  margin-bottom: 2.188rem;
 }
 
 .submit2 {
