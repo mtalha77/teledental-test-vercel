@@ -14,6 +14,8 @@ import { CameraOutlined, RightOutlined } from "@ant-design/icons";
 import { Link } from "@material-ui/core";
 import Moment from 'moment';
 import TimezoneSelect, { useTimezoneSelect } from 'react-timezone-select'
+import AgoraToken from "../Commons/AgoraMeeting/AgoraToken";
+import { useHistory } from 'react-router-dom';
 
 import jwt from "jsonwebtoken";
 
@@ -29,7 +31,7 @@ export default function BookAppointment({
   const closeModal = () => {
     setIsModalVisible(false);
     if (fromDentist) {
-      showStepClick("3");  
+      showStepClick("3");
     } else {
       showStepClick("1");
     }
@@ -86,10 +88,10 @@ export default function BookAppointment({
     setSubmitPressed(false);
   }
 
-  const [selectedTimezone, setSelectedTimezone] =useState(
+  const [selectedTimezone, setSelectedTimezone] = useState(
     Intl.DateTimeFormat().resolvedOptions().timeZone
   )
-  const [selectedTimezoneTemp, setSelectedTimezoneTemp] =useState(
+  const [selectedTimezoneTemp, setSelectedTimezoneTemp] = useState(
     Intl.DateTimeFormat().resolvedOptions().timeZone
   )
 
@@ -98,19 +100,19 @@ export default function BookAppointment({
   const priceForStripe = 500;
 
   const handleSelectChange = (event) => {
-      setSwelling(event);
+    setSwelling(event);
   };
   const handleHurtSelectChange = (event) => {
-      setHurt(event);
+    setHurt(event);
   };
   const handleDateMonthSelectChange = (event) => {
-      setDateMonth(event);
+    setDateMonth(event);
   };
   const handleDateDaySelectChange = (event) => {
-      setDateDay(event);
+    setDateDay(event);
   };
   const handleDateYearSelectChange = (event) => {
-      setDateYear(event);
+    setDateYear(event);
   };
 
   const handleAllergicRadioChange = (event) => {
@@ -123,8 +125,8 @@ export default function BookAppointment({
 
   const handleDateRangeChange = (dates, dateStrings) => {
     setDate(dateStrings);
-      SetErrorMessage(dateStrings, timerange, refundsCheck, termsCheck, isSubmitPressed);
-      setError("visible");
+    SetErrorMessage(dateStrings, timerange, refundsCheck, termsCheck, isSubmitPressed);
+    setError("visible");
   };
 
   function policyChecks(forpolicy, value) {
@@ -161,8 +163,8 @@ export default function BookAppointment({
 
   const handleTimeRangeChange = (timeValues, timeStrings) => {
     setTimeRange(timeStrings);
-      SetErrorMessage(date, timeStrings, refundsCheck, termsCheck, isSubmitPressed);
-      setError("visible");
+    SetErrorMessage(date, timeStrings, refundsCheck, termsCheck, isSubmitPressed);
+    setError("visible");
   };
 
   function toggle(from) {
@@ -251,24 +253,25 @@ export default function BookAppointment({
       const ptoken = generateTokenCustom({ patient, activeChat, mdl });
       let pLink = `https://meet.teledental.com/?token=${ptoken}`;
       let localdate = new Date().getTime().toString();
-      let appointment = { dentistId: user?._id
-                        , dentistName: user?.firstName + " " + user?.lastName
-                        // , slotId: checked? "1" : "2"
-                        // , slot: checked? "From 10 AM to 11 AM" : "From 11 AM to 12 PM"
-                        , patientLink: pLink
-                        , dentistLink: dLink
-                        , isApproved: true
-                        , activeChatId: activeChat?.session?._id
-                        , appointmentId: localdate
-                        , patientName: activeChat?.patient?.firstName + " " + activeChat?.patient?.lastName
-                        , patientId: activeChat?.patient._id
-                        , patientEmail: patient?.email
-                        , title: title
-                        , appointmentDate: date
-                        , slot: timerange[0] + " to " + timerange[1] 
-                        , fromDentist: true
-                        , timeZone: selectedTimezone?.label == undefined ? selectedTimezoneTemp?.label : selectedTimezone?.label
-                      }
+      let appointment = {
+        dentistId: user?._id
+        , dentistName: user?.firstName + " " + user?.lastName
+        // , slotId: checked? "1" : "2"
+        // , slot: checked? "From 10 AM to 11 AM" : "From 11 AM to 12 PM"
+        , patientLink: pLink
+        , dentistLink: dLink
+        , isApproved: true
+        , activeChatId: activeChat?.session?._id
+        , appointmentId: localdate
+        , patientName: activeChat?.patient?.firstName + " " + activeChat?.patient?.lastName
+        , patientId: activeChat?.patient._id
+        , patientEmail: patient?.email
+        , title: title
+        , appointmentDate: date
+        , slot: timerange[0] + " to " + timerange[1]
+        , fromDentist: true
+        , timeZone: selectedTimezone?.label == undefined ? selectedTimezoneTemp?.label : selectedTimezone?.label
+      }
 
       await addAppointment(appointment);
       closeModal();
@@ -334,7 +337,15 @@ export default function BookAppointment({
   const [showStep3, setShowStep3] = useState(false);
   const [titleVal, setTitleVal] = useState('What Is Your Health Concern Today?');
   const [popupWidth, setpopupWidth] = useState('1200px');
+  const [VideoTitleVal, setVideoTitleVal] = useState('Video Consultancy');
+  const [showVideoModal, setVideoModal] = useState(false);
+  const [roomName, setroomName] = useState('');
+  const [roomNameAgora, setroomNameAgora] = useState('');
 
+
+  const closeVideoModal = () => {
+    setVideoModal(false);
+  };
 
   const showStepClick = (val) => {
     if (val == '1') {
@@ -362,12 +373,12 @@ export default function BookAppointment({
 
   };
 
-    const labelStyle = 'original';
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const { options, parseTimezone } = useTimezoneSelect({ labelStyle, timeZone })
+  const labelStyle = 'original';
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const { options, parseTimezone } = useTimezoneSelect({ labelStyle, timeZone })
 
   useEffect(() => {
-    if(fromDentist) {
+    if (fromDentist) {
       showStepClick('3');
     } else {
       showStepClick('1');
@@ -382,7 +393,16 @@ export default function BookAppointment({
   }
   const { RangePicker } = DatePicker;
 
-  // 
+  const handleVideoModalChange = () => {
+    setVideoModal(true);
+    setIsModalVisible(false);
+  };
+
+  const handleRoomNameChange = () => {
+    setroomNameAgora(roomName)
+  };
+
+  
   //const isUploaded = true
 
   // const type = 'back';
@@ -394,227 +414,261 @@ export default function BookAppointment({
   // const objectKey = 2
 
   return (
-    <Modal
-      // title="Sign In"
-      maskClosable={false}
-      visible={isModalVisible}
-      footer={null}
-      title={titleVal}
-      onCancel={closeModal}
-      width={popupWidth}
-      style={{ top: "50px" }}
-      className="modal_cstm_style"
-    >
-      <Card
-        style={{
-          minHeight: "30vh",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+    <>
+      <Modal title={VideoTitleVal} style={{ top: "5px" }}
+        width={'100%'}
+        minHeight={'70vh'}
+        visible={showVideoModal}
+        onCancel={closeVideoModal}
+        footer={null}
       >
-
-        {/* section 1 html */}
-        {showStep1 ? (
-          <div className="healthConcern_form">
-            <Form
-              layout="vertical"
-            >
-              {/*  onFinish={(body) => updateHandler(body, "profilePhoto")} */}
-
-              <Form.Item
-                label="Tell your concern today?"
-                name="concernToday"
-                rules={[
-                  { required: true, message: "This field is required!" },
-                ]}
-                className={`width100ForForItems`}
-              >
-                <TextArea rows={4} placeholder="" onChange={e => setConcern(e.target.value)} />
-              </Form.Item>
-
-              <Form.Item
-                label="Is there swelling?"
-                name="swelling"
-                rules={[
-                  { required: true, message: "Field is required" },
-                ]}
-              >
-                <Select placeholder="" value={swelling} onChange={handleSelectChange}>
-                  <Option value="yes">Yes</Option>
-                  <Option value="no">No</Option>
-                  <Option value="other">other</Option>
-                </Select>
-              </Form.Item>
-              <Form.Item
-                label="Is you have pain, how long has it hurt? If none enter NA"
-                name="hasitHurt"
-                rules={[
-                  { required: true, message: "Field is required!" },
-                ]}
-
-              >
-                <Input placeholder="" onChange={e => setPain(e.target.value)} />
-              </Form.Item>
-
-              <Form.Item
-                label="How bad does it hurt( 1 being least, 10 being worst)"
-                name="howbaddoesHurt"
-                rules={[
-                  { required: true, message: "Field is required" },
-                ]}
-              >
-                <Select placeholder="" value={hurt} onChange={handleHurtSelectChange}>
-                  <Option value="1">1</Option>
-                  <Option value="5">5</Option>
-                  <Option value="19">10</Option>
-                </Select>
-              </Form.Item>
-
-              <Form.Item
-                label="Where are you located at the time of the visit?"
-                name="locatedat"
-                rules={[
-                  { required: true, message: "Field is required" },
-                ]}
-              >
-                <Input placeholder="" onChange={e => setLocated(e.target.value)} />
-              </Form.Item>
-
-              <div class="ant-col ant-form-item-label">
-                <label>Date of the last dental visit? (optional)</label>
+        <div className="row">
+          <div className="col-lg-4 mb-1">
+            <div className="d-flex">
+              <div className="pt-1"><Input placeholder="Create Room Name" value={roomName}
+                onChange={event => setroomName(event.target.value)} /></div>
+              <div className="px-2">
+                <Button
+                  style={{ width: "60px", padding: '10px 60px 10px 60px' }}
+                  className="brix---btn-secondary w-button d-inline-flex align-items-center justify-content-center"
+                  block
+                  type="primary"
+                  size="large"
+                  onClick={handleRoomNameChange}
+                >
+                  Create Room
+                </Button>
               </div>
-              <div className="d-flex ba_lastDental_visit">
-                <div className="pe-3 ba_lastDental_visit_month">
-                  <Form.Item
-                    label=""
-                    name="dentalvisitdate"
-                  >
-                    <Select placeholder="Month" value={dateMonth} onChange={handleDateMonthSelectChange}>
-                      <Option value="January">January</Option>
-                      <Option value="February">February</Option>
-                      <Option value="March">March</Option>
-                      <Option value="April">April</Option>
-                      <Option value="May">May</Option>
-                      <Option value="June">June</Option>
-                      <Option value="July">July</Option>
-                      <Option value="August">August</Option>
-                      <Option value="September">September</Option>
-                      <Option value="October">October</Option>
-                      <Option value="November">November</Option>
-                      <Option value="December">December</Option>
-                    </Select>
-                  </Form.Item>
-                </div>
+            </div>
+          </div>
+          <div className="col-lg-8">
+            <div style={{ textAlign: "center", fontWeight: "bold" }}>
+              {roomNameAgora ? <AgoraToken text={roomNameAgora} /> : "Camera Screen"}
+            </div>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        // title="Sign In"
+        maskClosable={false}
+        visible={isModalVisible}
+        footer={null}
+        title={titleVal}
+        onCancel={closeModal}
+        width={popupWidth}
+        style={{ top: "50px" }}
+        className="modal_cstm_style"
+      >
+        <Card
+          style={{
+            minHeight: "30vh",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
 
-                <div className="pe-3 ba_lastDental_visit_day">
-                  <Form.Item
-                    label=""
-                    name="dentalvisitday"
-                  >
-                    <Select placeholder="Day" value={dateDay} onChange={handleDateDaySelectChange}>
-                      <Option value="1">1</Option>
-                      <Option value="2">2</Option>
-                      <Option value="3">3</Option>
-                      <Option value="4">4</Option>
-                      <Option value="5">5</Option>
-                      <Option value="6">6</Option>
-                      <Option value="7">7</Option>
-                      <Option value="8">8</Option>
-                      <Option value="9">9</Option>
-                      <Option value="10">10</Option>
-                      <Option value="11">11</Option>
-                      <Option value="12">12</Option>
-                      <Option value="13">13</Option>
-                      <Option value="14">14</Option>
-                      <Option value="15">15</Option>
-                      <Option value="16">16</Option>
-                      <Option value="17">17</Option>
-                      <Option value="18">18</Option>
-                      <Option value="19">19</Option>
-                      <Option value="20">20</Option>
-                      <Option value="21">21</Option>
-                      <Option value="22">22</Option>
-                      <Option value="23">23</Option>
-                      <Option value="24">24</Option>
-                      <Option value="25">25</Option>
-                      <Option value="26">26</Option>
-                      <Option value="27">27</Option>
-                      <Option value="28">28</Option>
-                      <Option value="29">29</Option>
-                      <Option value="30">30</Option>
-                      <Option value="31">31</Option>
-                    </Select>
-                  </Form.Item>
-                </div>
-
-                <div className="ba_lastDental_visit_year">
-                  <Form.Item
-                    label=""
-                    name="dentalvisityear"
-                  >
-                    <Select placeholder="Year" value={dateYear} onChange={handleDateYearSelectChange}>
-                      <Option value="2023">2023</Option>
-                      <Option value="2024">2024</Option>
-                      <Option value="2025">2025</Option>
-                      <Option value="2026">2026</Option>
-                      <Option value="2027">2027</Option>
-                      <Option value="2028">2028</Option>
-                      <Option value="2029">2029</Option>
-                      <Option value="2030">2030</Option>
-                      <Option value="2031">2031</Option>
-                      <Option value="2032">2032</Option>
-                      <Option value="2033">2033</Option>
-                      <Option value="2034">2034</Option>
-                      <Option value="2035">2035</Option>
-                      <Option value="2036">2036</Option>
-                      <Option value="2037">2037</Option>
-                      <Option value="2038">2038</Option>
-                      <Option value="2039">2039</Option>
-                      <Option value="2040">2040</Option>
-                      <Option value="2041">2041</Option>
-                      <Option value="2042">2042</Option>
-                      <Option value="2043">2043</Option>
-                      <Option value="2044">2044</Option>
-                      <Option value="2045">2045</Option>
-                      <Option value="2046">2046</Option>
-                      <Option value="2047">2047</Option>
-                      <Option value="2048">2048</Option>
-                      <Option value="2049">2049</Option>
-                      <Option value="2050">2050</Option>
-                    </Select>
-                  </Form.Item>
-                </div>
-              </div>
-
-              {/*  */}
-
-              <Dragger
-                name="file"
-                multiple={false}
-                // action={(file) => {
-                //   const formData = new FormData();
-                //   // formData.append("image", file, file.name);
-                //   // formData.append("purpose", purpose);
-                //   // formData.append("type", type);
-                //   // formData.append("key", objectKey);
-                //   // return uploadFileMutation({
-                //   //   body: formData,
-                //   // });
-                // }}
-                showUploadList={false}
-                //disabled={isUploaded}
-                accept="image/png,image/jpg,image/jpeg"
+          {/* section 1 html */}
+          {showStep1 ? (
+            <div className="healthConcern_form">
+              <Form
+                layout="vertical"
               >
+                {/*  onFinish={(body) => updateHandler(body, "profilePhoto")} */}
 
+                <Form.Item
+                  label="Tell your concern today?"
+                  name="concernToday"
+                  rules={[
+                    { required: true, message: "This field is required!" },
+                  ]}
+                  className={`width100ForForItems`}
+                >
+                  <TextArea rows={4} placeholder="" onChange={e => setConcern(e.target.value)} />
+                </Form.Item>
 
-                <div className="ba_drag_upload_placeholder">
-                  <p className="ant-upload-text text-start ps-3 pb-3">File upload any health records, labs or relevant information (optional)</p>
+                <Form.Item
+                  label="Is there swelling?"
+                  name="swelling"
+                  rules={[
+                    { required: true, message: "Field is required" },
+                  ]}
+                >
+                  <Select placeholder="" value={swelling} onChange={handleSelectChange}>
+                    <Option value="yes">Yes</Option>
+                    <Option value="no">No</Option>
+                    <Option value="other">other</Option>
+                  </Select>
+                </Form.Item>
+                <Form.Item
+                  label="Is you have pain, how long has it hurt? If none enter NA"
+                  name="hasitHurt"
+                  rules={[
+                    { required: true, message: "Field is required!" },
+                  ]}
+
+                >
+                  <Input placeholder="" onChange={e => setPain(e.target.value)} />
+                </Form.Item>
+
+                <Form.Item
+                  label="How bad does it hurt( 1 being least, 10 being worst)"
+                  name="howbaddoesHurt"
+                  rules={[
+                    { required: true, message: "Field is required" },
+                  ]}
+                >
+                  <Select placeholder="" value={hurt} onChange={handleHurtSelectChange}>
+                    <Option value="1">1</Option>
+                    <Option value="5">5</Option>
+                    <Option value="19">10</Option>
+                  </Select>
+                </Form.Item>
+
+                <Form.Item
+                  label="Where are you located at the time of the visit?"
+                  name="locatedat"
+                  rules={[
+                    { required: true, message: "Field is required" },
+                  ]}
+                >
+                  <Input placeholder="" onChange={e => setLocated(e.target.value)} />
+                </Form.Item>
+
+                <div class="ant-col ant-form-item-label">
+                  <label>Date of the last dental visit? (optional)</label>
+                </div>
+                <div className="d-flex ba_lastDental_visit">
+                  <div className="pe-3 ba_lastDental_visit_month">
+                    <Form.Item
+                      label=""
+                      name="dentalvisitdate"
+                    >
+                      <Select placeholder="Month" value={dateMonth} onChange={handleDateMonthSelectChange}>
+                        <Option value="January">January</Option>
+                        <Option value="February">February</Option>
+                        <Option value="March">March</Option>
+                        <Option value="April">April</Option>
+                        <Option value="May">May</Option>
+                        <Option value="June">June</Option>
+                        <Option value="July">July</Option>
+                        <Option value="August">August</Option>
+                        <Option value="September">September</Option>
+                        <Option value="October">October</Option>
+                        <Option value="November">November</Option>
+                        <Option value="December">December</Option>
+                      </Select>
+                    </Form.Item>
+                  </div>
+
+                  <div className="pe-3 ba_lastDental_visit_day">
+                    <Form.Item
+                      label=""
+                      name="dentalvisitday"
+                    >
+                      <Select placeholder="Day" value={dateDay} onChange={handleDateDaySelectChange}>
+                        <Option value="1">1</Option>
+                        <Option value="2">2</Option>
+                        <Option value="3">3</Option>
+                        <Option value="4">4</Option>
+                        <Option value="5">5</Option>
+                        <Option value="6">6</Option>
+                        <Option value="7">7</Option>
+                        <Option value="8">8</Option>
+                        <Option value="9">9</Option>
+                        <Option value="10">10</Option>
+                        <Option value="11">11</Option>
+                        <Option value="12">12</Option>
+                        <Option value="13">13</Option>
+                        <Option value="14">14</Option>
+                        <Option value="15">15</Option>
+                        <Option value="16">16</Option>
+                        <Option value="17">17</Option>
+                        <Option value="18">18</Option>
+                        <Option value="19">19</Option>
+                        <Option value="20">20</Option>
+                        <Option value="21">21</Option>
+                        <Option value="22">22</Option>
+                        <Option value="23">23</Option>
+                        <Option value="24">24</Option>
+                        <Option value="25">25</Option>
+                        <Option value="26">26</Option>
+                        <Option value="27">27</Option>
+                        <Option value="28">28</Option>
+                        <Option value="29">29</Option>
+                        <Option value="30">30</Option>
+                        <Option value="31">31</Option>
+                      </Select>
+                    </Form.Item>
+                  </div>
+
+                  <div className="ba_lastDental_visit_year">
+                    <Form.Item
+                      label=""
+                      name="dentalvisityear"
+                    >
+                      <Select placeholder="Year" value={dateYear} onChange={handleDateYearSelectChange}>
+                        <Option value="2023">2023</Option>
+                        <Option value="2024">2024</Option>
+                        <Option value="2025">2025</Option>
+                        <Option value="2026">2026</Option>
+                        <Option value="2027">2027</Option>
+                        <Option value="2028">2028</Option>
+                        <Option value="2029">2029</Option>
+                        <Option value="2030">2030</Option>
+                        <Option value="2031">2031</Option>
+                        <Option value="2032">2032</Option>
+                        <Option value="2033">2033</Option>
+                        <Option value="2034">2034</Option>
+                        <Option value="2035">2035</Option>
+                        <Option value="2036">2036</Option>
+                        <Option value="2037">2037</Option>
+                        <Option value="2038">2038</Option>
+                        <Option value="2039">2039</Option>
+                        <Option value="2040">2040</Option>
+                        <Option value="2041">2041</Option>
+                        <Option value="2042">2042</Option>
+                        <Option value="2043">2043</Option>
+                        <Option value="2044">2044</Option>
+                        <Option value="2045">2045</Option>
+                        <Option value="2046">2046</Option>
+                        <Option value="2047">2047</Option>
+                        <Option value="2048">2048</Option>
+                        <Option value="2049">2049</Option>
+                        <Option value="2050">2050</Option>
+                      </Select>
+                    </Form.Item>
+                  </div>
                 </div>
 
-                <p className="ba_drag_upload_text"><span>Click Here</span> to drag or drop files</p>
+                {/*  */}
+
+                <Dragger
+                  name="file"
+                  multiple={false}
+                  // action={(file) => {
+                  //   const formData = new FormData();
+                  //   // formData.append("image", file, file.name);
+                  //   // formData.append("purpose", purpose);
+                  //   // formData.append("type", type);
+                  //   // formData.append("key", objectKey);
+                  //   // return uploadFileMutation({
+                  //   //   body: formData,
+                  //   // });
+                  // }}
+                  showUploadList={false}
+                  //disabled={isUploaded}
+                  accept="image/png,image/jpg,image/jpeg"
+                >
 
 
-                {/* {!payload[objectKey][type] ? (
+                  <div className="ba_drag_upload_placeholder">
+                    <p className="ant-upload-text text-start ps-3 pb-3">File upload any health records, labs or relevant information (optional)</p>
+                  </div>
+
+                  <p className="ba_drag_upload_text"><span>Click Here</span> to drag or drop files</p>
+
+
+                  {/* {!payload[objectKey][type] ? (
              uploadFileIsLoading && isUploaded ? (
                <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />
              ) : (
@@ -637,216 +691,231 @@ export default function BookAppointment({
                />
              </p>
            )} */}
-              </Dragger>
-              <div className="row">
-                <div className="col-lg-6 pt-4">
-                  <Form.Item
-                    name="checkbox"
-                    valuePropName="checked"
-                    rules={[{ required: true, message: "Please accept terms!" }]}
-                  >
-                    <Checkbox>
-                      I agree <a href="https://teledental.com/terms-and-conditions" target="_blank">terms of use</a> and <a href="https://teledental.com/privacy-policy-teledental" target="_blank"> privacy policy</a>.
-                    </Checkbox>
-                  </Form.Item>
-                </div>
-                <div className="col-lg-6 pt-4 text-right">
-                  <Form.Item className="mb-0">
-                    <Button
-                      className="signInButton  brix---btn-secondary w-button"
-                      // block
-                      type="primary"
-                      size="large"
-                      //  onClick={() => isAppointmentSelected()}
-                      onClick={() => showStepClick('2')}
+                </Dragger>
+                <div className="row">
+                  <div className="col-lg-6 pt-4">
+                    <Form.Item
+                      name="checkbox"
+                      valuePropName="checked"
+                      rules={[{ required: true, message: "Please accept terms!" }]}
                     >
-                      Continue <RightOutlined />
-                    </Button>
-                  </Form.Item>
+                      <Checkbox>
+                        I agree <a href="https://teledental.com/terms-and-conditions" target="_blank">terms of use</a> and <a href="https://teledental.com/privacy-policy-teledental" target="_blank"> privacy policy</a>.
+                      </Checkbox>
+                    </Form.Item>
+                  </div>
+                  <div className="col-lg-6 pt-4 text-right">
+                    <Form.Item className="mb-0">
+                      <Button
+                        className="signInButton  brix---btn-secondary w-button"
+                        // block
+                        type="primary"
+                        size="large"
+                        //  onClick={() => isAppointmentSelected()}
+                        onClick={() => showStepClick('2')}
+                      >
+                        Continue <RightOutlined />
+                      </Button>
+                    </Form.Item>
+                  </div>
                 </div>
-              </div>
-            </Form>
-          </div>
-        ) : null}
+              </Form>
+            </div>
+          ) : null}
 
-        {/* ******************section 2 html ******************* */}
+          {/* ******************section 2 html ******************* */}
 
-        {showStep2 ? (
-          <div className="healthConcern_form">
-            <Form
-              layout="vertical"
-            >
-              {/*  onFinish={(body) => updateHandler(body, "profilePhoto")} */}
-
-
-
-
-              <Form.Item
-                label="Past & current medical condition"
-                name="medicalcondition"
-                rules={[
-                  { required: true, message: "Field is required!" },
-                ]}
-                className="col-xl-6"
-
+          {showStep2 ? (
+            <div className="healthConcern_form">
+              <Form
+                layout="vertical"
               >
-                <Input placeholder="" onChange={e => setMedicalCont(e.target.value)} />
-              </Form.Item>
-
-              <Form.Item
-              name="lastyearantibiotics"
-                label="Have you taken any antibiotics within the last yers"
-                rules={[
-                  { required: true, message: "Field is required!" },
-                ]}
-                initialValue="Yes"
-              >
-                <Radio.Group buttonStyle="solid" value={antibiotic} onChange={handleAntibioticRadioChange}>
-                  <Radio.Button value="Yes">
-                    Yes
-                  </Radio.Button>
-                  <Radio.Button value="No">
-                    No
-                  </Radio.Button>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item
-                name="lastVisitAllergicantobiotech"
-                label="Are you allergic to any antibiotics"
-                rules={[
-                  { required: true, message: "Field is required!" },
-                ]}
-              >
-                <Radio.Group buttonStyle="solid" value={allergic} onChange={handleAllergicRadioChange}>
-                  <Radio.Button value="Yes">
-                    Yes
-                  </Radio.Button>
-                  <Radio.Button value="No">
-                    No
-                  </Radio.Button>
-                </Radio.Group>
-
-                <Input className="mt-2" placeholder="If yes, please share which antibiotics are alergic to?" />
-              </Form.Item>
-
-              <Form.Item
-                label="Any medical conditions we need to be aware of?"
-                name="nedicalconditionBeAwar"
-                rules={[
-                  { required: true, message: "Field is required!" },
-                ]}
-              >
-                <Input placeholder="" onChange={e => setmedicalCondBeAware(e.target.value)} />
-              </Form.Item>
-
-              <Form.Item
-                label="Any current medication we need to be aware of?"
-                name="conditionBeaware"
-                rules={[
-                  { required: true, message: "Field is required!" },
-                ]}
-              >
-                <Input placeholder="" onChange={e => setCurrentMedication(e.target.value)} />
-              </Form.Item>
+                {/*  onFinish={(body) => updateHandler(body, "profilePhoto")} */}
 
 
 
 
-              <div className="row">
-                <div className="col-lg-8 pt-3">
-                  <Typography.Text>
-                    Note, All individuals are responsible to know and be aware of any antibiotics prescribed. If have any allergic reaction, please stop and visit your doctor as soon as possible. All people with infections should get dental treatment as soon as possible.
-                  </Typography.Text>
+                <Form.Item
+                  label="Past & current medical condition"
+                  name="medicalcondition"
+                  rules={[
+                    { required: true, message: "Field is required!" },
+                  ]}
+                  className="col-xl-6"
+
+                >
+                  <Input placeholder="" onChange={e => setMedicalCont(e.target.value)} />
+                </Form.Item>
+
+                <Form.Item
+                  name="lastyearantibiotics"
+                  label="Have you taken any antibiotics within the last yers"
+                  rules={[
+                    { required: true, message: "Field is required!" },
+                  ]}
+                  initialValue="Yes"
+                >
+                  <Radio.Group buttonStyle="solid" value={antibiotic} onChange={handleAntibioticRadioChange}>
+                    <Radio.Button value="Yes">
+                      Yes
+                    </Radio.Button>
+                    <Radio.Button value="No">
+                      No
+                    </Radio.Button>
+                  </Radio.Group>
+                </Form.Item>
+
+                <Form.Item
+                  name="lastVisitAllergicantobiotech"
+                  label="Are you allergic to any antibiotics"
+                  rules={[
+                    { required: true, message: "Field is required!" },
+                  ]}
+                >
+                  <Radio.Group buttonStyle="solid" value={allergic} onChange={handleAllergicRadioChange}>
+                    <Radio.Button value="Yes">
+                      Yes
+                    </Radio.Button>
+                    <Radio.Button value="No">
+                      No
+                    </Radio.Button>
+                  </Radio.Group>
+
+                  <Input className="mt-2" placeholder="If yes, please share which antibiotics are alergic to?" />
+                </Form.Item>
+
+                <Form.Item
+                  label="Any medical conditions we need to be aware of?"
+                  name="nedicalconditionBeAwar"
+                  rules={[
+                    { required: true, message: "Field is required!" },
+                  ]}
+                >
+                  <Input placeholder="" onChange={e => setmedicalCondBeAware(e.target.value)} />
+                </Form.Item>
+
+                <Form.Item
+                  label="Any current medication we need to be aware of?"
+                  name="conditionBeaware"
+                  rules={[
+                    { required: true, message: "Field is required!" },
+                  ]}
+                >
+                  <Input placeholder="" onChange={e => setCurrentMedication(e.target.value)} />
+                </Form.Item>
+
+
+
+
+                <div className="row">
+                  <div className="col-lg-8 pt-3">
+                    <Typography.Text>
+                      Note, All individuals are responsible to know and be aware of any antibiotics prescribed. If have any allergic reaction, please stop and visit your doctor as soon as possible. All people with infections should get dental treatment as soon as possible.
+                    </Typography.Text>
+                  </div>
+                  <div className="col-lg-4 pt-3 text-right">
+                    <Form.Item className="mb-0">
+                      <Button
+                        className="signInButton  brix---btn-secondary w-button"
+                        // block
+                        type="primary"
+                        size="large"
+                        //  onClick={() => isAppointmentSelected()}
+                        onClick={() => showStepClick('3')}
+                      >
+                        Continue <RightOutlined />
+                      </Button>
+                    </Form.Item>
+                  </div>
                 </div>
-                <div className="col-lg-4 pt-3 text-right">
-                  <Form.Item className="mb-0">
-                    <Button
-                      className="signInButton  brix---btn-secondary w-button"
-                      // block
-                      type="primary"
-                      size="large"
-                      //  onClick={() => isAppointmentSelected()}
-                      onClick={() => showStepClick('3')}
-                    >
-                      Continue <RightOutlined />
-                    </Button>
-                  </Form.Item>
-                </div>
-              </div>
-            </Form>
-          </div>
-        ) : null}
+              </Form>
+            </div>
+          ) : null}
 
 
 
-        {/* section 3 html */}
-        {showStep3 ? (
-          <div className="healthConcern_form">
-            <Form
-              layout="vertical"
-            >
-              {/*  onFinish={(body) => updateHandler(body, "profilePhoto")} */}
+          {/* section 3 html */}
+          {showStep3 ? (
+            <div className="healthConcern_form">
+              <Form
+                layout="vertical"
+              >
+                {/*  onFinish={(body) => updateHandler(body, "profilePhoto")} */}
 
-              <Form.Item
-                label="Title"
-                name="hasitHurt"
-                initialValue={user?.hasitHurt}
+                <Form.Item
+                  label="Title"
+                  name="hasitHurt"
+                  initialValue={user?.hasitHurt}
                 // rules={[
                 //   { required: true, message: "Field is required!" },
                 // ]}
-              >
-                <Input placeholder="" onChange={e => setTitle(e.target.value)} />
-              </Form.Item>
+                >
+                  <Input placeholder="" onChange={e => setTitle(e.target.value)} />
+                </Form.Item>
 
-              {/* <div class="ant-col ant-form-item-label">
+                {/* <div class="ant-col ant-form-item-label">
                 <label>Date</label>
               </div> */}
-              <div
-                style={{ gap: "3%" }}
-                className={`d-flex flex-column flex-md-row`}
-              >
-                <Form.Item label="Date" style={{ flexGrow: 1 }}>
-                  <DatePicker onChange={handleDateRangeChange} style={{ width: "100%" }} />
-                </Form.Item>
+                <div
+                  style={{ gap: "3%" }}
+                  className={`d-flex flex-column flex-md-row`}
+                >
+                  <Form.Item label="Date" style={{ flexGrow: 1 }}>
+                    <DatePicker onChange={handleDateRangeChange} style={{ width: "100%" }} />
+                  </Form.Item>
 
-                <Form.Item label="Time" style={{ flexGrow: 1 }}>
-                  <RangePicker picker="time" style={{ width: "100%" }} onChange={handleTimeRangeChange} format="HH:mm" />
-                </Form.Item>
- 
-              </div>
-              <div className="select-wrapper">
-                <TimezoneSelect
-                  value={selectedTimezone}
-                  onChange={setSelectedTimezone}
-                />
-              </div>
-              <br/>
-              <div
-                style={{ gap: "3%" }}
-                className={`d-flex flex-column flex-md-row`}
-              >
-                <Form.Item
+                  <Form.Item label="Time" style={{ flexGrow: 1 }}>
+                    <RangePicker picker="time" style={{ width: "100%" }} onChange={handleTimeRangeChange} format="HH:mm" />
+                  </Form.Item>
+
+                </div>
+                <div className="select-wrapper">
+                  <TimezoneSelect
+                    value={selectedTimezone}
+                    onChange={setSelectedTimezone}
+                  />
+                </div>
+                <br />
+                <div
+                  style={{ gap: "3%" }}
+                  className={`d-flex flex-column flex-md-row`}
+                >
+                  <Form.Item
                     name="checkbox"
                   >
-                    <input type="checkbox" style={{fontWeight: 500, marginRight: '5px' }} onChange={() => policyChecks('refunds', !refundsCheck)} checked={refundsCheck} />
+                    <input type="checkbox" style={{ fontWeight: 500, marginRight: '5px' }} onChange={() => policyChecks('refunds', !refundsCheck)} checked={refundsCheck} />
                     I understand there are no refunds for Teledental consultations completed.
                   </Form.Item>
-                  </div>
-                  <div
-                    style={{ gap: "3%" }}
-                    className={`d-flex flex-column flex-md-row`}
-                  >
+                </div>
+                <div
+                  style={{ gap: "3%" }}
+                  className={`d-flex flex-column flex-md-row`}
+                >
                   <Form.Item
                     name="checkbox2"
                   >
-                    <input type="checkbox" style={{fontWeight: 500, marginRight: '5px'}} onChange={() => policyChecks('terms', !termsCheck)} checked={termsCheck} />
-                     I agree with the <a href="https://teledental.com/terms-and-conditions" target="_blank">Terms & Conditions</a>.
+                    <input type="checkbox" style={{ fontWeight: 500, marginRight: '5px' }} onChange={() => policyChecks('terms', !termsCheck)} checked={termsCheck} />
+                    I agree with the <a href="https://teledental.com/terms-and-conditions" target="_blank">Terms & Conditions</a>.
                   </Form.Item>
-              </div>
-              <div className="row pt-5">
-                  <div style={{display: fromDentist ? 'none' : 'block'}}>
-                    <div className="col-lg-12 text-center" style={{display: (timerange[0] != null && timerange[1] != null && date != null) ? 'none' : 'block'}}>
+                </div>
+                <div className="row pt-5">
+                  <div className="col-lg-6">
+                    <Form.Item className="mb-0">
+                      <Button
+                        className="signInButton   brix---btn-secondary w-button"
+                        // block
+                        type="primary"
+                        size="large"
+                        onClick={() => handleVideoModalChange()}
+                        style={{ fontSize: "13px", marginLeft: "7px" }}
+                      // onClick={() => saveAppointment()}
+                      >
+                        Video Consultancy
+                      </Button>
+                    </Form.Item>
+                  </div>
+                  <div style={{ display: fromDentist ? 'none' : 'block' }}>
+                    <div className="col-lg-6 text-center" style={{ display: (timerange[0] != null && timerange[1] != null && date != null) ? 'none' : 'block' }}>
                       <Form.Item className="mb-0">
                         <Button
                           className="signInButton  brix---btn-secondary w-button"
@@ -854,13 +923,13 @@ export default function BookAppointment({
                           type="primary"
                           size="large"
                           onClick={() => isAppointmentSelected()}
-                          // onClick={() => saveAppointment()}
+                        // onClick={() => saveAppointment()}
                         >
                           Submit
                         </Button>
                       </Form.Item>
                     </div>
-                    <div style={{display: (timerange[0] != null && timerange[1] != null && date != null) ? 'block' : 'none'}}>
+                    <div style={{ display: (timerange[0] != null && timerange[1] != null && date != null) ? 'block' : 'none' }}>
                       <Form.Item>
                         <StripeCheckout
                           stripeKey={publishableKey}
@@ -876,8 +945,8 @@ export default function BookAppointment({
                       </Form.Item>
                     </div>
                   </div>
-                  <div style={{display: !fromDentist ? 'none' : 'block'}}>
-                  <div className="col-lg-12 text-center">
+                  <div style={{ display: !fromDentist ? 'none' : 'block' }}>
+                    <div className="col-lg-12 text-center">
                       <Form.Item className="mb-0">
                         <Button
                           className="signInButton  brix---btn-secondary w-button"
@@ -892,19 +961,19 @@ export default function BookAppointment({
                     </div>
                   </div>
                 </div>
-              <div className="row" style={{visibility: error}}>
-                <span style={{color: "red"}}>{errorMessage}</span>
-              </div> 
-            </Form>
-          </div>
-        ) : null}
+                <div className="row" style={{ visibility: error }}>
+                  <span style={{ color: "red" }}>{errorMessage}</span>
+                </div>
+              </Form>
+            </div>
+          ) : null}
 
 
 
 
 
 
-        {/* <div className="row">
+          {/* <div className="row">
           <div className="col-md-4">
             <p>Select</p>
           </div>
@@ -985,7 +1054,9 @@ export default function BookAppointment({
         <div className="row" style={{visibility: error}}>
           <span style={{color: "red"}}>Please select one slot</span>
         </div> */}
-      </Card>
-    </Modal>
+        </Card>
+      </Modal>
+
+    </>
   );
 }

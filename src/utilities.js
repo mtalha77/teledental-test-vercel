@@ -32,10 +32,9 @@ export function updateCache(queryKey, queryClient, update) {
   update(updatedData, previousData);
 }
 
-export function convertObjectToFormData(object, priorToConversion = () => {}) {
+export function convertObjectToFormData(object, priorToConversion = () => { }) {
   let formData = new FormData();
   priorToConversion(formData);
-  debugger;
   for (let item in object) {
     if (Array.isArray(object[item])) {
       for (let i of object[item]) formData.append(`location[${item}][]`, i);
