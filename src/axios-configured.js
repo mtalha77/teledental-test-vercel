@@ -27,7 +27,6 @@ const onError = function (error) {
       error.response.data.status === 401 &&
       error.response.data.message === "invalid signature"
     ) {
-      debugger;
       console.log("redirect to login");
       window.localStorage.removeItem("token");
       window.localStorage.removeItem("activeStep");
