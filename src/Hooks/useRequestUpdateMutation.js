@@ -95,6 +95,7 @@ export function useRequestDelete(queryKey) {
           "requestStats",
           queryClient,
           function update(updatedRequests) {
+            debugger;
             console.log(request);
             if (request.isActive) {
               updatedRequests.active -= 1;
