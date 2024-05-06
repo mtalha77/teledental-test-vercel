@@ -68,6 +68,8 @@ import DentalInsurance from "./Commons/DentalInsurance";
 import SignupSuccess from "./Commons/SignupSuccess/SignupSuccess";
 import SubscriptionOne from "./Commons/SubscriptionOne";
 import SubscriptionSecond from "./Commons/SubscriptionSecond";
+import VideoDentalExam from "./Commons/VideoDentalExam";
+import VPAT from "./Commons/VPAT";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -261,6 +263,16 @@ function App() {
               exact
               path="/dental-implant-information"
               component={LiveDental}
+            />
+            <PublicRoute
+              exact
+              path="/video-dental-exams"
+              component={VideoDentalExam}
+            />
+            <PublicRoute
+              exact
+              path="/voluntary-product-accessibility-template"
+              component={VPAT}
             />
             <PublicRoute
               exact
