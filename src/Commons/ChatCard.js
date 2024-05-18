@@ -321,6 +321,7 @@ function ChatCard({
                             !activeChat?.assignedTo?._id ||
                             activeChat?.session?.status === "completed"
                           }
+                          className={`btn_blue`}
                         >
                           Request Video Consultation
                         </Button>
@@ -330,6 +331,7 @@ function ChatCard({
                             !activeChat?.assignedTo?._id ||
                             activeChat?.session?.status === "completed"
                           }
+                          className={`btn_blue`}
                         >
                           Book Appointment
                         </Button>
