@@ -93,7 +93,7 @@ function SubscriptionSecond() {
                   name="phoneNumber"
                   placeholder="Phone Number"
                 >
-                  <Input placeholder="Phone Number" />
+                  <Input type="number" placeholder="Phone Number" />
                 </Form.Item>
               </div>
             </div>

@@ -5147,6 +5147,11 @@ textarea.w-select {
   text-transform: lowercase
 }
 
+.combine-footer3_bottom-text-withoutLC {
+  color: #bfc4ce;
+  font-weight: 400;
+}
+
 .grid {
   margin-right: 0;
   margin-left: 60px;
@@ -7419,6 +7424,18 @@ section#advertisers {
   color: white;
   font-size: 1.313rem;
   font-weight: 600;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .n_signup_wrapper{ width: 100%; min-height: 100vh; background: url(../../assets/img/d_reg_bg.png) no-repeat center center; background-size: cover; display: flex; justify-content: space-between; align-items: center; padding:30px 40px; position: relative; overflow: hidden; }

@@ -89,3 +89,7 @@ export const addSubscription = async (body) => {
 export const updateSubscription = async (body) => {
   return client.post("/api/v1/public/updatesubscription", body);
 };
+
+export const SendEmailToReceiverAPI = async (formData) => {
+  return client.post(`/api/v1/public/sendEmailToReceiverApicall`, formData);
+};

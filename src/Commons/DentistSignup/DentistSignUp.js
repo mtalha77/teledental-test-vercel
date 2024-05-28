@@ -204,7 +204,7 @@ function DentistSignUpModal() {
                           },
                         ]}
                       >
-                        <Input placeholder="* Phone Number" />
+                        <Input type="number" placeholder="* Phone Number" />
                       </Form.Item>
                     </div>
                     <div className="col-sm-12 col-md-6">

@@ -102,6 +102,7 @@ const BasicInfo = ({
                 <Option value="female">USA (+1)</Option>
               </Select>
               <Input
+                type="number"
                 placeholder="input placeholder"
                 style={{ flexGrow: 1 }}
                 className={`width50ForForItems`}
