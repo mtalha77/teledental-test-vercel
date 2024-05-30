@@ -7438,6 +7438,11 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.create-application-box {
+  padding: 32px 24px;
+  font-weight: 600;
+}
+
 .n_signup_wrapper{ width: 100%; min-height: 100vh; background: url(../../assets/img/d_reg_bg.png) no-repeat center center; background-size: cover; display: flex; justify-content: space-between; align-items: center; padding:30px 40px; position: relative; overflow: hidden; }
 
 .n_signup_wrapper:after{ content: ""; width: 56%; left: 0px; height: 140%; top: -20%; position: absolute; background: #fff; border-radius: 0px 50% 50% 0px; }

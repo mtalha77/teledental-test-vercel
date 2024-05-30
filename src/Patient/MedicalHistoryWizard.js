@@ -826,7 +826,7 @@ export default function MedicalHistoryWizard({
                           billingAddress
                           shippingAddress
                           amount={priceForStripe}
-                          description={`Your appointment charges is $50`}
+                          description={`Your appointment charge is $50`}
                           token={payNow}
                           className="signInButton  brix---btn-secondary w-button d-inline-flex justify-content-center align-items-center"
                         />
