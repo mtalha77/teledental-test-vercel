@@ -208,7 +208,7 @@ function CreateRequest() {
               {typeOptions}
             </Select>
           </Form.Item>
-          <Form.Item name="isEmergency" label="Emergency" initialValue={false}>
+          <Form.Item name="isEmergency" label="Do you have a dental emergency?" initialValue={false}>
             <Radio.Group buttonStyle="solid">
               <Radio.Button value={false}>No</Radio.Button>
               <Radio.Button value={true}>Yes</Radio.Button>
@@ -236,14 +236,14 @@ function CreateRequest() {
             </Select>
           </Form.Item>
           <Form.Item
-            label="Title"
+            label="Briefly explain what is your dental concern."
             name="title"
             rules={[{ required: true, message: "Please input your title!" }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
-            label="Description"
+            label="Please explain why need a Teledental video consultation? Be to the point, as the Teledental consultation is for 10 minutes or less."
             name="description"
             rules={[
               { required: true, message: "Please input your description!" },

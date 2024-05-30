@@ -788,7 +788,7 @@ export default function BookAppointment({
             >
               {/*  onFinish={(body) => updateHandler(body, "profilePhoto")} */}
 
-              <Form.Item
+              {/* <Form.Item
                 label="Title"
                 name="hasitHurt"
                 initialValue={user?.hasitHurt}
@@ -797,7 +797,7 @@ export default function BookAppointment({
                 // ]}
               >
                 <Input placeholder="" onChange={e => setTitle(e.target.value)} />
-              </Form.Item>
+              </Form.Item> */}
 
               {/* <div class="ant-col ant-form-item-label">
                 <label>Date</label>
