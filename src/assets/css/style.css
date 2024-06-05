@@ -5147,6 +5147,11 @@ textarea.w-select {
   text-transform: lowercase
 }
 
+.combine-footer3_bottom-text-withoutLC {
+  color: #bfc4ce;
+  font-weight: 400;
+}
+
 .grid {
   margin-right: 0;
   margin-left: 60px;
@@ -7418,6 +7423,23 @@ section#advertisers {
 	border: 2px solid #3687c5;
   color: white;
   font-size: 1.313rem;
+  font-weight: 600;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.create-application-box {
+  padding: 32px 24px;
   font-weight: 600;
 }
 

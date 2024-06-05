@@ -24,6 +24,7 @@ import { makeStyles } from "@material-ui/core";
 import MedicalHistoryWizard from "../Patient/MedicalHistoryWizard";
 import React, { useEffect } from "react";
 import { getMedicalHistory } from "./apis/patientV1";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   cardCtn: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Dashboard() {
   const { user } = useUserContext();
+  const history = useHistory();
   const classes = useStyles();
   const { data, isLoading } = useQuery("requests-dashboard", async () => {
     const res = await getRequests({ queryParam: { limit: 20 } });
@@ -53,19 +55,19 @@ function Dashboard() {
   const [isMedicalHistoryWizardModalVisible, setMedicalHistoryWizardModalVisible] =
   React.useState(false);
 
-  useEffect(async () => {
-    let mounted = true;
-    getMedicalHistory(user?._id)
-      .then(items => {
-        if(mounted && items != null && items.data.length == 0) {
-          setMedicalHistoryWizardModalVisible(true);
-        } else {
-          setMedicalHistoryWizardModalVisible(false);
-        }
-      })
-    return () => mounted = false;
+  // useEffect(async () => {
+  //   let mounted = true;
+  //   getMedicalHistory(user?._id)
+  //     .then(items => {
+  //       if(mounted && items != null && items.data.length == 0) {
+  //         setMedicalHistoryWizardModalVisible(true);
+  //       } else {
+  //         setMedicalHistoryWizardModalVisible(false);
+  //       }
+  //     })
+  //   return () => mounted = false;
 
-  }, []);
+  // }, []);
 
   function updateRequest(id, value) {
     const record = data.find((item) => item._id === id);
@@ -187,7 +189,19 @@ function Dashboard() {
       <Divider />
       {/* <Row gutter={[16, 16]} className={classes.cardCtn}> */}
       <Row className={`${classes.cardCtn} flex-column flex-sm-row`}>
-        <Col span={8} className={`analyticsDash`}>
+      <Col span={4} className={`analyticsDash`}>
+      <Card
+            // headStyle={{ backgroundColor: "#6fc4fd" }}
+            headStyle={{ fontWeight: "bold" }}
+            hoverable
+            loading={statsLoading}
+            title="INITIATE REQUEST"
+            type="inner"
+          >
+            <div className={`create-application-box`} onClick={() => history.push(`/patients/create-request`)}>Create New Request</div>
+            </Card>
+        </Col>
+        <Col span={4} className={`analyticsDash`}>
           <Card
             // headStyle={{ backgroundColor: "#6fc4fd" }}
             headStyle={{ fontWeight: "bold" }}
@@ -201,7 +215,7 @@ function Dashboard() {
             </Typography.Title>
           </Card>
         </Col>
-        <Col span={8} className={`analyticsDash`}>
+        <Col span={4} className={`analyticsDash`}>
           <Card
             // headStyle={{ backgroundColor: "#6fc4fd" }}
             headStyle={{ fontWeight: "bold" }}
@@ -213,7 +227,7 @@ function Dashboard() {
             <Typography.Title>{statsData?.active}</Typography.Title>
           </Card>
         </Col>
-        <Col span={8} className={`analyticsDash`}>
+        <Col span={4} className={`analyticsDash`}>
           <Card
             // headStyle={{ backgroundColor: "#6fc4fd" }}
             headStyle={{ fontWeight: "bold" }}

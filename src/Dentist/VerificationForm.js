@@ -79,7 +79,7 @@ export default function VerificationForm() {
                   <li>• Passport</li>
                   <li>• Driver's License</li>
                   <li>• Identity Card</li>
-                  <li>• Residance Permit</li>
+                  <li>• Residence Permit</li>
                 </Col>
                 <Row
                   style={{
@@ -118,7 +118,7 @@ export default function VerificationForm() {
                 <Col>
                   <li>• Proof of residence</li>
                   <li>• Landlord letter</li>
-                  <li>• Utipty bill</li>
+                  <li>• Utility bill</li>
                   <li>• Bank Statement</li>
                   <li>• Mortgage Statement</li>
                   <li>• Government issued document</li>

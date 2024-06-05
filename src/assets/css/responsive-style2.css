@@ -12,8 +12,8 @@
   /* Patient Dashboard */
 
   .analyticsDash {
-    flex: 0 0 32.333333%;
-    max-width: 32.333333% !important;
+    flex: 0 0 23%;
+    max-width: 23% !important;
     margin: 0px 0.5%;
   }
 

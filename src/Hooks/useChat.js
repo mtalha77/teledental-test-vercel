@@ -3,7 +3,7 @@ import { useInfiniteQuery, useMutation, useQueryClient } from "react-query";
 import * as React from "react";
 import { useUserContext } from "../Context/userContext";
 import { createSocketConnection } from "../socket";
-import { getChatThread, uploadAttachment } from "../Commons/apis/commonV1";
+import { getChatThread, uploadAttachment, SendEmailToReceiverAPI } from "../Commons/apis/commonV1";
 import useIntersectionObserver from "./useIntersectionObserver";
 import { v4 as uuidv4 } from "uuid";
 
@@ -107,11 +107,20 @@ export function useChat(
     });
   }, [queryClient]);
 
-  function sendMessage() {
+  async function SendEmailToReceiver(receiver, sender, requestTitle, message) {
+    var data = {
+      receiverId: receiver,
+      senderId: sender,
+      requestTitle: requestTitle,
+      message: message
+    }
+    await SendEmailToReceiverAPI(data);
+  }
+
+  async function sendMessage() {
     if (!messageInputRef?.trim?.()) {
       return;
     }
-
     const message = {
       // To allow admin to send message on behalf of user
       sender:
@@ -131,6 +140,8 @@ export function useChat(
     addMessageInCachedThread(["thread", activeChat._id], queryClient, message);
     updateLastMessage("requests", queryClient, message);
     setValue('');
+    debugger;
+    await SendEmailToReceiver(message.receiver, message.sender, activeChat.title, message.message);
   }
 
   function sendAttachment(file) {

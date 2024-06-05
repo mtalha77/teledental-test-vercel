@@ -149,7 +149,7 @@ function DentistSignUpModal({
             { required: true, message: "Please input your phone number!" },
           ]}
         >
-          <Input />
+          <Input type="number" />
         </Form.Item>
         {/* <Form.Item label="Contact Person" name="contactPersonName">
           <Input />

@@ -147,7 +147,7 @@ const AccountForm = () => {
                 { required: true, message: "Please input your phoneNumber!" },
               ]}
             >
-              <Input />
+              <Input type="number" />
             </Form.Item>
             <Button
               className="confirm-btn"

@@ -76,10 +76,10 @@ function Profile() {
     <div style={{marginTop: "5%"}}>
       {!paymentInfo?.card?.last4 && (
         <Alert
-          message="Warning"
+          message=""
           description="Connect your payment method so that you can consult with our dentists."
           type="warning"
-          showIcon />
+          />
       )}
       {status === "loading" ? (
         <Spin size="large" />

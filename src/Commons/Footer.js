@@ -261,8 +261,8 @@ function Footer() {
             </div>
             <div className="">
               <div className="combine-footer3_bottom">
-                <div className="combine-footer3_bottom-text">
-                  © 2023 COPYRIGHT TELEDENTAL. ALL RIGHTS RESERVED.
+                <div className="combine-footer3_bottom-text-withoutLC">
+                  © 2024 copyright teledental. All rights reserved.
                 </div>
                 <div className="combine-footer3_nav-menu combine-footer3_nav-menu-2" style={{marginRight: "80px"}}>
                   <a href="#" className="combine-footer3_link">
