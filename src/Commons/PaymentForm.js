@@ -1,8 +1,11 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { Button, message, Spin } from "antd";
-import * as React from "react";
+import { Button, message, Spin, Input, Modal } from "antd";
+import React, { useState, useEffect } from "react";
 import { useUserContext } from "../Context/userContext";
 import { setupIntent, videoConsult } from "../Patient/apis/patientV1";
+import { useHistory } from 'react-router-dom';
+import AgoraToken from "../Commons/AgoraMeeting/AgoraToken";
+
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -32,11 +35,24 @@ const PaymentForm = ({
   const elements = useElements();
   const [isLoading, setIsLoading] = React.useState(false);
   const { refetchPaymentInfo, user } = useUserContext();
+  const history = useHistory();
+  const [VideoTitleVal, setVideoTitleVal] = useState('Video Consultancy');
+  const [showVideoModal, setVideoModal] = useState(false);
+  const [roomName, setroomName] = useState('');
+  const [roomNameAgora, setroomNameAgora] = useState('');
+
+  const handleRoomNameChange = () => {
+    setroomNameAgora(roomName);
+  };
+
+  const closeVideoModal = () => {
+    setVideoModal(false);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
+      setVideoModal(true);
       var setupIntentRes = await videoConsult(activeChatId);
     } catch (err) {
       message.error(err.errMsg);
@@ -92,32 +108,67 @@ const PaymentForm = ({
   }, [paymentMethodAdded]);
 
   return (
-    <Spin spinning={paymentMethodAdded}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
+    <>
+      <Modal title={VideoTitleVal} style={{ top: "5px" }}
+        width={'100%'}
+        minHeight={'70vh'}
+        visible={showVideoModal}
+        onCancel={closeVideoModal}
+        footer={null}
       >
-        <div style={{ minWidth: "400px" }}>
-          {/* <FormControl label="Card details" htmlFor="cardDetails"> */}
-          <CardElement options={CARD_ELEMENT_OPTIONS} />
-          {/* </FormControl> */}
-          <Button
-            className="confirm-btn"
-            type="primary"
-            htmlType="submit"
-            size="large"
-            style={{ width: "100%", marginTop: "20px" }}
-            loading={isLoading}
-            disabled={disableButton}
-            onClick={handleSubmit}
-          >
-            CONFIRM-Payment
-          </Button>
+        <div className="row">
+          <div className="col-lg-3 mb-1">
+            <div className="d-flex">
+              <div className="pt-1"><Input placeholder="Input Dentist Room Name to Join" value={roomName}
+                onChange={event => setroomName(event.target.value)} /></div>
+              <div className="px-2">
+                <Button
+                  style={{ width: "60px", padding: '10px 60px 10px 60px' }}
+                  className="brix---btn-secondary w-button d-inline-flex align-items-center justify-content-center"
+                  block
+                  type="primary"
+                  size="large"
+                  onClick={handleRoomNameChange}
+                >
+                  Join Room
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-9">
+            <div style={{ textAlign: "center", fontWeight: "bold" }}>
+              {roomNameAgora ? <AgoraToken text={roomNameAgora} /> : "Camera Screen"}
+            </div>
+          </div>
         </div>
-      </div>
-    </Spin>
+      </Modal>
+      <Spin spinning={paymentMethodAdded}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <div style={{ minWidth: "400px" }}>
+            {/* <FormControl label="Card details" htmlFor="cardDetails"> */}
+            <CardElement options={CARD_ELEMENT_OPTIONS} />
+            {/* </FormControl> */}
+            <Button
+              className="confirm-btn"
+              type="primary"
+              htmlType="submit"
+              size="large"
+              style={{ width: "100%", marginTop: "20px" }}
+              loading={isLoading}
+              disabled={disableButton}
+              onClick={handleSubmit}
+            >
+              CONFIRM-Payment
+            </Button>
+          </div>
+        </div>
+      </Spin>
+    </>
   );
 };
 

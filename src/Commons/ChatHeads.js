@@ -161,29 +161,29 @@ function ChatHeads({
                                 style={{ color: "#6c757d" }}
                                 className="capitalize"
                               >
-                                {request.lastMessage.sender === user._id ||
-                                request.lastMessage.sender === adminUser?._id
+                                {request.lastMessage?.sender === user._id ||
+                                request.lastMessage?.sender === adminUser?._id
                                   ? "You"
-                                  : request.lastMessage.sender ===
+                                  : request.lastMessage?.sender ===
                                     request.patient._id
                                   ? request?.patient?.firstName
                                   : request?.assignedTo?.firstName}
                                 :{" "}
-                                {request.lastMessage.message.split(":")[0] ===
+                                {request.lastMessage?.message.split(":")[0] ===
                                 "IMAGE"
                                   ? "Shared image"
-                                  : `${request.lastMessage.message
+                                  : `${request.lastMessage?.message
                                       .substring(0, 18)
                                       .trim()}
                                       ${
-                                        request.lastMessage.message.length > 18
+                                        request.lastMessage?.message.length > 18
                                           ? "..."
                                           : ""
                                       }`}
                               </Text>
                               <Text>
                                 {String(
-                                  dayjs(request.lastMessage.createdAt).fromNow(
+                                  dayjs(request.lastMessage?.createdAt).fromNow(
                                     true
                                   )
                                 )}
