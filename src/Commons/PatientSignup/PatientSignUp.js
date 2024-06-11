@@ -120,7 +120,7 @@ function PatientSignUp({
                     },
                   ]}
                 >
-                  <Input placeholder="* First Name" />
+                  <Input placeholder="* First Name" style={{fontWeight: 600}} />
                 </Form.Item>
               </div>
               <div className="col-sm-12 col-md-6">
@@ -130,7 +130,7 @@ function PatientSignUp({
                     { required: true, message: "Please input your last name!" },
                   ]}
                 >
-                  <Input placeholder="* Last Name" />
+                  <Input placeholder="* Last Name" style={{fontWeight: 600}} />
                 </Form.Item>
               </div>
               <div className="col-sm-12 col-lg-6">
@@ -144,7 +144,7 @@ function PatientSignUp({
                     { required: true, message: "Please input your email!" },
                   ]}
                 >
-                  <Input placeholder="* Email" />
+                  <Input placeholder="* Email" style={{fontWeight: 600}} />
                 </Form.Item>
               </div>
               <div className="col-sm-12 col-lg-6">
@@ -167,7 +167,7 @@ function PatientSignUp({
                     }),
                   ]}
                 >
-                  <Input placeholder="* Confirm Email" />
+                  <Input placeholder="* Confirm Email" style={{fontWeight: 600}} />
                 </Form.Item>
               </div>
               <div className="col-sm-12 col-lg-6">
@@ -177,7 +177,7 @@ function PatientSignUp({
                     { required: true, message: "Please input your password!" },
                   ]}
                 >
-                  <Input.Password placeholder="* Password" />
+                  <Input.Password placeholder="* Password" style={{fontWeight: 600}} />
                 </Form.Item>
               </div>
               {/* <div className="col-sm-6 col-md-4">

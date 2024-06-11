@@ -136,7 +136,7 @@ function DentistSignUpModal() {
                         ]}
                         className="my-custom-class"
                       >
-                        <Input placeholder="* First Name" />
+                        <Input placeholder="* First Name" style={{fontWeight: 600}} />
                       </Form.Item>
                     </div>
                     <div className="col-sm-12 col-md-6">
@@ -149,7 +149,7 @@ function DentistSignUpModal() {
                           },
                         ]}
                       >
-                        <Input placeholder="* Last Name" />
+                        <Input placeholder="* Last Name" style={{fontWeight: 600}}  />
                       </Form.Item>
                     </div>
                     <div className="col-sm-12 col-md-6">
@@ -166,7 +166,7 @@ function DentistSignUpModal() {
                           },
                         ]}
                       >
-                        <Input placeholder="* Email" />
+                        <Input placeholder="* Email" style={{fontWeight: 600}} />
                       </Form.Item>
                     </div>
                     <div className="col-sm-12 col-md-6">
@@ -191,7 +191,7 @@ function DentistSignUpModal() {
                           }),
                         ]}
                       >
-                        <Input placeholder="* Confirm Email" />
+                        <Input placeholder="* Confirm Email" style={{fontWeight: 600}} />
                       </Form.Item>
                     </div>
                     <div className="col-sm-12 col-md-6">
@@ -204,7 +204,7 @@ function DentistSignUpModal() {
                           },
                         ]}
                       >
-                        <Input type="number" placeholder="* Phone Number" />
+                        <Input type="number" placeholder="* Phone Number" style={{fontWeight: 600}} />
                       </Form.Item>
                     </div>
                     <div className="col-sm-12 col-md-6">
@@ -217,7 +217,7 @@ function DentistSignUpModal() {
                           },
                         ]}
                       >
-                        <Input.Password placeholder="* Password" />
+                        <Input.Password placeholder="* Password" style={{fontWeight: 600}} />
                       </Form.Item>
                     </div>
                     <div className="col-sm-12 col-md-6 signup-select">
@@ -225,11 +225,9 @@ function DentistSignUpModal() {
                       <Select
                         defaultValue="male"
                       >
-                        <Option value="male">Are you with Teledental?</Option>
-                        <Option value="female">Add Teledental video and Chat technology to your website & practice </Option>
-                        <Option value="other">Get leads and the best dental marketing</Option>
-                        <Option value="join">Join our team</Option>
-                        <Option value="other">Other</Option>
+                        <Option value="male">I am a licensed dentist</Option>
+                        <Option value="female">I want to join Teledental</Option>
+                        <Option value="other">Both- I am a licensed dentist and want to join Teledental</Option>
                       </Select>
                     </Form.Item> 
                     </div>
@@ -254,6 +252,7 @@ function DentistSignUpModal() {
                         <PlacesAutocompleteWrapper
                           address={address.address}
                           setAddress={setAddress}
+                          style={{fontWeight: 600}}
                         />
                       </Form.Item>
                     </div>
@@ -268,7 +267,7 @@ function DentistSignUpModal() {
                           },
                         ]}
                       >
-                        <Input placeholder="* Business Name" />
+                        <Input placeholder="* Business Name" style={{fontWeight: 600}} />
                       </Form.Item>
                     </div>
                     {/* <div className="col-sm-6 col-md-4">

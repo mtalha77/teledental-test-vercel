@@ -182,21 +182,21 @@ function ChatCard({
 
   return (
     <>
-     <Modal title={VideoTitleVal} style={{ top: "5px" }}
-        width={'100%'}
+     <Modal title={VideoTitleVal} style={{ top: "25px" }}
+        width={'75%'}
         minHeight={'70vh'}
         visible={showVideoModal}
         onCancel={closeVideoModal}
         footer={null}
       >
         <div className="row">
-          <div className="col-lg-3 mb-1">
+          <div className="col-lg-4 mb-1">
             <div className="d-flex">
               <div className="pt-1">{showTokenInput && (<Input placeholder="Create Room Name" value={roomName}
                 onChange={event => setroomName(event.target.value)} />)}</div>
               <div className="px-2">
               {showTokenInput && (<Button
-                  style={{ width: "60px", padding: '10px 60px 10px 60px' }}
+                  style={{ width: "150px", padding: '10px 60px 10px 60px' }}
                   className="brix---btn-secondary w-button d-inline-flex align-items-center justify-content-center"
                   block
                   type="primary"
@@ -208,9 +208,9 @@ function ChatCard({
               </div>
             </div>
           </div>
-          <div className="col-lg-9">
+          <div className="col-lg-8">
             <div style={{ textAlign: "center", fontWeight: "bold" }}>
-              {roomNameAgora ? <AgoraToken text={roomNameAgora} /> : "Camera Screen"}
+              {roomNameAgora ? <AgoraToken text={roomNameAgora} /> : ""}
             </div>
           </div>
         </div>
@@ -435,7 +435,7 @@ function ChatCard({
                             activeChat?.session?.status === "completed"
                           }
                         >
-                          Video Consultancy
+                          Video Consultancy With Agora
                         </Button>
                         
                       )}
