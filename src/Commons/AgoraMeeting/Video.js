@@ -271,7 +271,8 @@ export default function Video(props) {
           <div className="messages-title" style={{ color: "#4087f2", fontSize: "18px", marginBottom: "10px", backgroundColor: "#4087f2", color: "white", padding: "9px", borderRadius: "0.3rem", width: "90px", textAlign: "center", fontWeight: "bold", fontSize: "0.9rem" }}>Message</div>
           <div className="participant" style={{ color: "white", fontSize: "1.13rem", marginBottom: "0.6rem", backgroundColor: "white", color: "black", padding: "0.5rem", borderRadius: "0.3rem", width: "8.13rem", textAlign: "center", fontWeight: "bold", fontSize: "0.9rem" }}>Participant</div>
         </div>
-        <div className="chatting"><Chating ref={chatingRef} text={text} client={rtmClient && { rtmClient }} /></div>
+        <div className="chatting">
+        <Chating ref={chatingRef} text={text} client={rtmClient && { rtmClient }} /></div>
         <div className="send-message-input" style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingLeft: "12px", borderRadius: "0.3rem" }}>
           <TextField
             value={text}

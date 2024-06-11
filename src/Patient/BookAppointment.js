@@ -337,16 +337,6 @@ export default function BookAppointment({
   const [showStep3, setShowStep3] = useState(false);
   const [titleVal, setTitleVal] = useState('What Is Your Health Concern Today?');
   const [popupWidth, setpopupWidth] = useState('1200px');
-  const [VideoTitleVal, setVideoTitleVal] = useState('Video Consultancy');
-  const [showVideoModal, setVideoModal] = useState(false);
-  const [roomName, setroomName] = useState('');
-  const [roomNameAgora, setroomNameAgora] = useState('');
-
-
-
-  const closeVideoModal = () => {
-    setVideoModal(false);
-  };
 
   const showStepClick = (val) => {
     if (val == '1') {
@@ -394,15 +384,6 @@ export default function BookAppointment({
   }
   const { RangePicker } = DatePicker;
 
-  const handleVideoModalChange = () => {
-    setVideoModal(true);
-    setIsModalVisible(false);
-  };
-
-  const handleRoomNameChange = () => {
-    setroomNameAgora(roomName)
-  };
-
 
   //const isUploaded = true
 
@@ -416,39 +397,6 @@ export default function BookAppointment({
 
   return (
     <>
-      <Modal title={VideoTitleVal} style={{ top: "5px" }}
-        width={'100%'}
-        minHeight={'70vh'}
-        visible={showVideoModal}
-        onCancel={closeVideoModal}
-        footer={null}
-      >
-        <div className="row">
-          <div className="col-lg-3 mb-1">
-            <div className="d-flex">
-              <div className="pt-1"><Input placeholder="Create Room Name" value={roomName}
-                onChange={event => setroomName(event.target.value)} /></div>
-              <div className="px-2">
-                <Button
-                  style={{ width: "60px", padding: '10px 60px 10px 60px' }}
-                  className="brix---btn-secondary w-button d-inline-flex align-items-center justify-content-center"
-                  block
-                  type="primary"
-                  size="large"
-                  onClick={handleRoomNameChange}
-                >
-                  Create Room
-                </Button>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-9">
-            <div style={{ textAlign: "center", fontWeight: "bold" }}>
-              {roomNameAgora ? <AgoraToken text={roomNameAgora} /> : "Camera Screen"}
-            </div>
-          </div>
-        </div>
-      </Modal>
       <Modal
         // title="Sign In"
         maskClosable={false}
@@ -900,22 +848,6 @@ export default function BookAppointment({
                   </Form.Item>
                 </div>
                 <div className="row pt-5" style={{ justifyContent: 'center' }} >
-                  {user && user.model == 'dentists' && (
-                    <div className="col-lg-3">
-                      <Form.Item className="mb-0">
-                        <Button
-                          className="signInButton   brix---btn-secondary w-button"
-                          // block
-                          type="primary"
-                          size="large"
-                          onClick={() => handleVideoModalChange()}
-                          style={{ fontSize: "13px", marginLeft: "7px" }}
-                        // onClick={() => saveAppointment()}
-                        >
-                          Video Consultancy
-                        </Button>
-                      </Form.Item>
-                    </div>)}
                   <div className="col-lg-6" style={{ display: fromDentist ? 'none' : 'block' }}>
                     <div className="col-lg-6 text-center" style={{ display: (timerange[0] != null && timerange[1] != null && date != null) ? 'none' : 'block' }}>
                       <Form.Item className="mb-0">

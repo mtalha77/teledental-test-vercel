@@ -122,7 +122,7 @@ const PaymentForm = ({
               <div className="pt-1"><Input placeholder="Input Dentist Room Name to Join" value={roomName}
                 onChange={event => setroomName(event.target.value)} /></div>
               <div className="px-2">
-                <Button
+                {roomNameAgora && (<Button
                   style={{ width: "60px", padding: '10px 60px 10px 60px' }}
                   className="brix---btn-secondary w-button d-inline-flex align-items-center justify-content-center"
                   block
@@ -131,7 +131,7 @@ const PaymentForm = ({
                   onClick={handleRoomNameChange}
                 >
                   Join Room
-                </Button>
+                </Button>)}
               </div>
             </div>
           </div>

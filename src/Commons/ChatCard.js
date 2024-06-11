@@ -19,10 +19,14 @@ import {
   Tooltip,
   Typography,
   Upload,
+  Modal
 } from "antd";
+import React, { useState, useEffect } from "react";
+import AgoraToken from "../Commons/AgoraMeeting/AgoraToken";
 import Avatar from "antd/lib/avatar/avatar";
 import dayjs from "dayjs";
-import * as React from "react";
+// import * as React from "react";
+import { setupIntent, videoConsult } from "../Patient/apis/patientV1";
 import { useMutation, useQuery } from "react-query";
 import { useHistory } from "react-router";
 import { useUserContext } from "../Context/userContext";
@@ -57,6 +61,31 @@ function ChatCard({
   setValue
 }) {
   const history = useHistory();
+  const [VideoTitleVal, setVideoTitleVal] = useState('Video Consultancy');
+  const [showVideoModal, setVideoModal] = useState(false);
+  const [showTokenInput, setTokenInput] = useState(true);
+  const [roomName, setroomName] = useState('');
+  const [roomNameAgora, setroomNameAgora] = useState('');
+
+  const handleRoomNameChange = () => {
+    setroomNameAgora(roomName);
+    setTokenInput(false);
+  };
+
+  const closeVideoModal = () => {
+    setVideoModal(false);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      setVideoModal(true);
+      // var setupIntentRes = await videoConsult(activeChatId);
+    } catch (err) {
+      message.error(err.errMsg);
+      // setIsLoading(false);
+    }
+  }
 
   const { user, profilePhoto: myProfilePhoto, paymentInfo } = useUserContext();
 
@@ -153,6 +182,39 @@ function ChatCard({
 
   return (
     <>
+     <Modal title={VideoTitleVal} style={{ top: "5px" }}
+        width={'100%'}
+        minHeight={'70vh'}
+        visible={showVideoModal}
+        onCancel={closeVideoModal}
+        footer={null}
+      >
+        <div className="row">
+          <div className="col-lg-3 mb-1">
+            <div className="d-flex">
+              <div className="pt-1">{showTokenInput && (<Input placeholder="Create Room Name" value={roomName}
+                onChange={event => setroomName(event.target.value)} />)}</div>
+              <div className="px-2">
+              {showTokenInput && (<Button
+                  style={{ width: "60px", padding: '10px 60px 10px 60px' }}
+                  className="brix---btn-secondary w-button d-inline-flex align-items-center justify-content-center"
+                  block
+                  type="primary"
+                  size="large"
+                  onClick={handleRoomNameChange}
+                >
+                  Create Room
+                </Button>)}
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-9">
+            <div style={{ textAlign: "center", fontWeight: "bold" }}>
+              {roomNameAgora ? <AgoraToken text={roomNameAgora} /> : "Camera Screen"}
+            </div>
+          </div>
+        </div>
+      </Modal>
       <Card
         className=" messageChatContent"
         bodyStyle={{}}
@@ -361,6 +423,21 @@ function ChatCard({
                         >
                           Book Appointment
                         </Button>
+                        
+                      )}
+                      {user?.model === "dentists" &&
+                      activeChat?.assignedTo?._id && (
+                        <Button style={{marginLeft: "5px"}}
+                          onClick={handleSubmit}
+                          className={`btn_blue`}
+                          disabled={
+                            !activeChat?.assignedTo?._id ||
+                            activeChat?.session?.status === "completed"
+                          }
+                        >
+                          Video Consultancy
+                        </Button>
+                        
                       )}
                     {/* <Button>Request Appointment</Button> */}
                     {/* <Button>Receive SMS</Button> */}

@@ -3,7 +3,6 @@ import {
   config,
   useClient,
   useMicrophoneAndCameraTracks,
-  channelName,
 } from "./Settings";
 import { Grid } from "@material-ui/core";
 import Video from "./Video";

@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Box } from "@material-ui/core";
 import "./AgoraStyle.css";
 import VideoCall from "./VideoCall";
-import { channelName } from "./Settings";
 import client from "../../axios-configured";
-import axios from 'axios';
 // const response = await axios.get('https://test.teledental.com/generateToken'
 function AgoraToken(props) {
   const { text } = props;
@@ -13,16 +11,21 @@ function AgoraToken(props) {
 
   const generateToken = async () => {
     try {
-      const response = await client.get(`/api/v1/agora/agoraToken`,
-        {
-          params: { channelName: text }
-        });
-      const [part1] = response.data.token.split(':')
-      setToken(part1);
+      const response = await client.get(`/api/v1/agora/agoraToken`, {
+        params: { channelName: text }
+      });
+      const tokenString = response.token;
+
+      if (tokenString) {
+        setToken(tokenString);
+        console.log("token is???", tokenString, token);
+      } else {
+        console.error('Token is undefined in the response.');
+      }
     } catch (error) {
       console.error('Error generating token:', error.message);
     }
-  };
+  }
 
 
   useEffect(() => {
