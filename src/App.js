@@ -70,6 +70,7 @@ import SubscriptionOne from "./Commons/SubscriptionOne";
 import SubscriptionSecond from "./Commons/SubscriptionSecond";
 import VideoDentalExam from "./Commons/VideoDentalExam";
 import VPAT from "./Commons/VPAT";
+import AgoraInformation from "./Commons/AgoraInformation";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -288,6 +289,11 @@ function App() {
               exact
               path="/dental-office-sign-up-teledental-subscription"
               component={SubscriptionSecond}
+            />
+            <PublicRoute
+              exact
+              path="/agora-info"
+              component={AgoraInformation}
             />
             <PatientRoute
               exact
