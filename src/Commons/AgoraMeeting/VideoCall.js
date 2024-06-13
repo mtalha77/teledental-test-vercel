@@ -8,7 +8,7 @@ import { Grid } from "@material-ui/core";
 import Video from "./Video";
 
 export default function VideoCall(props) {
-  const { setInCall, token, channel } = props;
+  const { setInCall, token, channel, joiningLink } = props;
   const [users, setUsers] = useState([]);
   const [start, setStart] = useState(false);
   const client = useClient();
@@ -67,8 +67,8 @@ export default function VideoCall(props) {
   return (
     <Grid className="main-grid" container direction="column">
       <Grid className="video-frame" item
-       >
-        {ready && start && tracks && <Video tracks={tracks} users={users} setStart={setStart} setInCall={setInCall} />}
+      >
+        {ready && start && tracks && <Video tracks={tracks} users={users} setStart={setStart} setInCall={setInCall} joiningLink={joiningLink} />}
       </Grid>
     </Grid>
   );

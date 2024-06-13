@@ -5,16 +5,18 @@ import VideoCall from "./VideoCall";
 import client from "../../axios-configured";
 // const response = await axios.get('https://test.teledental.com/generateToken'
 function AgoraToken(props) {
-  const { text } = props;
+  const { text, patientContactNumber } = props;
   const [inCall, setInCall] = useState(false);
   const [token, setToken] = useState(null);
+  const [joiningLink, setjoiningLink] = useState(null);
 
   const generateToken = async () => {
     try {
       const response = await client.get(`/api/v1/agora/agoraToken`, {
-        params: { channelName: text }
+        params: { channelName: text, patientContactNumber: encodeURI(patientContactNumber) }
       });
       const tokenString = response.token;
+      setjoiningLink(response.link);
 
       if (tokenString) {
         setToken(tokenString);
@@ -38,7 +40,7 @@ function AgoraToken(props) {
     <>
       <div className="App" style={{ height: "100%", width: "100%", marginTop: "0px" }}>
         {inCall ? (
-          <VideoCall setInCall={setInCall} token={token} channel={text} />
+          <VideoCall setInCall={setInCall} token={token} channel={text} joiningLink={joiningLink} />
         ) : (
           <Box textAlign='center'>
             <Button

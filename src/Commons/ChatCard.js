@@ -66,6 +66,7 @@ function ChatCard({
   const [showTokenInput, setTokenInput] = useState(true);
   const [roomName, setroomName] = useState('');
   const [roomNameAgora, setroomNameAgora] = useState('');
+  const [patientContactNumber, setPatientContactNumber] = useState('');
 
   const handleRoomNameChange = () => {
     setroomNameAgora(roomName);
@@ -182,7 +183,7 @@ function ChatCard({
 
   return (
     <>
-     <Modal title={VideoTitleVal} style={{ top: "25px" }}
+      <Modal title={VideoTitleVal} style={{ top: "25px" }}
         width={'75%'}
         minHeight={'70vh'}
         visible={showVideoModal}
@@ -192,10 +193,15 @@ function ChatCard({
         <div className="row">
           <div className="col-lg-4 mb-1">
             <div className="d-flex">
-              <div className="pt-1">{showTokenInput && (<Input placeholder="Create Room Name" value={roomName}
-                onChange={event => setroomName(event.target.value)} />)}</div>
+              <div className="pt-1">{showTokenInput && (
+                <>
+                  <Input placeholder="Create Room Name" value={roomName}
+                    onChange={event => setroomName(event.target.value)} />
+                  <Input placeholder="Input Patinet Contact Number" value={patientContactNumber}
+                    onChange={event => setPatientContactNumber(event.target.value)} /></>
+              )}</div>
               <div className="px-2">
-              {showTokenInput && (<Button
+                {showTokenInput && (<Button
                   style={{ width: "150px", padding: '10px 60px 10px 60px' }}
                   className="brix---btn-secondary w-button d-inline-flex align-items-center justify-content-center"
                   block
@@ -210,7 +216,7 @@ function ChatCard({
           </div>
           <div className="col-lg-8">
             <div style={{ textAlign: "center", fontWeight: "bold" }}>
-              {roomNameAgora ? <AgoraToken text={roomNameAgora} /> : ""}
+              {roomNameAgora ? <AgoraToken text={roomNameAgora} patientContactNumber={patientContactNumber} /> : ""}
             </div>
           </div>
         </div>
@@ -330,7 +336,7 @@ function ChatCard({
             >
               <Col span={12} className={`width100`}>
                 <Row style={{ alignItems: "baseline" }}>
-                  <Col span={4}  style={{ maxWidth: "56px" }}>
+                  <Col span={4} style={{ maxWidth: "56px" }}>
                     <Avatar
                       className="message-avatar"
                       style={{ width: "46px", height: "46px" }}
@@ -387,7 +393,7 @@ function ChatCard({
                         >
                           Request Video Consultation
                         </Button>
-                        <Button style={{marginLeft: "15px"}}
+                        <Button style={{ marginLeft: "15px" }}
                           onClick={requestAppointmentHandler}
                           disabled={
                             !activeChat?.assignedTo?._id ||
@@ -411,9 +417,9 @@ function ChatCard({
                           Start Video Consultation
                         </Button>
                       )}
-                      {user?.model === "dentists" &&
+                    {user?.model === "dentists" &&
                       activeChat?.assignedTo?._id && (
-                        <Button style={{marginLeft: "5px"}}
+                        <Button style={{ marginLeft: "5px" }}
                           onClick={requestAppointmentHandler}
                           className={`btn_blue`}
                           disabled={
@@ -423,11 +429,11 @@ function ChatCard({
                         >
                           Book Appointment
                         </Button>
-                        
+
                       )}
-                      {user?.model === "dentists" &&
+                    {user?.model === "dentists" &&
                       activeChat?.assignedTo?._id && (
-                        <Button style={{marginLeft: "5px"}}
+                        <Button style={{ marginLeft: "5px" }}
                           onClick={handleSubmit}
                           className={`btn_blue`}
                           disabled={
@@ -437,7 +443,7 @@ function ChatCard({
                         >
                           Video Consultancy With Agora
                         </Button>
-                        
+
                       )}
                     {/* <Button>Request Appointment</Button> */}
                     {/* <Button>Receive SMS</Button> */}
@@ -446,8 +452,8 @@ function ChatCard({
               </Col>
             </Row>
             {user?.model === "dentists" &&
-            !activeChat?.assignedTo?._id &&
-            !activeChat?.rejectedBy?.includes(user?._id) ? (
+              !activeChat?.assignedTo?._id &&
+              !activeChat?.rejectedBy?.includes(user?._id) ? (
               <>
                 <Row
                   style={{
@@ -506,8 +512,8 @@ function ChatCard({
               }}
             >
               {(activeChat?.assignedTo?._id && user?.model === "patients") ||
-              (activeChat?.assignedTo?._id === user._id &&
-                !activeChat?.rejectedBy?.includes(user?._id)) ? (
+                (activeChat?.assignedTo?._id === user._id &&
+                  !activeChat?.rejectedBy?.includes(user?._id)) ? (
                 <Input
                   placeholder="Enter your message..."
                   style={{ borderRadius: "6px" }}
@@ -569,8 +575,8 @@ function ChatCard({
                       }}
                     >
                       {activeChat?.rejectedBy?.includes(user?._id) ||
-                      (activeChat?.assignedTo?._id &&
-                        activeChat?.assignedTo?._id !== user?._id) ? (
+                        (activeChat?.assignedTo?._id &&
+                          activeChat?.assignedTo?._id !== user?._id) ? (
                         <Row
                           style={{
                             backgroundColor: "rgba(0, 113, 188, 0.8)",
@@ -589,7 +595,7 @@ function ChatCard({
                           </Text>
                         </Row>
                       ) : // To show accept/reject buttons
-                      null}
+                        null}
                     </Row>
                   ) : (
                     <Row
@@ -620,7 +626,7 @@ function ChatCard({
           closable={false}
           onClose={() => setIsModalVisible(false)}
           visible={isModalVisible}
-          // width="85%"
+        // width="85%"
         >
           <Col className="customScroll">
             {stats &&
