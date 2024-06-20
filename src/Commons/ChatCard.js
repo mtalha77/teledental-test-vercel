@@ -191,13 +191,13 @@ function ChatCard({
         footer={null}
       >
         <div className="row">
-          <div className="col-lg-4 mb-1">
+          <div className="col-lg-7 mb-1">
             <div className="d-flex">
               <div className="pt-1">{showTokenInput && (
                 <>
-                  <Input placeholder="Create Room Name" value={roomName}
+                  <Input className="col-sm-12 col-md-5" style={{marginRight: '5px'}} placeholder="Room Name" value={roomName}
                     onChange={event => setroomName(event.target.value)} />
-                  <Input placeholder="Input Patinet Contact Number" value={patientContactNumber}
+                  <Input className="col-sm-12 col-md-6" placeholder="Patinet Contact Number" value={patientContactNumber}
                     onChange={event => setPatientContactNumber(event.target.value)} /></>
               )}</div>
               <div className="px-2">
@@ -214,7 +214,7 @@ function ChatCard({
               </div>
             </div>
           </div>
-          <div className="col-lg-8">
+          <div className="col-lg-5">
             <div style={{ textAlign: "center", fontWeight: "bold" }}>
               {roomNameAgora ? <AgoraToken text={roomNameAgora} patientContactNumber={patientContactNumber} /> : ""}
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Checkbox, Alert, Select } from "antd";
 import { signup } from "../../Auth/apis/authV1";
 import { useUserContext } from "../../Context/userContext";
@@ -14,6 +14,7 @@ import SignUpSuccessModal from "../../Dentist/SignUpSuccessModal";
 import queryString from "query-string";
 import logoOld from "../../assets/img/TeleDental-web.png";
 import bigImg from "../../assets/img/d_reg_img.png";
+import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha  } from 'react-simple-captcha';
 const { Option } = Select;
 
 function DentistSignUpModal() {
@@ -32,35 +33,58 @@ function DentistSignUpModal() {
     React.useState(query.notApproved ? true : false);
   const [entity, setEntity] = React.useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isSignUpPressed, setIsSignUpPressed] = useState(false);
   const [form] = Form.useForm();
   const { TextArea } = Input;
   const onFinish = async (values) => {
     try {
-      setLoading(true);
-      const body = {
-        ...values,
-        location: address,
-      };
-      const res = await signup({ entity: "dentists", body });
-      if (res) {
-        setError("");
-        setLoading(false);
-        setEntity("dentists");
-        // closeModal();
-        setIsSignUpSuccessModalVisible(true);
-        setIsModalVisible(true);
+      if (isSignUpPressed) {
+        let user_captcha = document.getElementById('user_captcha_input').value;
+        if (validateCaptcha(user_captcha) == true) {
+          loadCaptchaEnginge(6);
+          document.getElementById('user_captcha_input').value = '';
+          setLoading(true);
+          const body = {
+            ...values,
+            location: address,
+          };
+          console.log('before calllllllllllllllllllllllllll');
+          const res = await signup({ entity: "dentists", body });
+          console.log(res);
+          if (res) {
+            if (res.status == 200) {
+              setError("");
+              setLoading(false);
+              setEntity("dentists");
+              // closeModal();
+              setIsSignUpSuccessModalVisible(true);
+              setIsModalVisible(true);
+            } else {
+              setError(res.message);
+            }
+          }
+          form.resetFields();
+          var radios = document.querySelectorAll('input[type="radio"]');
+          radios.forEach(function (radio) {
+            radio.checked = false;
+          });
+          // setIsVerificationModalVisible(true);
+          setIsSignUpPressed(false);
+        } else {
+          document.getElementById('user_captcha_input').value = '';
+        }
+      } else {
+        setIsSignUpPressed(true);
       }
-      form.resetFields();
-      var radios = document.querySelectorAll('input[type="radio"]');
-      radios.forEach(function (radio) {
-        radio.checked = false;
-      });
-      // setIsVerificationModalVisible(true);
     } catch (error) {
       setLoading(false);
       setError(error.errMsg);
     }
   };
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
 
   const onValuesChange = (changedValues, allValues) => {
     if (allValues.password !== undefined && allValues.password !== ''
@@ -628,6 +652,21 @@ function DentistSignUpModal() {
                     </Form.Item>
                   </div>
                   <div></div>
+                  <div style={{ visibility: isSignUpPressed ? 'visible' : 'hidden' }}>
+                  <div>
+                    <LoadCanvasTemplate />
+                  </div>
+                  <div className="col mt-3" style={{ marginBottom: '20px' }}>
+                      <div>
+                        <input
+                          placeholder="Enter Captcha Value"
+                          id="user_captcha_input"
+                          name="user_captcha_input"
+                          type="text"
+                        ></input>
+                      </div>
+                  </div>
+                  </div>
                   <div className="col-sm-12">
                     <Form.Item>
                       <Button
