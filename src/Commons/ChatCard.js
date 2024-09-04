@@ -21,7 +21,7 @@ import {
   Upload,
   Modal
 } from "antd";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AgoraToken from "../Commons/AgoraMeeting/AgoraToken";
 import Avatar from "antd/lib/avatar/avatar";
 import dayjs from "dayjs";
@@ -67,6 +67,7 @@ function ChatCard({
   const [roomName, setroomName] = useState('');
   const [roomNameAgora, setroomNameAgora] = useState('');
   const [patientContactNumber, setPatientContactNumber] = useState('');
+  const child = React.createRef();
 
   const handleRoomNameChange = () => {
     setroomNameAgora(roomName);
@@ -74,7 +75,8 @@ function ChatCard({
   };
 
   const closeVideoModal = () => {
-    setVideoModal(false);
+    //setVideoModal(false);
+    window.location.reload();
   };
 
   const handleSubmit = async (event) => {
@@ -192,17 +194,15 @@ function ChatCard({
       >
         <div className="row">
           <div className="col-lg-7 mb-1">
-            <div className="d-flex">
+            <div className="">
               <div className="pt-1">{showTokenInput && (
                 <>
-                  <Input className="col-sm-12 col-md-5" style={{marginRight: '5px'}} placeholder="Room Name" value={roomName}
+                  <Input className="col-sm-12 col-md-5" style={{marginRight: '5px', width: '22%'}} placeholder="Room Name" value={roomName}
                     onChange={event => setroomName(event.target.value)} />
-                  <Input className="col-sm-12 col-md-6" placeholder="Patinet Contact Number" value={patientContactNumber}
-                    onChange={event => setPatientContactNumber(event.target.value)} /></>
-              )}</div>
-              <div className="px-2">
-                {showTokenInput && (<Button
-                  style={{ width: "150px", padding: '10px 60px 10px 60px' }}
+                  <Input className="col-sm-12 col-md-6" placeholder="Patient Contact Number (add 1 for USA)" value={patientContactNumber}
+                    onChange={event => setPatientContactNumber(event.target.value)} />
+                    <Button
+                  style={{ width: "150px", padding: '10px 60px 10px 60px', marginLeft: '5px' }}
                   className="brix---btn-secondary w-button d-inline-flex align-items-center justify-content-center"
                   block
                   type="primary"
@@ -210,8 +210,8 @@ function ChatCard({
                   onClick={handleRoomNameChange}
                 >
                   Create Room
-                </Button>)}
-              </div>
+                </Button></>
+              )}</div>
             </div>
           </div>
           <div className="col-lg-5">
@@ -715,6 +715,8 @@ function ChatCard({
           isModalVisible={isAppointmentModalVisible}
           setIsModalVisible={setIsAppointmentModalVisible}
           fromDentist={user?.model == "dentists"}
+          setValue={setValue}
+          sendMessage={sendMessage}
         />
       </Card>
     </>

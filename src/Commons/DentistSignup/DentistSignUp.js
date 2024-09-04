@@ -48,9 +48,7 @@ function DentistSignUpModal() {
             ...values,
             location: address,
           };
-          console.log('before calllllllllllllllllllllllllll');
           const res = await signup({ entity: "dentists", body });
-          console.log(res);
           if (res) {
             if (res.status == 200) {
               setError("");

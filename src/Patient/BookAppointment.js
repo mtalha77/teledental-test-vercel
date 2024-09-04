@@ -16,6 +16,8 @@ import Moment from 'moment';
 import TimezoneSelect, { useTimezoneSelect } from 'react-timezone-select'
 import AgoraToken from "../Commons/AgoraMeeting/AgoraToken";
 import { useHistory } from 'react-router-dom';
+import { updateCache } from "../utilities";
+import { useQueryClient } from "react-query";
 
 import jwt from "jsonwebtoken";
 
@@ -27,6 +29,8 @@ export default function BookAppointment({
   acitveChatId,
   activeChat,
   fromDentist,
+  setValue,
+  sendMessage
 }) {
   const closeModal = () => {
     setIsModalVisible(false);
@@ -37,6 +41,9 @@ export default function BookAppointment({
     }
     ResetFields();
   };
+  
+  const queryClient = useQueryClient();
+  const socketRef = React.useRef();
 
   const { user, status } = useUserContext();
   const [checked, setChecked] = React.useState(true);
@@ -191,6 +198,42 @@ export default function BookAppointment({
     }
   }
 
+  function addMessageInCachedThread(queryKey, queryClient, message) {
+    updateCache(queryKey, queryClient, function update(updatedThread) {
+      updatedThread.pages[0] = [message, ...updatedThread.pages[0]];
+      queryClient.setQueryData(queryKey, updatedThread);
+    });
+  }
+  function updateLastMessage(
+    queryKey,
+    queryClient,
+    { request, message, sender }
+  ) {
+    updateCache(queryKey, queryClient, function update(updatedRequests) {
+      let requestIndex;
+      let pageIndex;
+      updatedRequests.pages.forEach((i, index) => {
+        requestIndex = updatedRequests.pages[index].findIndex(
+          (item) => item._id === request
+        );
+        if (requestIndex > -1) {
+          pageIndex = index;
+          return true;
+        }
+        return false;
+      });
+      if (requestIndex > -1) {
+        updatedRequests.pages[pageIndex][requestIndex].lastMessage.message =
+          message;
+        updatedRequests.pages[pageIndex][requestIndex].lastMessage.sender =
+          sender;
+        updatedRequests.pages[pageIndex][requestIndex].lastMessage.createdAt =
+          new Date();
+      }
+      queryClient.setQueryData(queryKey, updatedRequests);
+    });
+  }
+
   async function saveAppointment() {
     try {
       const token = generateToken({ user, activeChat });
@@ -229,6 +272,32 @@ export default function BookAppointment({
       }
 
       await addAppointment(appointment);
+      debugger;
+      // setValue("your appointment link is: " + pLink);
+      // sendMessage();
+
+      const message = {
+        // To allow admin to send message on behalf of user
+        sender:
+          user.model === "dentists" && user.role === "admin"
+            ? activeChat?.assignedTo._id
+            : user._id,
+        receiver:
+          user.model === "dentists"
+            ? activeChat?.patient._id
+            : activeChat?.assignedTo._id,
+        request: activeChat._id,
+        message: "your appointment link is: " + pLink,
+        byAdmin:
+          user.model === "dentists" && user.role === "admin" ? true : false,
+      };
+      socketRef.current.emit("message", message);
+      addMessageInCachedThread(["thread", activeChat._id], queryClient, message);
+      updateLastMessage("requests", queryClient, message);
+
+
+
+
       closeModal();
       showStepClick("1");
       ResetFields();

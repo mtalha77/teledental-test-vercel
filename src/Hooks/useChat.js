@@ -160,6 +160,7 @@ export function useChat(
     };
     const formData = new FormData();
     formData.append("image", file, file.name);
+    debugger;
     uploadAttachmentMutation({
       id: activeChat._id,
       formData,
