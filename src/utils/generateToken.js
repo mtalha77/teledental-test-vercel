@@ -6,7 +6,7 @@ export default function generateToken({ user, activeChat }) {
       model: user?.model,
       name: user?.firstName,
       userId: user?._id,
-      meetingId: activeChat?.session?._id,
+      meetingId: activeChat?._id,
       app_id: 'teledental'
     },
     "-123abcl1;"
