@@ -34,7 +34,7 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                        <strong>TeleDental Chat</strong>  with dentists in real time.
+                        <strong>TeleDental chat</strong>  with dentists in real time.
                     </div>
                   </div>
                 </div>
@@ -46,7 +46,7 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                    <strong>24/7 Anytime,</strong>  from any place.
+                    <strong>24/7 anytime,</strong>  from any place.
                     </div>
                   </div>
                 </div>

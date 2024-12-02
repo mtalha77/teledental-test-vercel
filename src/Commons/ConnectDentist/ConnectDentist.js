@@ -12,9 +12,6 @@ function ConnectDentist() {
     <div className={Style.mainDiv}>
       <div className={Style.connectDentist_headlines}>
         <div className="autoContent">
-          <h2 data-aos="fade-up" data-aos-once="false" data-aos-duration="600">
-            Do you want to chat with a <span> live dentist? </span>
-          </h2>
           <p data-aos="fade-up" data-aos-once="false" data-aos-duration="700">
             <button
               className={Style.underline_pink}

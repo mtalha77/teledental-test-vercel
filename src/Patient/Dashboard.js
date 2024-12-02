@@ -8,6 +8,7 @@ import {
   Radio,
   Row,
   Table,
+  Tooltip,
   Typography,
 } from "antd";
 import { useQuery } from "react-query";
@@ -20,6 +21,7 @@ import {
 } from "../Hooks/useRequestUpdateMutation";
 import { getRequests, getRequestStats } from "../Commons/apis/commonV1";
 import HappyFace from "../assets/img/happy.png";
+import infoIcon from "../assets/img/icons8-info.svg";
 import { makeStyles } from "@material-ui/core";
 import MedicalHistoryWizard from "../Patient/MedicalHistoryWizard";
 import React, { useEffect } from "react";
@@ -183,8 +185,11 @@ function Dashboard() {
       }}
       className={`paddingParent`}
     >
-      <Typography.Title level={3}>
-        Welcome <span className="capitalize">{user?.name}</span>
+      <Typography.Title level={3} className="d-flex">
+        Welcome <span className="capitalize me-2">{user?.name}</span>
+        <Tooltip title="Create new request by clicking below box">
+            <img style={{cursor: 'pointer'}} src={infoIcon}></img>
+        </Tooltip>
       </Typography.Title>
       <Divider />
       {/* <Row gutter={[16, 16]} className={classes.cardCtn}> */}
@@ -195,8 +200,12 @@ function Dashboard() {
             headStyle={{ fontWeight: "bold" }}
             hoverable
             loading={statsLoading}
-            title="INITIATE REQUEST"
+            title="CREATE REQUEST"
             type="inner"
+            style={{
+              borderColor: 'transparent',
+              boxShadow: '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09)',
+            }}
           >
             <div className={`create-application-box`} onClick={() => history.push(`/patients/create-request`)}>Create New Request</div>
             </Card>

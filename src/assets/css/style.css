@@ -7528,7 +7528,9 @@ input[type=number] {
 
 .vtd_headlines h4{ margin: 0px;  font-weight: 500; color: #0071bc; font-size: 20px;  line-height: 1.2em; }
 
-
+.ant-message-notice-content {
+  padding-block: 16px;
+}
  
 
 
