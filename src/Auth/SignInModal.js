@@ -182,10 +182,10 @@ function SignInModal({
         size={"middle"}
         tabBarGutter={50}
       >
-        <TabPane tab={<b>Patient</b>} key="1">
+        <TabPane tab={<b>Patient Sign In</b>} key="1">
           {form}
         </TabPane>
-        <TabPane tab={<b>Dentist</b>} key="2">
+        <TabPane tab={<b>Dentist Sign In</b>} key="2">
           {form}
         </TabPane>
       </Tabs>

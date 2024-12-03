@@ -34,7 +34,7 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                        <strong>TeleDental chat</strong>  with dentists in real time.
+                        <strong>TeleDental </strong>  video consult with a live dentist
                     </div>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ const HeroBanner = () => {
                     <Link
                       to="/patient-signup"
                       name="patient"
-                      className="brix---btn-primary w-button btn-edit btn_blue"
+                      className="brix---btn-primary w-button btn-edit btn-primary-filled"
                       // onClick={() => setIsSignInModalVisible(true)}
                     >
                       Connect to Dentist
