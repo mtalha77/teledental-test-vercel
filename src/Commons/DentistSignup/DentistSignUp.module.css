@@ -1,6 +1,12 @@
 .h2 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
+  font-family: "Exo", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #0071BC;
+  margin-bottom: 0;
+}
+.h2 span {
+  color: #F7A5F9;
 }
 .questionsLabel {
   font-weight: 500;
@@ -17,4 +23,9 @@
 .sendBtn {
   background-color: #1f2c3d;
   color: #fff;
+}
+
+.location_field input {
+  height: 49px;
+  border-radius: 4px;
 }

@@ -34,7 +34,7 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                        <strong>TeleDental </strong>  video consult with a live dentist
+                        <strong>TeleDental video consult</strong>   with a <u>live dentist</u>
                     </div>
                   </div>
                 </div>

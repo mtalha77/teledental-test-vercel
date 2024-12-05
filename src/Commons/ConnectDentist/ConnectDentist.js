@@ -27,7 +27,7 @@ function ConnectDentist() {
         <div className={`autoContent ${Style.hsa_top_header}`}>
         <h2>How it Works</h2>
                         <div className={Style.hsat_devider}></div>
-                        <p><span>Teledental consult</span> - Live dental <span>video</span> consultation with a <span>dentist</span>. <br></br> <span style={{textDecoration: "underline"}}>Click here</span>  to start your Teledental consultation</p>
+                        <p><span>Teledental consult</span> - Live dental <span>video</span> consultation with a <span>dentist</span>. <br></br> <Link style={{textDecoration: 'underline', fontWeight: 600, color: '#0071bc'}} to="/patient-signup">Click here</Link>  to start your Teledental consultation</p>
           <div className="row">
             <div className="col-md-3 col-sm-12" data-aos="fade-inn" data-aos-once="false" data-aos-offset="50">
               <Step
