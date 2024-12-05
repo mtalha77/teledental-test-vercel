@@ -71,9 +71,9 @@ export default function Inbox() {
       getNextPageParam: (lastPage, allPages) => {
         return allPages.length
           ? allPages?.[allPages?.length - 1]?.length === 10 // same as the limit
-            ? allPages?.[allPages?.length - 1][
+            ? JSON.stringify({ lastId: allPages?.[allPages?.length - 1][
                 allPages?.[allPages?.length - 1].length - 1
-              ]._id
+              ]._id, firstId: allPages[0][0]._id })
             : undefined // To stop it from calling the api again
           : 0;
       },
