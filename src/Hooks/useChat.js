@@ -18,6 +18,7 @@ export function useChat(
 ) {
   const queryClient = useQueryClient();
   const socketRef = React.useRef();
+  const [isSend, setIsSend] = React.useState(false);
   const { user, token } = useUserContext();
 
   const {
@@ -70,8 +71,19 @@ export function useChat(
     []
   );
 
+  const isSendRef = React.useRef(isSend);
+  React.useEffect(() => {
+      isSendRef.current = isSend;
+  }, [isSend]);
+
   React.useEffect(() => {
     socketRef.current.on("message", (data, other) => {
+      if(isSendRef.current)
+      {
+        setIsSend((state) => !state);
+        return;
+      }
+      setIsSend((state) => !state);
       // Make sure that the id you are getting here is latest one
       if (data.request === activeChatIdRef.current) {
         addMessageInCachedThread(
@@ -140,7 +152,6 @@ export function useChat(
     addMessageInCachedThread(["thread", activeChat._id], queryClient, message);
     updateLastMessage("requests", queryClient, message);
     setValue('');
-    debugger;
     await SendEmailToReceiver(message.receiver, message.sender, activeChat.title, message.message);
   }
 
