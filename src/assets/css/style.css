@@ -7665,3 +7665,12 @@ input[type="number"] {
 .ant-message-notice-content {
 	padding-block: 16px;
 }
+
+.dashboard-cards .ant-card-body {
+	min-height: 117px;
+}
+
+.create-request-card .ant-card-hoverable:hover .ant-card-head {
+	background-color: #0071bc;
+	color: white;
+}

@@ -206,24 +206,25 @@ function Dashboard() {
 				</div>
 				<Divider />
 				{/* <Row gutter={[16, 16]} className={classes.cardCtn}> */}
-				<Row className={`${classes.cardCtn} flex-column flex-sm-row`}>
+				<Row className={`${classes.cardCtn} flex-sm-row dashboard-cards`}>
 					<Col
 						span={4}
-						className={`analyticsDash`}
+						className={`analyticsDash create-request-card`}
 					>
 						<Card
 							// headStyle={{ backgroundColor: "#6fc4fd" }}
 							headStyle={{ fontWeight: "bold" }}
 							hoverable
 							loading={statsLoading}
-							title="CONNECT TO DENTIST"
+							title="CREATE REQUEST/ START HERE"
 							type="inner"
+							onClick={() => history.push(`/patients/create-request`)}
 						>
 							<div
-								className={`create-application-box`}
-								onClick={() => history.push(`/patients/create-request`)}
+								style={{fontWeight: 500}}
 							>
-								Book an appointment
+								Make an appointment and <br></br> Connect to a live dentist.
+								<p style={{color: '#0071bc', cursor: 'pointer'}}><u>Click here</u></p>
 							</div>
 						</Card>
 					</Col>
