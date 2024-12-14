@@ -195,11 +195,11 @@ export default function Inbox() {
               <i className="fa fa-envelope"></i>Messages
             </a>
           </li>
-          <li className="order-2" onClick={showModal}>
+          {/* <li className="order-2" onClick={showModal}>
             <a href="javascript:void(0)">
               <i className="fa fa-question-circle"></i>How Teledental works?{" "}
             </a>
-          </li>
+          </li> */}
           <li className="order-2" onClick={showModalAppoinments} style={{visibility: apoint}}>
             <a href="javascript:void(0)">
               <i className="fa fa-handshake-o"></i>My Appointments{" "}

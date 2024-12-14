@@ -34,7 +34,7 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                        <strong>TeleDental video consult</strong>   with a <u>live dentist</u>
+                    Want to <strong>consult with a dentist online?</strong>
                     </div>
                   </div>
                 </div>
@@ -46,7 +46,7 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                    <strong>24/7 anytime,</strong>  from any place.
+                    Use <u><strong>Teledental video consultation</strong></u> with a <u><strong>Dentist</strong></u>.
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                    <strong>Virtual dentistry</strong> -   Consultation with a live dentist.
+                    <strong>Consult with a <u>live Dentist</u></strong> 24/7 - any time, from any place.
                     </div>
                   </div>
                 </div>
@@ -70,7 +70,7 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                    <strong>Find dentists</strong>  near you.
+                    Find <u>local dentists</u> near you.
                     </div>
                   </div>
                 </div>

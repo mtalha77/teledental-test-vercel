@@ -3726,7 +3726,7 @@ textarea.w-select {
 
 .h1-white,
 .uui-text-size-large-11 {
-	font-family: "Montserrat", sans-serif;
+	font-family: "Mulish", sans-serif;
 }
 
 .cosmetic-pd-wrapper .signup-page-wrapper {
@@ -3903,19 +3903,16 @@ textarea.w-select {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	vertical-align: top;
-	padding-top: 4px;
 }
 
 .uui-text-size-large-11 {
 	color: #0071bc;
 	font-size: 21px;
 	line-height: 1.5;
-	font-weight: 500;
 }
 
 .uui-text-size-large-11 strong {
-	font-weight: 800;
+	font-weight: 700;
 }
 
 .heading {
