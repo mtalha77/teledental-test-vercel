@@ -136,14 +136,14 @@ function LandingPageNew() {
                         <img src={appStore} loading="lazy" alt="" />
                       </a>
                     </div>
-                    <div className="uui-button-wrapper-14 max-width-full-mobile-landscape">
+                    {/* <div className="uui-button-wrapper-14 max-width-full-mobile-landscape">
                       <a
                         href="https://play.google.com/store/apps/details?id=com.app.teledental_mobile" target="_blank"
                         className="uui-button-26 is-button-large w-inline-block"
                       >
                         <img src={playStore} loading="lazy" alt="" />
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                

@@ -299,7 +299,7 @@ function Header({ cssClass }) {
 												role="list"
 												className="brix---header-nav-menu-list-2"
 											>
-												<li className="brix---header-nav-list-item-2">
+												{/* <li className="brix---header-nav-list-item-2">
 													<Link
 														to="/how-it-works"
 														name="patient"
@@ -310,7 +310,7 @@ function Header({ cssClass }) {
 													>
 														How it works
 													</Link>
-												</li>
+												</li> */}
 												<li className="brix---header-nav-list-item-2">
 													<Link
 														to="/join-virtual-tele-dental-care"
