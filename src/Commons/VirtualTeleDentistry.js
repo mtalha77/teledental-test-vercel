@@ -55,7 +55,7 @@ const VirtualTeleDentistry = () => {
               <div className="vtd_left">
                 <div className="vtd_headlines">
                   <h2>Teledental is adding people to the team, <span> adding dentists, and partnering with companies.</span> </h2>
-                  <p>JJoin Our Team, Add Teledental Services, Best Dental Chatbot, Dental Directory Listings, and more!  Join us at teledental.com today and take advantage of
+                  <p>Join Our Team, Add Teledental Services, Best Dental Chatbot, Dental Directory Listings, and more!  Join us at teledental.com today and take advantage of
                     the best virtual dental care platform online.
                     Our online live dental care consultations, local teledentistry consulting, and dental marketing online services are unmatched in the industry. Contact us today to learn more about how we can help you grow your business and take your practice to the next level.</p>
 

@@ -485,7 +485,7 @@ const FaqsQuestion = () => {
                 <li>
                   We need more dentists to answer dental questions and more
                   dental practices to refer these patients to. Go to our Contact
-                  Us page or email us at service@teldental.com for more
+                  Us page or email us at service@teledental.com for more
                   information. Click here to go to the Local Teledental Dental
                   Consult CONTACT US page.{" "}
                   <Link to="/contact-us">
