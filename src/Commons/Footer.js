@@ -159,6 +159,17 @@ function Footer() {
                       Tooth Cavity
                     </li>
                   </Link>
+                  <Link
+                    target="_blank"
+                    to={
+                      "/sleep-wellness-virtual-dental-care"
+                    }
+                    className="uui-footer03_link w-inline-block"
+                  >
+                    <li>
+                      Sleep Wellness Virtual Dental Care
+                    </li>
+                  </Link>
                 </div>
                 <div className="uui-footer03_link-list">
                   <Link

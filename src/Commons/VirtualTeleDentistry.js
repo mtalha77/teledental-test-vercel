@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "./Header";
 import HelmetComponent from "./HelmetComponent";
-import { Form, Input, Button, Alert, message } from "antd";
+import { Form, Input, Button, Alert, message, Select } from "antd";
 import { contactUs } from "../Auth/apis/authV1";
 import Swal from "sweetalert2";
 import bannerImg from '../assets/img/aboutPage_bg.png';
 import dentisImg from '../assets/img/aboutPage_img.png';
+const { Option } = Select;
 
 const VirtualTeleDentistry = () => {
   const [error, setError] = React.useState("");
@@ -54,11 +55,8 @@ const VirtualTeleDentistry = () => {
             <div className="vtd_flexible">
               <div className="vtd_left">
                 <div className="vtd_headlines">
-                  <h2>Teledental is adding people to the team, <span> adding dentists, and partnering with companies.</span> </h2>
-                  <p>Join Our Team, Add Teledental Services, Best Dental Chatbot, Dental Directory Listings, and more!  Join us at teledental.com today and take advantage of
-                    the best virtual dental care platform online.
-                    Our online live dental care consultations, local teledentistry consulting, and dental marketing online services are unmatched in the industry. Contact us today to learn more about how we can help you grow your business and take your practice to the next level.</p>
-
+                  <h2>Join the Teledental Virtual Dentists Team <span> Revolutionize Your Dental Practice with 24/7 Virtual Care & Advanced Marketing.</span> </h2>
+                  <p>Are you ready to transform your dental practice? At Teledental.com, we’re pioneering the future of dentistry with innovative virtual care solutions and comprehensive digital marketing. Our platform empowers licensed dentists and dental professionals to offer live consultations, connect with patients around the clock, and boost their online presence—all from the comfort of their own office.</p>
                   <h4>Can message us by filling out the form below: </h4>
                 </div>
 
@@ -91,6 +89,20 @@ const VirtualTeleDentistry = () => {
                           ]}
                         >
                           <Input />
+                        </Form.Item>
+                      </div>
+                    </div>
+                    <div className="col-sm-12 col-lg-6">
+                      <div className="mb-3">
+                        <Form.Item
+                          label="What is your current position?"
+                          name="position"
+                        >
+                          <Select defaultValue="dentist" style={{fontWeight: 600, height: "49px", borderRadius: "4px"}}>
+                            <Option value="dentist">Dentist</Option>
+                            <Option value="proffisional">Dental professional / management</Option>
+                            <Option value="other">Other</Option>
+												  </Select>
                         </Form.Item>
                       </div>
                     </div>
@@ -150,16 +162,38 @@ const VirtualTeleDentistry = () => {
                         </Form.Item>
                       </div>
                     </div>
+                    <div className="col-sm-12 col-lg-6">
+                      <div className="mb-3">
+                        <Form.Item
+                          label="City"
+                          name="city"
+                          placeholder="City"
+                        >
+                          <Input />
+                        </Form.Item>
+                      </div>
+                    </div>
+                    <div className="col-sm-12 col-lg-6">
+                      <div className="mb-3">
+                        <Form.Item
+                          label="State"
+                          name="state"
+                          placeholder="State"
+                        >
+                          <Input />
+                        </Form.Item>
+                      </div>
+                    </div>
                     <div className="col-sm-12 col-lg-12">
                       <div class="mb-3">
                         <label
                           for="exampleFormControlTextarea1"
                           className="mb-2 questionsLabell"
                         >
-                          Reason for inquiry (Please write):
+                          Message (please write briefly reason reaching out to us)?
                         </label>
                         <Form.Item name="comment">
-                          <TextArea rows={4} placeholder="Comments ..." />
+                          <TextArea rows={4} placeholder="Message ..." />
                         </Form.Item>
                       </div>
                     </div>
@@ -200,192 +234,58 @@ const VirtualTeleDentistry = () => {
       </div>
 
       <div className="cosmetic-pd-wrapper footer-center-pages pt-0">
-        <HelmetComponent
+        {/* <HelmetComponent
           title="Join us dentists / companies"
           name="Cosmetic Dentsistry"
           content="What is Cosmetic Dentistry? Teledental Cosmetic Dental Care Consult. Many people want to understand how to make their
                 teeth look better cosmetically"
-        />
-        {/* <h2 style={{ textAlign: "center", color: "#3D85C6" }}>Teledental Consultation with Live Dentists - Virtual Teledentistry Dentists Consult</h2>
-        <p>
-          <h3>
-            Join Our Team,{" "}
-            <u>
-              Add Teledental Services, Best Dental Chatbot, Dental Directory
-              Listings
-            </u>
-            , and more!
-          </h3>
-        </p>
-
-        <p>
-          Join us at teledental.com today and take advantage of the best virtual dental care platform online. Our online live dental care
-          consultations, local teledentistry consulting, and dental marketing
-          online services are unmatched in the industry. Contact us today to
-          learn more about how we can help you grow your business and take your
-          practice to the next level.
-        </p>
-        <br></br>
-        <p>Can message us by filling out the form below: ssss</p> */}
+        /> */}
 
         <p>
           <h3>
-            <u>Join our Teledental Virtual Dentists Team </u>
-          </h3>
-        </p>
-        <p>
-          <u>
-            Welcome to Teledental.com - the ultimate dental solution for all
-            your dental needs! We're not just another dental company - we're the
-            pioneer of virtual dental care and changing the game.
-          </u>
-        </p>
-        <p>
-          Want to join our team, get teledental service - email us at{" "}
-          <a href="mailto:service@teledental.com">service@teledental.com</a>.
-        </p>
-        <p>
-          <h3>
-            <u>
-              No company can match our all-in-one chat, teledental and dental
-              marketing solution for your dental practice{" "}
-            </u>
-          </h3>
-        </p>
-        <p>
-          <u>
-            What sets us apart from the competition? It's simple - we offer an
-            all-in-one solution that no other company can match. From live
-            virtual dental consultations to a dental chatbot, Teledental
-            directory, and marketing services, we have it all.
-          </u>
-        </p>
-        <p>
-          <h3>
-            <u>
-              Best Dental Practice Marketing and Local Dentists Directory
-              Listings Online
-            </u>
+            Why Join Teledental?
           </h3>
         </p>
         <p>
           <ul>
-            <li>
-              <u>Teledental.com and Teledental app. </u>
-            </li>
-            <li>
-              <u>DentalChat.com and Dental Chatbot.</u>
-            </li>
-            <li>
-              <u>DentistList.com, MapDentist.com and more. </u>
-            </li>
+            <li><b>24/7 Live Virtual Consultations:</b></li>
+            <p>Offer immediate dental consultations any time of day with our state-of-the-art teledentistry platform, ensuring your patients get the care they need—fast.</p>
+            <li><b>Advanced Digital Marketing & Exclusive Directory Listings:</b></li>
+            <p>Get unparalleled exposure through our integrated services, including our proprietary dental chatbot, online directories like DentistList.com and MapDentist.com, and strategic marketing campaigns designed to put your practice on the map.</p>
+            <li><b>Flexible, Remote Work Environment:</b></li>
+            <p>Enjoy the freedom to work from any location with flexible hours and exciting partnership packages that cater to your lifestyle and practice needs.</p>
+            <li><b>Proven Industry Expertise:</b></li>
+            <p>With over 15 years in the dental field, our comprehensive ecosystem offers trusted support and innovative solutions tailored to today’s digital dentistry landscape.</p>
           </ul>
         </p>
         <p>
-          <u>
-            By joining our powerful dental ecosystem, you'll gain access to a
-            world of benefits. You can put your dental office on the map and
-            attract new patients effortlessly. Our teledental consulting service
-            is a great way to support your practice, and you can do it all from
-            the comfort of your own office - no travel expense required!
-          </u>
-        </p>
-        <p>
           <h3>
-            <u>
-              Dentists and Dental Professionals - Join our Teledental Virtual
-              Dentists Team!{" "}
-            </u>
+            Who Should Join?
           </h3>
         </p>
         <p>
-          <ul style={{ listStyleType: "none" }}>
-            <li>
-              <u>- Partner and work with us.</u>
-            </li>
-            <li>
-              <u>- Can work for any place, at any time you like. </u>
-            </li>
-            <li>
-              <u>- Flexible hours. </u>
-            </li>
-            <li>
-              <u>- We offer exciting packages. </u>
-            </li>
+          <ul>
+            <li><b>Licensed Dentists & Dental Professionals:</b></li>
+            <p>Integrate cutting-edge teledentistry services into your practice and provide superior patient care with minimal overhead.</p>
+            <li><b>Dental Companies & Marketers:</b></li>
+            <p>Partner with us to amplify your brand, attract new patients, and harness the power of our integrated dental ecosystem.</p>
+            <li><b>Dental Insurance Groups & Accredited Investors:</b></li>
+            <p>Collaborate with an industry leader in virtual dental care and benefit from our innovative, growth-driven approach.</p>
           </ul>
         </p>
-        <p>Contact us at</p>
-        <p>
-          <a href="mailto:service@teledental.com ">service@teledental.com </a>or{" "}
-          <a href="mailto:service@dentalchat.com ">service@dentalchat.com </a>
-        </p>
-        <p>
-          <u>
-            If you're a dental marketer or company, we can partner with you to
-            help you grow your business. We're constantly innovating and
-            expanding our reach, partnering with DentalChat.com, MapDentist.com,
-            DentistList.com, and many other platforms to provide the best
-            possible service to our clients.
-          </u>
-        </p>
-        <p>
-          <u>For licensed dentists, dental companies, dental insurance</u>
-        </p>
-        <p>
-          <u>
-            groups, dental professionals, and accredited investors, Teledental
-            is the perfect partner. Our virtual teledental service is the
-            ultimate marketing tool for your practice, helping you attract new
-            patients and grow your business. With over 15 years of experience in
-            the dental space, we're the experts you can trust any day, anytime!
-          </u>
-        </p>
         <p>
           <h3>
-            Best Live Dentist Virtual Dentistry Services, Become a Local
-            Teledentist Office with Teledental
+            Ready to Elevate Your Dental Practice?
           </h3>
         </p>
         <p>
-          <u>
-            Join us at <a href="https://teledental.com/">teledental.com</a>{" "}
-            today and take advantage of the best virtual dental care services
-            available. Our online live dental care consultations, local
-            teledentistry consulting, and dental marketing online services
-          </u>
+          Teledental.com is more than just a platform—it’s a community of forward-thinking dental professionals dedicated to revolutionizing dental care. Join us to experience the best in virtual dental care, live patient consultations, and advanced marketing solutions that drive real growth.
         </p>
-        <p>
-          <h3>
-            24/7 Dental Connection, Live Dentist Consultation Options, Virtual
-            Dentists Services, Adding Local Teledentist Practice Technology by
-            using Teledental & DentalChat Chatbot Innovation{" "}
-          </h3>
-        </p>
-        <p>
-          Using modern telemedicine technology for dental care is a reality and
-          can help people get access to more live dental information
-          suggestions. Using a Live{" "}
-          <i>
-            Teledentistry Virtual Dental Consulting technology can help people
-            and dentists
-          </i>{" "}
-          save time & money. Less time traveling and using up chairside time.
-          Can use Teledental and DentalChat 24/7, from any place - for patients
-          and dentists to communicate. As we mentioned, still the patient will
-          need to visit a local dental practice to get dental x-rays, full
-          dental exam and the required dental treatment.
-        </p>
-        <p>
-          <h3>
-            Adding Local Teledentistry Consulting and be part of larger Vritual
-            Dentists Community
-          </h3>
-        </p>
-        <p>
-          As we are seeing, the online dental telemedicine community of dentists
-          is growing. Using Teledental technology and marketing with us at
-          Teledental.com has many benefits
-        </p>
+        <p><b>Take the Next Step:</b></p>
+        <p>Visit <a href='https://teledental.com/join-virtual-tele-dental-care'>Teledental.com</a> today or email us at <a href="mailto:service@teledental.com">service@teledental.com</a> to learn how you can become a key part of the Teledental Virtual Dentists Team.</p>
+        <p><b>Next Step Best Dental Office Marketing, New Dental Patient Leads and Get Listed on our Local Directory Listing Online Platforms:</b></p>
+        <p>Teledental is much more than virtual dentistry and online dental consultations. </p>
+        <p>Elevate your dental practice with the power of virtual dental care and let your expertise shine in the digital age!</p>
       </div>
     </div>
   );

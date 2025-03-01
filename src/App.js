@@ -71,6 +71,7 @@ import SubscriptionSecond from "./Commons/SubscriptionSecond";
 import VideoDentalExam from "./Commons/VideoDentalExam";
 import VPAT from "./Commons/VPAT";
 import AgoraInformation from "./Commons/AgoraInformation";
+import SleepOralHealth from "./Commons/SleepOralHealth";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -180,6 +181,11 @@ function App() {
               exact
               path="/join-virtual-tele-dental-care"
               component={VirtualTeleDentistry}
+            />
+            <PublicRoute
+              exact
+              path="/sleep-wellness-virtual-dental-care"
+              component={SleepOralHealth}
             />
             <PublicRoute
               exact
