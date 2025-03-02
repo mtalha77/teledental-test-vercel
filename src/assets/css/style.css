@@ -2613,11 +2613,10 @@ textarea.w-select {
 
 .footer-center-pages {
 	color: #000;
-	max-width: 900px;
 	padding-top: 100px;
 	margin: 0 auto 20px;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: 130px;
+	padding-right: 25px;
 }
 
 @media (min-width: 768px) {
@@ -7636,7 +7635,6 @@ input[type="number"] {
 	padding-bottom: 12px;
 	line-height: 1.1em;
 	font-family: "Montserrat", sans-serif !important;
-	text-transform: uppercase;
 	margin: 0px;
 }
 .vtd_headlines h2 span {

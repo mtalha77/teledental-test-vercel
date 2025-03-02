@@ -54,10 +54,12 @@ const VirtualTeleDentistry = () => {
           <div className="autoContent">
             <div className="vtd_flexible">
               <div className="vtd_left">
-                <div className="vtd_headlines">
-                  <h2>Join the Teledental Virtual Dentists Team <span> Revolutionize Your Dental Practice with 24/7 Virtual Care & Advanced Marketing.</span> </h2>
-                  <p>Are you ready to transform your dental practice? At Teledental.com, we’re pioneering the future of dentistry with innovative virtual care solutions and comprehensive digital marketing. Our platform empowers licensed dentists and dental professionals to offer live consultations, connect with patients around the clock, and boost their online presence—all from the comfort of their own office.</p>
-                  <h4>Can message us by filling out the form below: </h4>
+                <div>
+                  <h3 className="vtd_headlines" style={{color: '#0b5394'}}>Join Our Teledental Virtual Dentists Network – Get New Patient Referrals for Your Dental Office! </h3>
+                  <h3>Become a Part of Our Teledentistry Team Today!</h3>
+                  <h3>Transform Your Practice with 24/7 Virtual Dental Care and Cutting-Edge Marketing Solutions. </h3>
+                  <p>Ready to take your dental practice to the next level? At Teledental.com, we're leading the way in virtual dentistry with cutting-edge telehealth solutions and powerful digital marketing strategies. Our platform enables licensed dentists and dental professionals to provide live dental consultations, engage with patients 24/7, and enhance their online visibility—all while working from their own office or home.</p>
+                  <p style={{color: '#0b5394'}}>Fill out the form below to get started! </p>
                 </div>
 
                 <Form
@@ -79,7 +81,8 @@ const VirtualTeleDentistry = () => {
                     <div className="col-sm-12 col-lg-6">
                       <div className="mb-3">
                         <Form.Item
-                          label="Name"
+                          style={{color: '#0b5394'}}
+                          label="NAME:"
                           name="name"
                           placeholder="Name"
                           rules={[
@@ -95,12 +98,14 @@ const VirtualTeleDentistry = () => {
                     <div className="col-sm-12 col-lg-6">
                       <div className="mb-3">
                         <Form.Item
-                          label="What is your current position?"
+                          style={{color: '#0b5394'}}
+                          label="CURRENT POSITION:"
                           name="position"
                         >
                           <Select defaultValue="dentist" style={{fontWeight: 600, height: "49px", borderRadius: "4px"}}>
-                            <Option value="dentist">Dentist</Option>
-                            <Option value="proffisional">Dental professional / management</Option>
+                            <Option value="dentist">I'm a dentist.</Option>
+                            <Option value="dentaloffice">Dentist and dental office owner.</Option>
+                            <Option value="proffisional">Dental professional / management / owner.</Option>
                             <Option value="other">Other</Option>
 												  </Select>
                         </Form.Item>
@@ -109,7 +114,8 @@ const VirtualTeleDentistry = () => {
                     <div className="col-sm-12 col-lg-6">
                       <div className="mb-3">
                         <Form.Item
-                          label="Email"
+                        style={{color: '#0b5394'}}
+                          label="EMAIL:"
                           name="email"
                           rules={[
                             {
@@ -126,7 +132,8 @@ const VirtualTeleDentistry = () => {
                     <div className="col-sm-12 col-lg-6">
                       <div className="mb-3">
                         <Form.Item
-                          label="Confirm Email"
+                          label="CONFIRM EMAIL:"
+                          style={{color: '#0b5394'}}
                           name="confirm email"
                           rules={[
                             {
@@ -150,7 +157,8 @@ const VirtualTeleDentistry = () => {
                     <div className="col-sm-12 col-lg-6">
                       <div className="mb-3">
                         <Form.Item
-                          label="Phone Number"
+                          label="PHONE NUMBER (Optional):"
+                          style={{color: '#0b5394'}}
                           name="contactNumber"
                           rules={[
                             {
@@ -165,7 +173,8 @@ const VirtualTeleDentistry = () => {
                     <div className="col-sm-12 col-lg-6">
                       <div className="mb-3">
                         <Form.Item
-                          label="City"
+                          label="CITY:"
+                          style={{color: '#0b5394'}}
                           name="city"
                           placeholder="City"
                         >
@@ -176,7 +185,8 @@ const VirtualTeleDentistry = () => {
                     <div className="col-sm-12 col-lg-6">
                       <div className="mb-3">
                         <Form.Item
-                          label="State"
+                          label="STATE:"
+                          style={{color: '#0b5394'}}
                           name="state"
                           placeholder="State"
                         >
@@ -190,7 +200,7 @@ const VirtualTeleDentistry = () => {
                           for="exampleFormControlTextarea1"
                           className="mb-2 questionsLabell"
                         >
-                          Message (please write briefly reason reaching out to us)?
+                          MESSAGE US (The reason for your inquiry):
                         </label>
                         <Form.Item name="comment">
                           <TextArea rows={4} placeholder="Message ..." />
@@ -248,7 +258,7 @@ const VirtualTeleDentistry = () => {
         </p>
         <p>
           <ul>
-            <li><b>24/7 Live Virtual Consultations:</b></li>
+            <li><b>24/7 Live Virtual Dentist Consultations:</b></li>
             <p>Offer immediate dental consultations any time of day with our state-of-the-art teledentistry platform, ensuring your patients get the care they need—fast.</p>
             <li><b>Advanced Digital Marketing & Exclusive Directory Listings:</b></li>
             <p>Get unparalleled exposure through our integrated services, including our proprietary dental chatbot, online directories like DentistList.com and MapDentist.com, and strategic marketing campaigns designed to put your practice on the map.</p>
