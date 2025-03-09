@@ -170,8 +170,8 @@ function DentistSignUpModal() {
 												<Input
 													placeholder="* First Name"
 													style={{
-														fontWeight: 600,
-														fontWeight: 600,
+														fontWeight: 700,
+														fontWeight: 700,
 														height: "49px",
 														borderRadius: "4px",
 													}}
@@ -191,8 +191,8 @@ function DentistSignUpModal() {
 												<Input
 													placeholder="* Last Name"
 													style={{
-														fontWeight: 600,
-														fontWeight: 600,
+														fontWeight: 700,
+														fontWeight: 700,
 														height: "49px",
 														borderRadius: "4px",
 													}}
@@ -216,8 +216,8 @@ function DentistSignUpModal() {
 												<Input
 													placeholder="* Email"
 													style={{
-														fontWeight: 600,
-														fontWeight: 600,
+														fontWeight: 700,
+														fontWeight: 700,
 														height: "49px",
 														borderRadius: "4px",
 													}}
@@ -249,8 +249,8 @@ function DentistSignUpModal() {
 												<Input
 													placeholder="* Confirm Email"
 													style={{
-														fontWeight: 600,
-														fontWeight: 600,
+														fontWeight: 700,
+														fontWeight: 700,
 														height: "49px",
 														borderRadius: "4px",
 													}}
@@ -271,8 +271,8 @@ function DentistSignUpModal() {
 													type="number"
 													placeholder="* Phone Number"
 													style={{
-														fontWeight: 600,
-														fontWeight: 600,
+														fontWeight: 700,
+														fontWeight: 700,
 														height: "49px",
 														borderRadius: "4px",
 													}}
@@ -292,8 +292,8 @@ function DentistSignUpModal() {
 												<Input.Password
 													placeholder="* Password"
 													style={{
-														fontWeight: 600,
-														fontWeight: 600,
+														fontWeight: 700,
+														fontWeight: 700,
 														height: "49px",
 														borderRadius: "4px",
 													}}
@@ -302,7 +302,7 @@ function DentistSignUpModal() {
 										</div>
 										<div className="col-sm-12 signup-select">
 											<Form.Item name="city" >
-												<Select defaultValue="male" style={{fontWeight: 600, height: "49px", borderRadius: "4px"}}>
+												<Select defaultValue="male" style={{fontWeight: 700, height: "49px", borderRadius: "4px"}}>
 													<Option value="male">I am a licensed dentist</Option>
 													<Option value="female">
 														I want to join Teledental
@@ -318,7 +318,7 @@ function DentistSignUpModal() {
 											<Form.Item
 												name="location"
                         style={{
-                          fontWeight: 600,
+                          fontWeight: 700,
                         }}
 												rules={[
 													{
@@ -348,16 +348,15 @@ function DentistSignUpModal() {
 												name="businessName"
 												rules={[
 													{
-														required: true,
 														message: "Please input your business name!",
 													},
 												]}
 											>
 												<Input
-													placeholder="* Business Name"
+													placeholder="Business Name"
 													style={{
-														fontWeight: 600,
-														fontWeight: 600,
+														fontWeight: 700,
+														fontWeight: 700,
 														height: "49px",
 														borderRadius: "4px",
 													}}

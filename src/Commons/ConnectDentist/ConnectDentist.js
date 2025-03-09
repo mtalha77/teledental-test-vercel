@@ -53,7 +53,7 @@ function ConnectDentist() {
             </div>
           </div>
 
-          <p><span>Teledental consult</span> - Live dental <span>video</span> consultation with a <span>dentist</span>. <br></br> <Link style={{textDecoration: 'underline', fontWeight: 600, color: '#0071bc'}} to="/patient-signup">Click here</Link>  to start your Teledental consultation</p>
+          <p><span>Teledental consult</span> - Live dental <span>video</span> consultation with a <span>dentist</span>. <br></br> <Link style={{textDecoration: 'underline', fontWeight: 700, color: '#0071bc'}} to="/patient-signup">Click here</Link>  to start your Teledental consultation</p>
           <div className={Style.hiw_btn}>
             <Link to="/how-it-works"  name="patient" className="brix---btn-primary w-button btn-edit btn-primary-filled mb-2"
             >
