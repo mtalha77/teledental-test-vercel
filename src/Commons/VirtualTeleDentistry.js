@@ -26,9 +26,8 @@ const VirtualTeleDentistry = () => {
         Swal.fire({
           icon: "success",
           title:
-            "Thank you for reaching us out. We'll get in touch with you shortly.",
-          showConfirmButton: false,
-          timer: 2000,
+            "Please check and verify your email. We are reviewing your request, and will  get back to you shortly. Thanks",
+          showConfirmButton: true
         });
       }
       setError("");
