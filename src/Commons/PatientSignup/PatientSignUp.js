@@ -168,7 +168,7 @@ function PatientSignUp({
 									<Input
 										placeholder="* First Name"
 										style={{
-											fontWeight: 600,
+											fontWeight: 700,
 											height: "49px",
 											borderRadius: "4px",
 										}}
@@ -185,7 +185,7 @@ function PatientSignUp({
 									<Input
 										placeholder="* Last Name"
 										style={{
-											fontWeight: 600,
+											fontWeight: 700,
 											height: "49px",
 											borderRadius: "4px",
 										}}
@@ -206,7 +206,7 @@ function PatientSignUp({
 									<Input
 										placeholder="* Email"
 										style={{
-											fontWeight: 600,
+											fontWeight: 700,
 											height: "49px",
 											borderRadius: "4px",
 										}}
@@ -236,7 +236,7 @@ function PatientSignUp({
 									<Input
 										placeholder="* Confirm Email"
 										style={{
-											fontWeight: 600,
+											fontWeight: 700,
 											height: "49px",
 											borderRadius: "4px",
 										}}
@@ -253,7 +253,7 @@ function PatientSignUp({
 									<Input.Password
 										placeholder="* Password"
 										style={{
-											fontWeight: 600,
+											fontWeight: 700,
 											height: "49px",
 											borderRadius: "4px",
 										}}
@@ -277,7 +277,7 @@ function PatientSignUp({
 								<Form.Item
 									name="Address"
 									style={{
-										fontWeight: 600,
+										fontWeight: 700,
 									}}
 								>
 									<PlacesAutocompleteWrapper

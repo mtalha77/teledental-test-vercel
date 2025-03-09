@@ -101,7 +101,7 @@ const VirtualTeleDentistry = () => {
                           label="CURRENT POSITION:"
                           name="position"
                         >
-                          <Select defaultValue="dentist" style={{fontWeight: 600, height: "49px", borderRadius: "4px"}}>
+                          <Select defaultValue="dentist" style={{fontWeight: 700, height: "49px", borderRadius: "4px"}}>
                             <Option value="dentist">I'm a dentist.</Option>
                             <Option value="dentaloffice">Dentist and dental office owner.</Option>
                             <Option value="proffisional">Dental professional / management / owner.</Option>

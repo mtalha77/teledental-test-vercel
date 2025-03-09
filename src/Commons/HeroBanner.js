@@ -25,75 +25,75 @@ const HeroBanner = () => {
 
                   <small> Anywhere, 24/7</small>
                 </h1>
-
-                <div className="uui-layout08_item-4">
-                  <div className="uui-layout08_item-icon-wrapper-4">
-                    <div className="uui-icon-1x1-xsmall-11 w-embed">
-                      <img src={tickIcon} alt="tick icon" />
-                    </div>
-                  </div>
-                  <div className="uui-layout08_item-text-wrapper-3">
-                    <div className="uui-text-size-large-11">
-                    Want to <strong>consult with a dentist online?</strong>
-                    </div>
-                  </div>
-                </div>
-                <div className="uui-layout08_item-4">
-                  <div className="uui-layout08_item-icon-wrapper-4">
-                    <div className="uui-icon-1x1-xsmall-11 w-embed">
-                      <img src={tickIcon} alt="tick icon" />
-                    </div>
-                  </div>
-                  <div className="uui-layout08_item-text-wrapper-3">
-                    <div className="uui-text-size-large-11">
-                    Use <u><strong>Teledental video consultation</strong></u> with a <u><strong>Dentist</strong></u>.
-                    </div>
-                  </div>
-                </div>
-                <div className="uui-layout08_item-4">
-                  <div className="uui-layout08_item-icon-wrapper-4">
-                    <div className="uui-icon-1x1-xsmall-11 w-embed">
-                      <img src={tickIcon} alt="tick icon" />
-                    </div>
-                  </div>
-                  <div className="uui-layout08_item-text-wrapper-3">
-                    <div className="uui-text-size-large-11">
-                    <strong>Consult with a <u>live Dentist</u></strong> 24/7 - any time, from any place.
-                    </div>
-                  </div>
-                </div>
-                <div className="uui-layout08_item-4">
-                  <div className="uui-layout08_item-icon-wrapper-4">
-                    <div className="uui-icon-1x1-xsmall-11 w-embed">
-                      <img src={tickIcon} alt="tick icon" />
-                    </div>
-                  </div>
-                  <div className="uui-layout08_item-text-wrapper-3">
-                    <div className="uui-text-size-large-11">
-                    Find <u>local dentists</u> near you.
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="uui-space-large-8"></div>
                 <div className="brix---buttons-row hero_banner_btn">
                   <div className="brix---button-row-left">
                     <Link
                       to="/patient-signup"
                       name="patient"
-                      className="brix---btn-primary w-button btn-edit btn-primary-filled"
+                      className="brix---btn-primary w-button btn-edit prim_btn_blue-fill"
                       // onClick={() => setIsSignInModalVisible(true)}
                     >
-                      Connect to Dentist
+                      Start Here
                     </Link>
                   </div>
                   <Link
                     to="/contact-us"
-                    className="brix---btn-secondary w-button btn_pink_outlined"
+                    className="brix---btn-secondary w-button prim_btn_blue-outlined"
                   >
                     Contact Us
                   </Link>
                 </div>
+                <div className="uui-layout08_item-4">
+                  <div className="uui-layout08_item-icon-wrapper-4">
+                    <div className="uui-icon-1x1-xsmall-11 w-embed">
+                      <img src={tickIcon} alt="tick icon" />
+                    </div>
+                  </div>
+                  <div className="uui-layout08_item-text-wrapper-3">
+                    <div className="uui-text-size-large-11">
+                    Professional <strong>online dental consultation</strong> with virtual dentists.
+                    </div>
+                  </div>
+                </div>
+                <div className="uui-layout08_item-4">
+                  <div className="uui-layout08_item-icon-wrapper-4">
+                    <div className="uui-icon-1x1-xsmall-11 w-embed">
+                      <img src={tickIcon} alt="tick icon" />
+                    </div>
+                  </div>
+                  <div className="uui-layout08_item-text-wrapper-3">
+                    <div className="uui-text-size-large-11">
+                    Get <strong>virtual dental help</strong> and find <strong>local dentists near you</strong>. 
+                    </div>
+                  </div>
+                </div>
+                <div className="uui-layout08_item-4">
+                  <div className="uui-layout08_item-icon-wrapper-4">
+                    <div className="uui-icon-1x1-xsmall-11 w-embed">
+                      <img src={tickIcon} alt="tick icon" />
+                    </div>
+                  </div>
+                  <div className="uui-layout08_item-text-wrapper-3">
+                    <div className="uui-text-size-large-11">
+                    Schedule a <strong>live dental video consult</strong> with a Teledental dentist.  
+                    </div>
+                  </div>
+                </div>
+                <div className="uui-layout08_item-4">
+                  <div className="uui-layout08_item-icon-wrapper-4">
+                    <div className="uui-icon-1x1-xsmall-11 w-embed">
+                      <img src={tickIcon} alt="tick icon" />
+                    </div>
+                  </div>
+                  <div className="uui-layout08_item-text-wrapper-3">
+                    <div className="uui-text-size-large-11">
+                    Schedule a dental appointment 
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="uui-space-large-8"></div>
+                
               </div>
               <div
                 data-w-id="4d3aaa75-92ba-ca55-d78b-6cde0f6916ee"
