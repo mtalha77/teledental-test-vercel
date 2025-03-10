@@ -48,7 +48,7 @@ function ConnectDentist() {
             <div className="col-md-3 col-sm-12" data-aos="fade-inn" data-aos-once="false" data-aos-offset="100">
               <Step
                 title="Step 4"
-                description="Make insurance." 
+                description="Start consult with a Live Dentist." 
               />
             </div>
           </div>
