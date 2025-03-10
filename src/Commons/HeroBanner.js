@@ -38,7 +38,7 @@ const HeroBanner = () => {
                   </div>
                   <Link
                     to="/contact-us"
-                    className="brix---btn-secondary w-button prim_btn_blue-outlined"
+                    className="brix---btn-primary w-button btn-edit prim_btn_blue-fill"
                   >
                     Contact Us
                   </Link>
@@ -87,13 +87,22 @@ const HeroBanner = () => {
                   </div>
                   <div className="uui-layout08_item-text-wrapper-3">
                     <div className="uui-text-size-large-11">
-                    Schedule a dental appointment 
+                    Schedule a dental appointment.
                     </div>
                   </div>
                 </div>
                 
                 <div className="uui-space-large-8"></div>
-                
+                <div className="brix---buttons-row hero_banner_btn">
+                  <div className="brix---button-row-left">
+                    <Link
+                      className="brix---btn-secondary w-button prim_btn_blue-outlined"
+                      // onClick={() => setIsSignInModalVisible(true)}
+                    >
+                      Book Appointment
+                    </Link>
+                  </div>
+                </div>
               </div>
               <div
                 data-w-id="4d3aaa75-92ba-ca55-d78b-6cde0f6916ee"
