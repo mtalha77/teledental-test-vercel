@@ -13,7 +13,7 @@ export default (
     <Route path="/local-teledental-stem-cells-dentistry-care-information" />
     <Route path="/local-periodontal-questions" />
     <Route path="/terms-and-conditions" />
-    <Route path="/about-us-teledental" />
+    <Route path="/best-live-dentist-video-about-us " />
     <Route path="/privacy-policy-teledental" />
     <Route path="/sitemap" />
   </Route>

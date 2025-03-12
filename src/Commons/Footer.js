@@ -39,7 +39,7 @@ function Footer() {
                     Home
                   </Link>
                   <Link
-                    to={"/about-us-teledental"}
+                    to={"/best-live-dentist-video-about-us "}
                     className="combine-footer3_link"
                   >
                     About Us
@@ -309,7 +309,7 @@ function Footer() {
               </li>
               <li
                 className="footerMenuitem link"
-                onClick={() => history.push("/about-us-teledental")}
+                onClick={() => history.push("/best-live-dentist-video-about-us ")}
               >
                 &#8226; About us
               </li>

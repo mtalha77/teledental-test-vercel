@@ -47,7 +47,7 @@ export default function SiteMap() {
     },
     {
       name: "About Us",
-      link: "/about-us-teledental",
+      link: "/best-live-dentist-video-about-us ",
     },
     {
       name: "Privacy Policy",

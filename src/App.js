@@ -249,7 +249,7 @@ function App() {
             />
             <PublicRoute
               exact
-              path="/about-us-teledental"
+              path="/best-live-dentist-video-about-us "
               component={AboutUs}
             />
             <PublicRoute exact path="/join-us" component={JoinUs} />
