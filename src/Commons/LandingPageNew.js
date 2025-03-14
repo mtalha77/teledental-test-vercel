@@ -117,12 +117,18 @@ function LandingPageNew() {
 								<div className="uui-heroheader07_image-wrapper-2"></div>
 								<div className="uui-heroheader07_content-2 z-index-1 heroheader_change_order">
 									<h1 className="download_heading">
-										DOWNLOAD OUR TELEDENTAL APP
+										Checkout our Teledental App(s)
 									</h1>
 
 									<div className="uui-max-width-small-4">
 										<div className="uui-text-size-xlarge-17 text-color-gray200">
-											WANT A SECOND OPINION? HAVE A DENTAL QUESTION?
+											Want a Dentist Second Opinion? I did
+										</div>
+									</div>
+									<div className="uui-max-width-small-4">
+										<div className="uui-text-size-xlarge-17 text-color-gray200">
+											Have a Dental Question? Get Live Dentists
+											Answers Online 24/7
 										</div>
 									</div>
 									<div className="uui-space-large-11"></div>
@@ -141,13 +147,18 @@ function LandingPageNew() {
 											</a>
 										</div>
 										<div className="uui-button-wrapper-14 max-width-full-mobile-landscape">
-                      <a
-                        href="https://play.google.com/store/apps/details?id=com.app.teledental_mobile&hl=en_US" target="_blank"
-                        className="uui-button-26 is-button-large w-inline-block"
-                      >
-                        <img src={playStore} loading="lazy" alt="" />
-                      </a>
-                    </div>
+											<a
+												href="https://play.google.com/store/apps/details?id=com.app.teledental_mobile&hl=en_US"
+												target="_blank"
+												className="uui-button-26 is-button-large w-inline-block"
+											>
+												<img
+													src={playStore}
+													loading="lazy"
+													alt=""
+												/>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>

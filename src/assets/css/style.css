@@ -1870,7 +1870,7 @@ textarea.w-select {
 	}
 
 	.download_heading {
-		font-size: 40px !important;
+		font-size: 36px !important;
 	}
 
 	.n_signup_wrapper {
@@ -4539,7 +4539,7 @@ textarea.w-select {
 .uui-text-size-xlarge-17 {
 	font-family: Montserrat, sans-serif;
 	color: #475467;
-	font-size: 1.25rem;
+	font-size: 1.125rem;
 	line-height: 1.5;
 }
 
@@ -4553,7 +4553,7 @@ textarea.w-select {
 .uui-text-size-xlarge-17.text-color-gray200 {
 	color: #000000;
 	font-weight: 400;
-	font-size: 29px;
+	font-size: 24px;
 }
 
 .uui-button-secondary-gray-17 {
@@ -4601,7 +4601,7 @@ textarea.w-select {
 }
 
 .download_heading {
-	font-size: 56px;
+	font-size: 50px;
 	line-height: 1em;
 	color: #0071bc;
 	font-family: "Montserrat", sans-serif;
@@ -5784,8 +5784,7 @@ textarea.w-select {
 
 	.uui-button-15,
 	.uui-button-25,
-	.uui-text-size-large-11,
-	.uui-text-size-xlarge-17 {
+	.uui-text-size-large-11 {
 		font-size: 1rem;
 	}
 
@@ -6205,7 +6204,7 @@ textarea.w-select {
 		background-size: auto 70% !important;
 	}
 	.download_heading {
-		font-size: 33px !important;
+		font-size: 40px !important;
 	}
 
 	.uui-heroheader01_image-wrapper-4 {
@@ -6331,7 +6330,7 @@ textarea.w-select {
 		background-size: auto 98% !important;
 	}
 	.download_heading {
-		font-size: 40px !important;
+		font-size: 32px !important;
 	}
 }
 
