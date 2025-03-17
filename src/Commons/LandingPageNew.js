@@ -122,7 +122,7 @@ function LandingPageNew() {
 
 									<div className="uui-max-width-small-4">
 										<div className="uui-text-size-xlarge-17 text-color-gray200">
-											Want a Dentist Second Opinion? I did
+											Want a Dentist Second Opinion?
 										</div>
 									</div>
 									<div className="uui-max-width-small-4">

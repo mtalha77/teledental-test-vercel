@@ -100,8 +100,6 @@ function DentistSignUpModal() {
 			allValues.lastName !== "" &&
 			allValues?.["confirm email"] !== undefined &&
 			allValues?.["confirm email"] !== "" &&
-			allValues.businessName !== undefined &&
-			allValues.businessName !== "" &&
 			allValues.checkbox !== undefined &&
 			allValues.checkbox
 		) {
