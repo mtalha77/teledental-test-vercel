@@ -22,7 +22,7 @@ import {
 import { getRequests, getRequestStats } from "../Commons/apis/commonV1";
 import HappyFace from "../assets/img/happy.png";
 import infoIcon from "../assets/img/icons8-info.svg";
-import { makeStyles } from "@material-ui/core";
+import makeStyles from '@mui/styles/makeStyles';
 import MedicalHistoryWizard from "../Patient/MedicalHistoryWizard";
 import React, { useEffect } from "react";
 import { getMedicalHistory } from "./apis/patientV1";
@@ -31,7 +31,7 @@ import { useHistory } from "react-router";
 const useStyles = makeStyles((theme) => ({
 	cardCtn: {
 		marginBottom: "16px",
-		[theme.breakpoints.down("sm")]: {
+		[theme.breakpoints.down('md')]: {
 			display: "flex",
 		},
 	},

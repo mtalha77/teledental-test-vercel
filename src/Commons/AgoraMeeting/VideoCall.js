@@ -4,7 +4,7 @@ import {
   useClient,
   useMicrophoneAndCameraTracks,
 } from "./Settings";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 import Video from "./Video";
 
 export default function VideoCall(props) {

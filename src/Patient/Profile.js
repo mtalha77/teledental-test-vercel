@@ -8,12 +8,12 @@ import BasicProfile from "./BasicProfile";
 import CurrentMedications from "./CurrentMedications";
 import MedicalHistory from "./MedicalHistory";
 import MyPayments from "./MyPayments";
-import { makeStyles } from "@material-ui/core";
+import makeStyles from '@mui/styles/makeStyles';
 import Header from "../Commons/Header";
 
 const useStyles = makeStyles((theme) => ({
   tabs: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       // minWidth: "0",
     },
   },
@@ -73,71 +73,71 @@ function Profile() {
 
   return (
     <><Header />
-    <div style={{marginTop: "5%"}}>
-      {!paymentInfo?.card?.last4 && (
-        <Alert
-          message=""
-          description="Connect your payment method so that you can consult with our dentists."
-          type="warning"
-          />
-      )}
-      {status === "loading" ? (
-        <Spin size="large" />
-      ) : (
-        // <Card
-        //   title="Profile"
-        //   headStyle={{
-        //     fontSize: "24px !important",
-        //     fontWeight: "bold",
-        //     textAlign: "center",
-        //   }}
-        //   style={{ minHeight: "800px" }}
-        //   className="form-card-width"
-        //   type="inner"
-        // >
-        <Tabs
-          // tabPosition="left"
-          tabPosition={tabPosition}
-          className={`profile shadow-sm ${classes.tabs}`}
-          onChange={tabChangeHandler}
-        >
-          <TabPane tab="Basic Profile" key="1">
-            <BasicProfile
-              user={user}
-              isLoading={isLoading}
-              updateHandler={updateHandler}
-              setFile={setFile}
-              file={file} />
-          </TabPane>
-          <TabPane tab="My Payments" key="2">
-            <MyPayments
-              user={user}
-              isLoading={isLoading}
-              updateHandler={updateHandler} />
-          </TabPane>
-          <TabPane tab="Medical History" key="3">
-            <MedicalHistory
-              user={user}
-              isLoading={isLoading}
-              updateHandler={updateHandler} />
-          </TabPane>
-          <TabPane tab="Allergies" key="4">
-            <Allergies
-              user={user}
-              isLoading={isLoading}
-              updateHandler={updateHandler} />
-          </TabPane>
-          <TabPane tab="Current Medications" key="5">
-            <CurrentMedications
-              user={user}
-              isLoading={isLoading}
-              updateHandler={updateHandler} />
-          </TabPane>
-        </Tabs>
+      <div style={{marginTop: "5%"}}>
+        {!paymentInfo?.card?.last4 && (
+          <Alert
+            message=""
+            description="Connect your payment method so that you can consult with our dentists."
+            type="warning"
+            />
+        )}
+        {status === "loading" ? (
+          <Spin size="large" />
+        ) : (
+          // <Card
+          //   title="Profile"
+          //   headStyle={{
+          //     fontSize: "24px !important",
+          //     fontWeight: "bold",
+          //     textAlign: "center",
+          //   }}
+          //   style={{ minHeight: "800px" }}
+          //   className="form-card-width"
+          //   type="inner"
+          // >
+          (<Tabs
+            // tabPosition="left"
+            tabPosition={tabPosition}
+            className={`profile shadow-sm ${classes.tabs}`}
+            onChange={tabChangeHandler}
+          >
+            <TabPane tab="Basic Profile" key="1">
+              <BasicProfile
+                user={user}
+                isLoading={isLoading}
+                updateHandler={updateHandler}
+                setFile={setFile}
+                file={file} />
+            </TabPane>
+            <TabPane tab="My Payments" key="2">
+              <MyPayments
+                user={user}
+                isLoading={isLoading}
+                updateHandler={updateHandler} />
+            </TabPane>
+            <TabPane tab="Medical History" key="3">
+              <MedicalHistory
+                user={user}
+                isLoading={isLoading}
+                updateHandler={updateHandler} />
+            </TabPane>
+            <TabPane tab="Allergies" key="4">
+              <Allergies
+                user={user}
+                isLoading={isLoading}
+                updateHandler={updateHandler} />
+            </TabPane>
+            <TabPane tab="Current Medications" key="5">
+              <CurrentMedications
+                user={user}
+                isLoading={isLoading}
+                updateHandler={updateHandler} />
+            </TabPane>
+          </Tabs>)
 
-        // </Card>
-      )}
-    </div></>
+          // </Card>
+        )}
+      </div></>
   );
 }
 

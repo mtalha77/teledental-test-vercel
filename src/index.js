@@ -10,6 +10,7 @@ import { UserProvider } from "./Context/userContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "./firebase.js";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import "./assets/css/animate.css";
 import "./assets/css/normalize.css";
@@ -23,8 +24,10 @@ const queryClient = new QueryClient({
 
 queryClient.setQueryDefaults("requests", { staleTime: 0 });
 
+const theme = createTheme();
+
 ReactDOM.render(
-  <>
+  <ThemeProvider theme={theme}>
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <UserProvider>
@@ -34,7 +37,7 @@ ReactDOM.render(
       </QueryClientProvider>
     </React.StrictMode>
     <ToastContainer />
-  </>,
+  </ThemeProvider>,
   document.getElementById("root")
 );
 

@@ -1,20 +1,20 @@
 import { AgoraVideoPlayer } from "agora-rtc-react";
 import React, { useRef, useCallback } from 'react';
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box } from "@mui/material";
 import { useState, useEffect } from "react";
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import PersonIcon from '@material-ui/icons/Person';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import PersonIcon from '@mui/icons-material/Person';
 import Chating from './Chating';
-import TextField from '@material-ui/core/TextField';
-import SendIcon from '@material-ui/icons/Send'
-import InputAdornment from '@material-ui/core/InputAdornment';
-import MessageIcon from '@material-ui/icons/Message';
-import MicIcon from "@material-ui/icons/Mic";
-import MicOffIcon from "@material-ui/icons/MicOff";
-import VideocamIcon from "@material-ui/icons/Videocam";
-import VideocamOffIcon from "@material-ui/icons/VideocamOff";
-import CallEndIcon from '@material-ui/icons/CallEnd';
+import TextField from '@mui/material/TextField';
+import SendIcon from '@mui/icons-material/Send'
+import InputAdornment from '@mui/material/InputAdornment';
+import MessageIcon from '@mui/icons-material/Message';
+import MicIcon from "@mui/icons-material/Mic";
+import MicOffIcon from "@mui/icons-material/MicOff";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import VideocamOffIcon from "@mui/icons-material/VideocamOff";
+import CallEndIcon from '@mui/icons-material/CallEnd';
 import { useClient } from "./Settings";
 import AgoraRTM from 'agora-rtm-sdk';
 import "./AgoraStyle.css";

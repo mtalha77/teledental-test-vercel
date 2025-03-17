@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import PatientSignUpModal from "../Auth/PatientSignUpModal";
 import DentistSignUpModal from "../Auth/DentistSignUpModal";
-import { makeStyles } from "@material-ui/core";
+import makeStyles from '@mui/styles/makeStyles';
 import toothImage from "../assets/img/icon-theet.png";
 import HeroBanner from "./HeroBanner";
 import appStore from "../assets/img/app-store.png";
@@ -20,25 +20,25 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: "30px",
 	},
 	jumbotron: {
-		[theme.breakpoints.down("md")]: {
+		[theme.breakpoints.down('lg')]: {
 			backgroundPosition: "75%",
 		},
-		[theme.breakpoints.down("xs")]: {
+		[theme.breakpoints.down('sm')]: {
 			backgroundPosition: "68%",
 			maxHeight: "500px",
 		},
 	},
 	advice: {
-		[theme.breakpoints.down("lg")]: {
+		[theme.breakpoints.down('xl')]: {
 			fontSize: "30px",
 		},
-		[theme.breakpoints.down("md")]: {
+		[theme.breakpoints.down('lg')]: {
 			fontSize: "25px",
 		},
-		[theme.breakpoints.down("sm")]: {
+		[theme.breakpoints.down('md')]: {
 			fontSize: "20px",
 		},
-		[theme.breakpoints.down("xs")]: {
+		[theme.breakpoints.down('sm')]: {
 			fontSize: "3.5vw",
 		},
 	},

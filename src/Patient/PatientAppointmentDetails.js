@@ -12,7 +12,7 @@ import { Option } from "antd/lib/mentions";
 import Dragger from "antd/lib/upload/Dragger";
 import { appointmentDetails } from "./apis/patientV1";
 import { CameraOutlined, RightOutlined, LeftOutlined } from "@ant-design/icons";
-import { Link } from "@material-ui/core";
+import { Link } from "@mui/material";
 import Moment from 'moment';
 import TimezoneSelect, { useTimezoneSelect } from 'react-timezone-select'
 

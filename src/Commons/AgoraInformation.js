@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Box } from "@material-ui/core";
+import { Button, Box } from "@mui/material";
 import Header from "./Header";
 import { useLocation } from 'react-router-dom';
 import VideoCall from "../../src/Commons/AgoraMeeting/VideoCall";

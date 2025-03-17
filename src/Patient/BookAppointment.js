@@ -11,7 +11,7 @@ import TextArea from "antd/lib/input/TextArea";
 import { Option } from "antd/lib/mentions";
 import Dragger from "antd/lib/upload/Dragger";
 import { CameraOutlined, RightOutlined } from "@ant-design/icons";
-import { Link } from "@material-ui/core";
+import { Link } from "@mui/material";
 import Moment from 'moment';
 import TimezoneSelect, { useTimezoneSelect } from 'react-timezone-select'
 import AgoraToken from "../Commons/AgoraMeeting/AgoraToken";
