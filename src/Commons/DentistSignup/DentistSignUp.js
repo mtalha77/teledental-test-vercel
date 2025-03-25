@@ -45,8 +45,6 @@ function DentistSignUpModal() {
 			if (isSignUpPressed) {
 				let user_captcha = document.getElementById("user_captcha_input").value;
 				if (validateCaptcha(user_captcha) == true) {
-					loadCaptchaEnginge(6);
-					document.getElementById("user_captcha_input").value = "";
 					setLoading(true);
 					const body = {
 						...values,
@@ -132,7 +130,10 @@ function DentistSignUpModal() {
 						)}
 						<div className="signup-page-headline">
 							<div className="d-flex justify-content-center"></div>
-							<h2 className={`mb-0 w-100 text-center ${styles.h2}`} style={{marginTop: '65px'}}>
+							<h2
+								className={`mb-0 w-100 text-center ${styles.h2}`}
+								style={{ marginTop: "65px" }}
+							>
 								Dentist <span>Registration</span>
 							</h2>
 							<div className="px-4 mb-3 text-center montsarretNormal py-2">
@@ -299,8 +300,15 @@ function DentistSignUpModal() {
 											</Form.Item>
 										</div>
 										<div className="col-sm-12 signup-select">
-											<Form.Item name="city" >
-												<Select defaultValue="male" style={{fontWeight: 700, height: "49px", borderRadius: "4px"}}>
+											<Form.Item name="city">
+												<Select
+													defaultValue="male"
+													style={{
+														fontWeight: 700,
+														height: "49px",
+														borderRadius: "4px",
+													}}
+												>
 													<Option value="male">I am a licensed dentist</Option>
 													<Option value="female">
 														I want to join Teledental
@@ -315,9 +323,9 @@ function DentistSignUpModal() {
 										<div className="col-sm-12">
 											<Form.Item
 												name="location"
-                        style={{
-                          fontWeight: 700,
-                        }}
+												style={{
+													fontWeight: 700,
+												}}
 												rules={[
 													{
 														required: true,
@@ -743,34 +751,59 @@ function DentistSignUpModal() {
 											<LoadCanvasTemplate />
 										</div>
 										<div
-											className="col mt-3"
+											className="col mt-3 d-flex align-items-center gap-2 p-0"
 											style={{ marginBottom: "20px" }}
 										>
-											<div>
-												<input
-													placeholder="Enter Captcha Value"
-													id="user_captcha_input"
-													name="user_captcha_input"
-													type="text"
-												></input>
-											</div>
+											<Input
+												disabled={true}
+												type="number"
+												style={{
+													fontWeight: 700,
+													fontWeight: 700,
+													height: "49px",
+													width: "49px",
+													borderRadius: "4px",
+												}}
+											/>{" "}
+											+{" "}
+											<Input
+												disabled={true}
+												type="number"
+												style={{
+													fontWeight: 700,
+													fontWeight: 700,
+													height: "49px",
+													width: "49px",
+													borderRadius: "4px",
+												}}
+											/>{" "} = {" "}
+											<Input
+												placeholder="Enter the sum"
+												type="number"
+													style={{
+														fontWeight: 700,
+														fontWeight: 700,
+														height: "49px",
+														borderRadius: "4px",
+													}}
+												/>
 										</div>
 									</div>
 									<div className="d-flex justify-content-center w-100">
-									<Form.Item>
-										<Button
-											className="brix---btn-primary w-button btn-edit mb-2 h-auto"
-											block
-											type="primary"
-											htmlType="submit"
-											loading={loading}
-											size="large"
-											disabled={btnDisabled}
-										>
-											Sign up
-										</Button>
-									</Form.Item>
-								</div>
+										<Form.Item>
+											<Button
+												className="brix---btn-primary w-button btn-edit mb-2 h-auto"
+												block
+												type="primary"
+												htmlType="submit"
+												loading={loading}
+												size="large"
+												disabled={btnDisabled}
+											>
+												Sign up
+											</Button>
+										</Form.Item>
+									</div>
 								</div>
 							</div>
 						</div>

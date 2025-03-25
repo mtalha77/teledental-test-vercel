@@ -109,7 +109,7 @@ function PatientSignUp({
 						<div className="signup-page-headline">
 							<h2
 								className={`mb-0 w-100 text-center ${styles.h2}`}
-								style={{marginTop: '65px'}}
+								style={{ marginTop: "65px" }}
 							>
 								Patient <span>Registration</span>
 							</h2>
@@ -588,7 +588,7 @@ function PatientSignUp({
 								<div>
 									<LoadCanvasTemplate />
 								</div>
-								<div
+								{/* <div
 									className="col mt-3"
 									style={{ marginBottom: "20px" }}
 								>
@@ -600,23 +600,71 @@ function PatientSignUp({
 											type="text"
 										></input>
 									</div>
+								</div> */}
+								<div
+									style={{
+										display: isSignUpPressed ? "block" : "none",
+									}}
+								>
+									<div>
+										<LoadCanvasTemplate />
+									</div>
+									<div
+										className="col mt-3 d-flex align-items-center gap-2 p-0"
+										style={{ marginBottom: "20px" }}
+									>
+										<Input
+											disabled={true}
+											type="number"
+											style={{
+												fontWeight: 700,
+												fontWeight: 700,
+												height: "49px",
+												width: "49px",
+												borderRadius: "4px",
+											}}
+										/>{" "}
+										+{" "}
+										<Input
+											disabled={true}
+											type="number"
+											style={{
+												fontWeight: 700,
+												fontWeight: 700,
+												height: "49px",
+												width: "49px",
+												borderRadius: "4px",
+											}}
+										/>{" "}
+										={" "}
+										<Input
+											placeholder="Enter the sum"
+											type="number"
+											style={{
+												fontWeight: 700,
+												fontWeight: 700,
+												height: "49px",
+												borderRadius: "4px",
+											}}
+										/>
+									</div>
 								</div>
 							</div>
-								<div className="d-flex justify-content-center w-100">
-									<Form.Item>
-										<Button
-											className="brix---btn-primary w-button btn-edit mb-2 h-auto"
-											block
-											type="primary"
-											htmlType="submit"
-											loading={loading}
-											size="large"
-											disabled={btnDisabled}
-										>
-											Sign up
-										</Button>
-									</Form.Item>
-								</div>
+							<div className="d-flex justify-content-center w-100">
+								<Form.Item>
+									<Button
+										className="brix---btn-primary w-button btn-edit mb-2 h-auto"
+										block
+										type="primary"
+										htmlType="submit"
+										loading={loading}
+										size="large"
+										disabled={btnDisabled}
+									>
+										Sign up
+									</Button>
+								</Form.Item>
+							</div>
 							<div class="note__txt">
 								<b>Note:</b> We will need further information before doing any
 								Live Teledental Dentist Video Consultation, so we can best serve
