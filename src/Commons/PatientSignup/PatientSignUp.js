@@ -30,6 +30,9 @@ function PatientSignUp({
 	const { setToken } = useUserContext();
 	const [isSignInModalVisible, setIsSignInModalVisible] = React.useState(false);
 	const [isSignUpPressed, setIsSignUpPressed] = useState(false);
+	const [firstCaptch, setfirstCaptch] = useState(0);
+	const [secondCaptch, setsecondCaptch] = useState(0);
+	const [totalCaptch, setTotalCaptch] = useState("");
 	const [isVerificationModalVisible, setIsVerificationModalVisible] =
 		React.useState(false);
 	const [entity, setEntity] = React.useState("");
@@ -59,16 +62,29 @@ function PatientSignUp({
 	};
 
 	useEffect(() => {
-		loadCaptchaEnginge(6);
+		//loadCaptchaEnginge(6);
+		generateNumber();
 	}, []);
+
+	const generateNumber = () => {
+		setfirstCaptch(Math.floor(Math.random() * 10));
+		setsecondCaptch(Math.floor(Math.random() * 10));
+		setTotalCaptch("");
+	};
+
+	const reload = () => {
+		generateNumber();
+	};
 
 	const onFinish = async (values) => {
 		try {
 			if (isSignUpPressed) {
-				let user_captcha = document.getElementById("user_captcha_input").value;
-				if (validateCaptcha(user_captcha) == true) {
-					loadCaptchaEnginge(6);
-					document.getElementById("user_captcha_input").value = "";
+				debugger;
+				// let user_captcha = document.getElementById("user_captcha_input").value;
+				// if (validateCaptcha(user_captcha) == true) {
+				if (firstCaptch + secondCaptch == Number(totalCaptch)) {
+					//loadCaptchaEnginge(6);
+					//document.getElementById("user_captcha_input").value = "";
 					setLoading(true);
 					const res = await signup({ entity: "patients", body: values });
 					// setToken(res?.data?.token);
@@ -82,7 +98,8 @@ function PatientSignUp({
 					form.resetFields();
 					setIsSignUpPressed(false);
 				} else {
-					document.getElementById("user_captcha_input").value = "";
+					//document.getElementById("user_captcha_input").value = "";
+					generateNumber();
 				}
 			} else {
 				setIsSignUpPressed(true);
@@ -585,9 +602,9 @@ function PatientSignUp({
 								</div>
 							</div>
 							<div style={{ display: isSignUpPressed ? "block" : "none" }}>
-								<div>
+								{/* <div>
 									<LoadCanvasTemplate />
-								</div>
+								</div> */}
 								{/* <div
 									className="col mt-3"
 									style={{ marginBottom: "20px" }}
@@ -606,21 +623,23 @@ function PatientSignUp({
 										display: isSignUpPressed ? "block" : "none",
 									}}
 								>
-									<div>
+									{/* <div>
 										<LoadCanvasTemplate />
-									</div>
+									</div> */}
 									<div
 										className="col mt-3 d-flex align-items-center gap-2 p-0"
 										style={{ marginBottom: "20px" }}
 									>
 										<Input
 											disabled={true}
+											value={firstCaptch}
+											name="firstCaptcha"
 											type="number"
 											style={{
 												fontWeight: 700,
 												fontWeight: 700,
 												height: "49px",
-												width: "49px",
+												width: "52px",
 												borderRadius: "4px",
 											}}
 										/>{" "}
@@ -628,25 +647,39 @@ function PatientSignUp({
 										<Input
 											disabled={true}
 											type="number"
+											name="secondCaptcha"
+											value={secondCaptch}
 											style={{
 												fontWeight: 700,
 												fontWeight: 700,
 												height: "49px",
-												width: "49px",
+												width: "52px",
 												borderRadius: "4px",
 											}}
-										/>{" "}
-										={" "}
+										/>{" "} = {" "}
 										<Input
 											placeholder="Enter the sum"
 											type="number"
-											style={{
-												fontWeight: 700,
-												fontWeight: 700,
-												height: "49px",
-												borderRadius: "4px",
-											}}
-										/>
+											value={totalCaptch}
+											onChange={(e) => setTotalCaptch(e.target.value)}
+												style={{
+													fontWeight: 700,
+													fontWeight: 700,
+													height: "49px",
+													borderRadius: "4px",
+												}}
+											/>
+										<button
+										onClick={reload}
+										style={{
+											fontSize: "24px",
+											cursor: "pointer",
+											border: "none",
+											background: "none",
+										}}
+										>
+										⭯
+										</button>
 									</div>
 								</div>
 							</div>

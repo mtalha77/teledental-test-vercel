@@ -38,18 +38,25 @@ function DentistSignUpModal() {
 	const [entity, setEntity] = React.useState("");
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [isSignUpPressed, setIsSignUpPressed] = useState(false);
+	const [firstCaptch, setfirstCaptch] = useState(0);
+	const [secondCaptch, setsecondCaptch] = useState(0);
+	const [totalCaptch, setTotalCaptch] = useState("");
 	const [form] = Form.useForm();
 	const { TextArea } = Input;
 	const onFinish = async (values) => {
 		try {
 			if (isSignUpPressed) {
-				let user_captcha = document.getElementById("user_captcha_input").value;
-				if (validateCaptcha(user_captcha) == true) {
+				// let user_captcha = document.getElementById("user_captcha_input").value;
+				// if (validateCaptcha(user_captcha) == true) {
+				if (firstCaptch + secondCaptch == Number(totalCaptch)) {
 					setLoading(true);
 					const body = {
 						...values,
 						location: address,
 					};
+					if (body.businessName == undefined) {
+						body.businessName = '';
+					}
 					const res = await signup({ entity: "dentists", body });
 					if (res) {
 						if (res.status == 200) {
@@ -70,8 +77,11 @@ function DentistSignUpModal() {
 					});
 					// setIsVerificationModalVisible(true);
 					setIsSignUpPressed(false);
+					generateNumber();
 				} else {
-					document.getElementById("user_captcha_input").value = "";
+					//document.getElementById("user_captcha_input").value = "";
+					generateNumber();
+
 				}
 			} else {
 				setIsSignUpPressed(true);
@@ -83,8 +93,19 @@ function DentistSignUpModal() {
 	};
 
 	useEffect(() => {
-		loadCaptchaEnginge(6);
+		//loadCaptchaEnginge(6);
+		generateNumber();
 	}, []);
+
+	const generateNumber = () => {
+		setfirstCaptch(Math.floor(Math.random() * 10));
+		setsecondCaptch(Math.floor(Math.random() * 10));
+		setTotalCaptch("");
+	};
+
+	const reload = () => {
+		generateNumber();
+	};
 
 	const onValuesChange = (changedValues, allValues) => {
 		if (
@@ -122,7 +143,7 @@ function DentistSignUpModal() {
 					>
 						{error && (
 							<Alert
-								style={{ marginBottom: "20px" }}
+								style={{ marginBottom: "20px", marginTop: "60px" }}
 								message={error}
 								type="error"
 								showIcon
@@ -132,7 +153,7 @@ function DentistSignUpModal() {
 							<div className="d-flex justify-content-center"></div>
 							<h2
 								className={`mb-0 w-100 text-center ${styles.h2}`}
-								style={{ marginTop: "65px" }}
+								style={{ marginTop: error ? "5px" : "65px" }}
 							>
 								Dentist <span>Registration</span>
 							</h2>
@@ -747,21 +768,23 @@ function DentistSignUpModal() {
 											display: isSignUpPressed ? "block" : "none",
 										}}
 									>
-										<div>
+										{/* <div>
 											<LoadCanvasTemplate />
-										</div>
+										</div> */}
 										<div
 											className="col mt-3 d-flex align-items-center gap-2 p-0"
 											style={{ marginBottom: "20px" }}
 										>
 											<Input
 												disabled={true}
+												value={firstCaptch}
+												name="firstCaptcha"
 												type="number"
 												style={{
 													fontWeight: 700,
 													fontWeight: 700,
 													height: "49px",
-													width: "49px",
+													width: "52px",
 													borderRadius: "4px",
 												}}
 											/>{" "}
@@ -769,17 +792,21 @@ function DentistSignUpModal() {
 											<Input
 												disabled={true}
 												type="number"
+												name="secondCaptcha"
+												value={secondCaptch}
 												style={{
 													fontWeight: 700,
 													fontWeight: 700,
 													height: "49px",
-													width: "49px",
+													width: "52px",
 													borderRadius: "4px",
 												}}
 											/>{" "} = {" "}
 											<Input
 												placeholder="Enter the sum"
 												type="number"
+												value={totalCaptch}
+												onChange={(e) => setTotalCaptch(e.target.value)}
 													style={{
 														fontWeight: 700,
 														fontWeight: 700,
@@ -787,6 +814,17 @@ function DentistSignUpModal() {
 														borderRadius: "4px",
 													}}
 												/>
+											<button
+											onClick={reload}
+											style={{
+												fontSize: "24px",
+												cursor: "pointer",
+												border: "none",
+												background: "none",
+											}}
+											>
+											⭯
+											</button>
 										</div>
 									</div>
 									<div className="d-flex justify-content-center w-100">
