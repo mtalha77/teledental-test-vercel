@@ -23,7 +23,7 @@ function HomeJoinUs() {
                         </div>
                         <div className={Style.jus_content_left} data-aos="fade-right" data-aos-duration="500">
                             <ul>
-                                <li>Become a Teledental dentist (FT/PT) Add </li>
+                                <li>Become a Teledental dentist (FT/PT) </li>
                                 <li>Teledental to your dental practice </li>
                                 <li>Are you a dental health care company or want to work with us?</li>
                             </ul>
