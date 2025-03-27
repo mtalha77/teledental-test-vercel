@@ -37,7 +37,7 @@ function DentistSignUpModal() {
 		React.useState(query.notApproved ? true : false);
 	const [entity, setEntity] = React.useState("");
 	const [isModalVisible, setIsModalVisible] = useState(false);
-	const [isSignUpPressed, setIsSignUpPressed] = useState(false);
+	const [isSignUpPressed, setIsSignUpPressed] = useState(true);
 	const [firstCaptch, setfirstCaptch] = useState(0);
 	const [secondCaptch, setsecondCaptch] = useState(0);
 	const [totalCaptch, setTotalCaptch] = useState("");
@@ -76,7 +76,7 @@ function DentistSignUpModal() {
 						radio.checked = false;
 					});
 					// setIsVerificationModalVisible(true);
-					setIsSignUpPressed(false);
+					setIsSignUpPressed(true);
 					generateNumber();
 				} else {
 					//document.getElementById("user_captcha_input").value = "";

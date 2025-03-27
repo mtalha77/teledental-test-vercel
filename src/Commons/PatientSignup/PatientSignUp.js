@@ -29,7 +29,7 @@ function PatientSignUp({
 	const [error, setError] = React.useState("");
 	const { setToken } = useUserContext();
 	const [isSignInModalVisible, setIsSignInModalVisible] = React.useState(false);
-	const [isSignUpPressed, setIsSignUpPressed] = useState(false);
+	const [isSignUpPressed, setIsSignUpPressed] = useState(true);
 	const [firstCaptch, setfirstCaptch] = useState(0);
 	const [secondCaptch, setsecondCaptch] = useState(0);
 	const [totalCaptch, setTotalCaptch] = useState("");
@@ -96,7 +96,7 @@ function PatientSignUp({
 					setIsModalVisible("");
 					// setIsVerificationModalVisible(true);
 					form.resetFields();
-					setIsSignUpPressed(false);
+					setIsSignUpPressed(true);
 				} else {
 					//document.getElementById("user_captcha_input").value = "";
 					generateNumber();
