@@ -111,7 +111,7 @@ const HeroBanner = () => {
                 data-w-id="4d3aaa75-92ba-ca55-d78b-6cde0f6916ee"
                 className="uui-heroheader01_image-wrapper-4"
                 data-aos="fade-left"
-                data-aos-duration="500"
+                // data-aos-duration="500"
               >
                 {/* <h3 className="tagLineText">
                   Live <span>Teledental</span> <br/> Consultation

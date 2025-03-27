@@ -12,7 +12,7 @@ function HomeFaqs() {
 					<div
 						className={Style.faq_right}
 						data-aos="fade-left"
-						data-aos-duration="400"
+						// data-aos-duration="400"
 					>
 						<span>
 							<img
@@ -28,7 +28,7 @@ function HomeFaqs() {
 					<div
 						className={Style.faq_left}
 						data-aos="fade-right"
-						data-aos-duration="500"
+						// data-aos-duration="500"
 					>
 						<h2>FAQ</h2>
 						<h3>Want to learn more about us?</h3>

@@ -12,7 +12,11 @@ function LandingPage() {
           style={{ height: `${window.innerHeight}px` }}
         >
           <div className="container">
-            <img className="logo" src="./assets/img/logo.png" alt="loading" />
+            <img
+              className="logo"
+              src="./assets/img/logo.webp"
+              alt="TeleDental Logo"
+            />
             <h1 className="display-4s gadugiBold blue">
               Need Dental Advice? Like to do a <br />
               Live Video Consultation
@@ -70,8 +74,8 @@ function LandingPage() {
           <div className="col-md-6 col-sm-12 pr-0 featureBottom">
             <img
               className="w-100"
-              src="./assets/img/section-three.jpg"
-              alt="loading"
+              src="./assets/img/section-three.webp"
+              alt="Teledental services illustration"
             />
           </div>
         </div>
@@ -87,7 +91,11 @@ function LandingPage() {
                   role="tabpanel"
                   aria-labelledby="v-pills-home-tab"
                 >
-                  <img src="./assets/img/grip.jpg" alt="loading" />
+                  <img
+                    rel="preload"
+                    src="./assets/img/grip.jpg"
+                    alt="loading"
+                  />
                 </div>
                 <div
                   className="tab-pane fade"
@@ -95,7 +103,11 @@ function LandingPage() {
                   role="tabpanel"
                   aria-labelledby="v-pills-profile-tab"
                 >
-                  <img src="./assets/img/grip.jpg" alt="loading" />
+                  <img
+                    rel="preload"
+                    src="./assets/img/grip.jpg"
+                    alt="loading"
+                  />
                 </div>
                 <div
                   className="tab-pane fade"
@@ -103,7 +115,11 @@ function LandingPage() {
                   role="tabpanel"
                   aria-labelledby="v-pills-messages-tab"
                 >
-                  <img src="./assets/img/grip.jpg" alt="loading" />
+                  <img
+                    rel="preload"
+                    src="./assets/img/grip.jpg"
+                    alt="loading"
+                  />
                 </div>
               </div>
               <div
@@ -189,13 +205,21 @@ function LandingPage() {
           </button>
         </div>
         <div className="sectionFive_bottom text-center">
-          <img src="./assets/img/laptop.png" alt="loading" />
+          <img
+            loading="lazy"
+            src="./assets/img/laptop.webp"
+            alt="Laptop showing DentalChat application"
+          />
         </div>
       </section>
       <section className="sectionSix container-fluid">
         <div className="row">
           <div className="col-md-4 cardItem">
-            <img src="./assets/img/card-01.png" alt="loading" />
+            <img
+              loading="lazy"
+              src="./assets/img/card-01.webp"
+              alt="Dental Implant illustration"
+            />
             <p className="card_title mt15 darkBlue gadugiBold">
               Dental Implant
             </p>
@@ -215,7 +239,11 @@ function LandingPage() {
             </p>
           </div>
           <div className="col-md-4 cardItem">
-            <img src="./assets/img/card-02.png" alt="loading" />
+            <img
+              loading="lazy"
+              src="./assets/img/card-02.webp"
+              alt="Tooth Pain illustration"
+            />
             <p className="card_title mt15 darkBlue gadugiBold">Tooth Pain</p>
             <label
               className="card_btn mt15 gadugiBold link"
@@ -233,7 +261,11 @@ function LandingPage() {
             </p>
           </div>
           <div className="col-md-4 cardItem">
-            <img src="./assets/img/card-03.png" alt="loading" />
+            <img
+              loading="lazy"
+              src="./assets/img/card-03.webp"
+              alt="Teeth Whitening illustration"
+            />
             <p className="card_title mt15 darkBlue gadugiBold">
               TEETH WHITENING
             </p>
@@ -253,7 +285,11 @@ function LandingPage() {
             </p>
           </div>
           <div className="col-md-4 cardItem">
-            <img src="./assets/img/card-04.png" alt="loading" />
+            <img
+              loading="lazy"
+              src="./assets/img/card-04.webp"
+              alt="Crowns & Bridges illustration"
+            />
             <p className="card_title mt15 darkBlue gadugiBold">
               CROWNS & BRIDGES
             </p>
@@ -272,7 +308,11 @@ function LandingPage() {
             </p>
           </div>
           <div className="col-md-4 cardItem">
-            <img src="./assets/img/card-05.png" alt="loading" />
+            <img
+              loading="lazy"
+              src="./assets/img/card-05.webp"
+              alt="Gum Problem illustration"
+            />
             <p className="card_title mt15 darkBlue gadugiBold">GUM PROBLEM</p>
             <label
               className="card_btn mt15 gadugiBold link"
@@ -290,7 +330,11 @@ function LandingPage() {
             </p>
           </div>
           <div className="col-md-4 cardItem">
-            <img src="./assets/img/card-06.png" alt="loading" />
+            <img
+              loading="lazy"
+              src="./assets/img/card-06.webp"
+              alt="Cosmetic Dentistry illustration"
+            />
             <p className="card_title mt15 darkBlue gadugiBold">
               COSMETIC DENTISTRY
             </p>
@@ -320,23 +364,26 @@ function LandingPage() {
             <h2>WANT A SECOND OPINION? HAVE A DENTAL QUESTION?</h2>
             <div className="sectionSeven_bottom">
               <img
+                loading="lazy"
                 className="shareItem"
-                src="./assets/img/app-store.png"
-                alt="loading"
+                src="./assets/img/app-store.webp"
+                alt="Download on App Store"
                 style={{ marginRight: "5px" }}
               />
               <img
+                loading="lazy"
                 className="shareItem"
-                src="./assets/img/play-store.png"
-                alt="loading"
+                src="./assets/img/play-store.webp"
+                alt="Get it on Google Play"
               />
             </div>
           </div>
           <div className="col-md-4">
             <img
+              loading="lazy"
               className="mockupMobile"
-              src="./assets/img/mobile-mockup.png"
-              alt="loading"
+              src="./assets/img/mobile-mockup.webp"
+              alt="Mobile app mockup showing DentalChat"
             />
           </div>
         </div>
