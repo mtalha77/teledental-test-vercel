@@ -5,19 +5,19 @@ import { useUserContext } from "../../Context/userContext";
 // import { FacebookFilled } from "@ant-design/icons";
 // import GoogleIcon from "../../assets/svg/GoogleIcon";
 import { PlacesAutocompleteWrapper } from "../PlacesAutoCompleteWrapper";
-// import logo from "../../assets/img/logo.png";
+// import logo from "../../assets/img/logo.webp";
 import styles from "./DentistSignUp.module.css";
 import Header from "../Header";
 import { Link, useLocation } from "react-router-dom";
 import SignInModal from "../../Auth/SignInModal";
 import SignUpSuccessModal from "../../Dentist/SignUpSuccessModal";
 import queryString from "query-string";
-import logoOld from "../../assets/img/TeleDental-web.png";
-import bigImg from "../../assets/img/d_reg_img.png";
+import logoOld from "../../assets/img/TeleDental-web.webp";
+import bigImg from "../../assets/img/d_reg_img.webp";
 import {
-	LoadCanvasTemplate,
-	loadCaptchaEnginge,
-	validateCaptcha,
+  LoadCanvasTemplate,
+  loadCaptchaEnginge,
+  validateCaptcha,
 } from "react-simple-captcha";
 const { Option } = Select;
 
@@ -475,10 +475,10 @@ function DentistSignUpModal() {
                         <TextArea rows={4} placeholder="Address..." />
                       </Form.Item>
                     </div> */}
-									</div>
-								</div>
-							</div>
-							{/* <div className="row">
+                  </div>
+                </div>
+              </div>
+              {/* <div className="row">
                 <div className="mb-4 col-sm-6 col-12">
                   <div className="form-group">
                     <label className={`mb-2 ${styles.questionsLabel}`}>
@@ -846,7 +846,7 @@ function DentistSignUpModal() {
 							</div>
 						</div>
 
-						{/* <Row style={{ display: "flex" }}>
+            {/* <Row style={{ display: "flex" }}>
             <Divider style={{ minWidth: "45%", width: "45%" }} />
             <Typography.Title
               style={{ lineHeight: "2.9", margin: "0 10px" }}
@@ -880,45 +880,39 @@ function DentistSignUpModal() {
           >
             Continue with Facebook
           </Button> */}
-					</Form>
-				</div>
-				<div className="n_signup_vactors">
-					<Link
-						to="/"
-						className="n_signup_logo"
-					>
-						<img
-							// src={isScrolled ? logoOld : logoNew}
-							src={logoOld}
-							alt="TeleDental"
-						/>
-					</Link>
-					<div className="n_signup_img">
-						<img
-							src={bigImg}
-							alt="TeleDental"
-						/>
-					</div>
-					<div className="n_signup_img_text">
-						<h2>
-							Virtual <span> Dental Care</span>
-						</h2>
-						<i>Anywhere, 24/7</i>
-					</div>
-				</div>
-			</div>
-			<SignInModal
-				isModalVisible={isSignInModalVisible}
-				setIsModalVisible={setIsSignInModalVisible}
-				setIsVerificationModalVisible={setIsVerificationModalVisible}
-				setEntity={setEntity}
-			/>
-			<SignUpSuccessModal
-				isModalVisible={isSignUpSuccessModalVisible}
-				setIsModalVisible={setIsSignUpSuccessModalVisible}
-			/>
-		</>
-	);
+          </Form>
+        </div>
+        <div className="n_signup_vactors">
+          <Link to="/" className="n_signup_logo">
+            <img
+              // src={isScrolled ? logoOld : logoNew}
+              src={logoOld}
+              alt="TeleDental"
+            />
+          </Link>
+          <div className="n_signup_img">
+            <img src={bigImg} alt="TeleDental" />
+          </div>
+          <div className="n_signup_img_text">
+            <h2>
+              Virtual <span> Dental Care</span>
+            </h2>
+            <i>Anywhere, 24/7</i>
+          </div>
+        </div>
+      </div>
+      <SignInModal
+        isModalVisible={isSignInModalVisible}
+        setIsModalVisible={setIsSignInModalVisible}
+        setIsVerificationModalVisible={setIsVerificationModalVisible}
+        setEntity={setEntity}
+      />
+      <SignUpSuccessModal
+        isModalVisible={isSignUpSuccessModalVisible}
+        setIsModalVisible={setIsSignUpSuccessModalVisible}
+      />
+    </>
+  );
 }
 
 export default DentistSignUpModal;

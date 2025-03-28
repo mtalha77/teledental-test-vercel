@@ -8,19 +8,19 @@ import Header from "../Header";
 import styles from "./PatientSignUp.module.css";
 import SignInModal from "../../Auth/SignInModal";
 import { Link, useHistory } from "react-router-dom";
-import logoOld from "../../assets/img/TeleDental-web.png";
+import logoOld from "../../assets/img/TeleDental-web.webp";
 import { PlacesAutocompleteWrapper } from "../PlacesAutoCompleteWrapper";
-import bigImg from "../../assets/img/banner_img.png";
+import bigImg from "../../assets/img/banner_img.webp";
 import {
-	LoadCanvasTemplate,
-	loadCaptchaEnginge,
-	validateCaptcha,
+  LoadCanvasTemplate,
+  loadCaptchaEnginge,
+  validateCaptcha,
 } from "react-simple-captcha";
 function PatientSignUp({
-	isModalVisible,
-	setIsModalVisible,
-	// setIsVerificationModalVisible,
-	// setEntity,
+  isModalVisible,
+  setIsModalVisible,
+  // setIsVerificationModalVisible,
+  // setEntity,
 }) {
 	const [address, setAddress] = React.useState({});
 	const [btnDisabled, setBtnDisabled] = React.useState(true);
@@ -38,28 +38,28 @@ function PatientSignUp({
 	const [entity, setEntity] = React.useState("");
 	const [form] = Form.useForm();
 
-	const onValuesChange = (changedValues, allValues) => {
-		console.log({ allValues });
+  const onValuesChange = (changedValues, allValues) => {
+    console.log({ allValues });
 
-		if (
-			allValues.password !== undefined &&
-			allValues.password !== "" &&
-			allValues.email !== undefined &&
-			allValues.email !== "" &&
-			allValues.firstName !== undefined &&
-			allValues.firstName !== "" &&
-			allValues.lastName !== undefined &&
-			allValues.lastName !== "" &&
-			allValues?.confirmEmail !== undefined &&
-			allValues?.confirmEmail !== "" &&
-			allValues.checkbox !== undefined &&
-			allValues.checkbox
-		) {
-			setBtnDisabled(false);
-		} else {
-			setBtnDisabled(true);
-		}
-	};
+    if (
+      allValues.password !== undefined &&
+      allValues.password !== "" &&
+      allValues.email !== undefined &&
+      allValues.email !== "" &&
+      allValues.firstName !== undefined &&
+      allValues.firstName !== "" &&
+      allValues.lastName !== undefined &&
+      allValues.lastName !== "" &&
+      allValues?.confirmEmail !== undefined &&
+      allValues?.confirmEmail !== "" &&
+      allValues.checkbox !== undefined &&
+      allValues.checkbox
+    ) {
+      setBtnDisabled(false);
+    } else {
+      setBtnDisabled(true);
+    }
+  };
 
 	useEffect(() => {
 		//loadCaptchaEnginge(6);
@@ -161,123 +161,123 @@ function PatientSignUp({
 							</div>
 						</div>
 
-						<div
-							className={`row d-flex mt-4 right-side-check w-75 m-0 mx-auto ${styles.WrapperRightlable}`}
-						>
-							{error && (
-								<Alert
-									style={{ marginBottom: "20px" }}
-									message={error}
-									type="error"
-									showIcon
-								/>
-							)}
-							<div className="col-sm-12">
-								<Form.Item
-									name="firstName"
-									rules={[
-										{
-											required: true,
-											message: "Please input your first name!",
-										},
-									]}
-								>
-									<Input
-										placeholder="* First Name"
-										style={{
-											fontWeight: 700,
-											height: "49px",
-											borderRadius: "4px",
-										}}
-									/>
-								</Form.Item>
-							</div>
-							<div className="col-sm-12">
-								<Form.Item
-									name="lastName"
-									rules={[
-										{ required: true, message: "Please input your last name!" },
-									]}
-								>
-									<Input
-										placeholder="* Last Name"
-										style={{
-											fontWeight: 700,
-											height: "49px",
-											borderRadius: "4px",
-										}}
-									/>
-								</Form.Item>
-							</div>
-							<div className="col-sm-12">
-								<Form.Item
-									name="email"
-									rules={[
-										{
-											type: "email",
-											message: "Invalid Email format!",
-										},
-										{ required: true, message: "Please input your email!" },
-									]}
-								>
-									<Input
-										placeholder="* Email"
-										style={{
-											fontWeight: 700,
-											height: "49px",
-											borderRadius: "4px",
-										}}
-									/>
-								</Form.Item>
-							</div>
-							<div className="col-sm-12">
-								<Form.Item
-									name="confirmEmail"
-									dependencies={["email"]}
-									rules={[
-										{
-											required: true,
-											type: "email",
-											message: "Invalid Email!",
-										},
-										({ getFieldValue }) => ({
-											validator(_, value) {
-												if (!value || getFieldValue("email") === value) {
-													return Promise.resolve();
-												}
-												return Promise.reject(new Error("Email do not match"));
-											},
-										}),
-									]}
-								>
-									<Input
-										placeholder="* Confirm Email"
-										style={{
-											fontWeight: 700,
-											height: "49px",
-											borderRadius: "4px",
-										}}
-									/>
-								</Form.Item>
-							</div>
-							<div className="col-sm-12">
-								<Form.Item
-									name="password"
-									rules={[
-										{ required: true, message: "Please input your password!" },
-									]}
-								>
-									<Input.Password
-										placeholder="* Password"
-										style={{
-											fontWeight: 700,
-											height: "49px",
-											borderRadius: "4px",
-										}}
-									/>
-								</Form.Item>
-							</div>
-							{/* <div className="col-sm-6 col-md-4">
+            <div
+              className={`row d-flex mt-4 right-side-check w-75 m-0 mx-auto ${styles.WrapperRightlable}`}
+            >
+              {error && (
+                <Alert
+                  style={{ marginBottom: "20px" }}
+                  message={error}
+                  type="error"
+                  showIcon
+                />
+              )}
+              <div className="col-sm-12">
+                <Form.Item
+                  name="firstName"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your first name!",
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="* First Name"
+                    style={{
+                      fontWeight: 700,
+                      height: "49px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Form.Item>
+              </div>
+              <div className="col-sm-12">
+                <Form.Item
+                  name="lastName"
+                  rules={[
+                    { required: true, message: "Please input your last name!" },
+                  ]}
+                >
+                  <Input
+                    placeholder="* Last Name"
+                    style={{
+                      fontWeight: 700,
+                      height: "49px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Form.Item>
+              </div>
+              <div className="col-sm-12">
+                <Form.Item
+                  name="email"
+                  rules={[
+                    {
+                      type: "email",
+                      message: "Invalid Email format!",
+                    },
+                    { required: true, message: "Please input your email!" },
+                  ]}
+                >
+                  <Input
+                    placeholder="* Email"
+                    style={{
+                      fontWeight: 700,
+                      height: "49px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Form.Item>
+              </div>
+              <div className="col-sm-12">
+                <Form.Item
+                  name="confirmEmail"
+                  dependencies={["email"]}
+                  rules={[
+                    {
+                      required: true,
+                      type: "email",
+                      message: "Invalid Email!",
+                    },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (!value || getFieldValue("email") === value) {
+                          return Promise.resolve();
+                        }
+                        return Promise.reject(new Error("Email do not match"));
+                      },
+                    }),
+                  ]}
+                >
+                  <Input
+                    placeholder="* Confirm Email"
+                    style={{
+                      fontWeight: 700,
+                      height: "49px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Form.Item>
+              </div>
+              <div className="col-sm-12">
+                <Form.Item
+                  name="password"
+                  rules={[
+                    { required: true, message: "Please input your password!" },
+                  ]}
+                >
+                  <Input.Password
+                    placeholder="* Password"
+                    style={{
+                      fontWeight: 700,
+                      height: "49px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Form.Item>
+              </div>
+              {/* <div className="col-sm-6 col-md-4">
               <Form.Item label="Description" name="Description">
                 <Input />
               </Form.Item>
@@ -290,59 +290,53 @@ function PatientSignUp({
                 <Input />
               </Form.Item>
             </div> */}
-							<div className="col-sm-12">
-								<Form.Item
-									name="Address"
-									style={{
-										fontWeight: 700,
-									}}
-								>
-									<PlacesAutocompleteWrapper
-										address={address.address}
-										setAddress={setAddress}
-										className={styles.location_field}
-									/>
-								</Form.Item>
-							</div>
-							<div className="col-12">
-								<div className="form-group mb-0">
-									<label className={`mb-2 ${styles.questionsLabel}`}>
-										Are you looking to get a Live Teledental consultation?
-									</label>
-								</div>
-								<div className="d-flex align-items-center gap-4 mb-2">
-									<div class="form-check">
-										<input
-											class="form-check-input"
-											type="radio"
-											name="flexRadioDefault-9"
-											id="yes-9"
-										/>
-										<label
-											class="form-check-label"
-											for="yes-9"
-										>
-											Yes
-										</label>
-									</div>
-									<div class="form-check">
-										<input
-											class="form-check-input"
-											type="radio"
-											name="flexRadioDefault-9"
-											id="no-9"
-										/>
-										<label
-											class="form-check-label"
-											for="no-9"
-										>
-											No
-										</label>
-									</div>
-								</div>
-							</div>
+              <div className="col-sm-12">
+                <Form.Item
+                  name="Address"
+                  style={{
+                    fontWeight: 700,
+                  }}
+                >
+                  <PlacesAutocompleteWrapper
+                    address={address.address}
+                    setAddress={setAddress}
+                    className={styles.location_field}
+                  />
+                </Form.Item>
+              </div>
+              <div className="col-12">
+                <div className="form-group mb-0">
+                  <label className={`mb-2 ${styles.questionsLabel}`}>
+                    Are you looking to get a Live Teledental consultation?
+                  </label>
+                </div>
+                <div className="d-flex align-items-center gap-4 mb-2">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault-9"
+                      id="yes-9"
+                    />
+                    <label class="form-check-label" for="yes-9">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault-9"
+                      id="no-9"
+                    />
+                    <label class="form-check-label" for="no-9">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
 
-							{/* <div className="mb-4 col-12">
+              {/* <div className="mb-4 col-12">
               <div className="form-group">
                 <label className={`mb-2 ${styles.questionsLabel}`}>
                   Pain level
@@ -479,7 +473,7 @@ function PatientSignUp({
               </div>
             </div> */}
 
-							{/* <div className="mb-4 col-12">
+              {/* <div className="mb-4 col-12">
               <div className="form-group">
                 <label className={`mb-2 ${styles.questionsLabel}`}>
                   Do you have dental insurance?
@@ -542,8 +536,8 @@ function PatientSignUp({
               </div>
             </div> */}
 
-							<div className="row px-0">
-								{/* <div className="col-sm-12 col-md-8 mb-3">
+              <div className="row px-0">
+                {/* <div className="col-sm-12 col-md-8 mb-3">
                 <label className={`mb-2 ${styles.questionsLabel}`}>
                   Are you interested in adding teledental technology to your
                   dental website?
