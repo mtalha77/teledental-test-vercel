@@ -1,5 +1,4 @@
 import React from "react";
-import HelmetComponent from "./HelmetComponent";
 import Header from "./Header";
 
 function WhiteningAndVeneers() {
@@ -7,7 +6,7 @@ function WhiteningAndVeneers() {
     <div>
       <Header />
       <div
-      className="cosmetic-pd-wrapper footer-center-pages"
+        className="cosmetic-pd-wrapper footer-center-pages"
         // style={{
         //   color: "#000",
         //   maxWidth: "900px",
@@ -15,18 +14,8 @@ function WhiteningAndVeneers() {
         //   margin: "0 auto 20px",
         // }}
       >
-        <HelmetComponent
-          title="Whitening And Veneers | Teledental"
-          name="Whitening And Veneers"
-          content="Many people now desire whiter looking teeth and to not have
-                stains on their teeth.sometimes misuse whitening
-                products and end up with teeth sensitivity.Why do teeth become yellow? Best Teledental Teeth Whitening
-                    Discussion."
-        />
         <p style={{ textAlign: "center" }}>
-          <h2>
-            Teeth Whitening and Dental Veneers
-          </h2>
+          <h2>Teeth Whitening and Dental Veneers</h2>
         </p>
         <p>
           Many people now desire whiter looking teeth and to not have stains on

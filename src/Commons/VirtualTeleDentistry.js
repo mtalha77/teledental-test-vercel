@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./Header";
-import HelmetComponent from "./HelmetComponent";
 import { Form, Input, Button, Alert, message, Select } from "antd";
 import { contactUs } from "../Auth/apis/authV1";
 import Swal from "sweetalert2";
@@ -44,7 +43,7 @@ const VirtualTeleDentistry = () => {
 
       <div className="vtd_top">
         <div className="vtd_banner">
-          <img src={bannerImg} alt="#"></img>
+          <img src={bannerImg} alt=" virtual dentistry"></img>
         </div>
 
         <div className="vtd_content">
@@ -263,7 +262,7 @@ const VirtualTeleDentistry = () => {
               </div>
               <div className="vtd_right">
                 <div className="vtd_rightImg">
-                  <img src={dentisImg} alt="#"></img>
+                  <img src={dentisImg} alt=" dentist logo"></img>
                 </div>
               </div>
             </div>
@@ -272,13 +271,6 @@ const VirtualTeleDentistry = () => {
       </div>
 
       <div className="cosmetic-pd-wrapper footer-center-pages pt-0">
-        {/* <HelmetComponent
-          title="Join us dentists / companies"
-          name="Cosmetic Dentsistry"
-          content="What is Cosmetic Dentistry? Teledental Cosmetic Dental Care Consult. Many people want to understand how to make their
-                teeth look better cosmetically"
-        /> */}
-
         <p>
           <h3>Why Join Teledental?</h3>
         </p>
