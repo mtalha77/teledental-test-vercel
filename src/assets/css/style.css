@@ -3431,11 +3431,11 @@ textarea.w-select {
   padding: 0;
   transition: opacity 0.3s, color 0.3s;
   font-family: "Montserrat", sans-serif;
-  color: #002f34;
+  color: #0071bc;
   font-size: 18px;
-  line-height: 20px;
-  font-weight: 400;
-  letter-spacing: 1px;
+  line-height: 150%;
+  font-weight: 700;
+  letter-spacing: 0%;
 }
 
 .brix---header-nav-link-white:hover {
@@ -6876,13 +6876,15 @@ section#advertisers {
   padding-top: 15px;
   padding-bottom: 15px;
   border: 1px solid #0071bc;
-  font-weight: 600;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
+  font-weight: 700;
+  padding: 0.375rem 1rem;
+  font-size: 18px;
+  line-height: 150%;
+  border-radius: 25px;
   transition: all 0.3s ease;
   display: inline-block;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .prim_btn_blue-fill {
