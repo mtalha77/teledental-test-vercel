@@ -159,16 +159,17 @@ h2 {
 }
 
 .tagLineText {
-  font-size: 24px;
-  line-height: 1.2em;
-  color: #0071bc;
-  font-weight: 400;
-  margin-bottom: -76px;
+  font-size: 36px;
+  line-height: 114.99999999999999%;
+  letter-spacing: 0%;
+  color: white;
+  font-weight: 900;
+  margin-bottom: 10px;
   padding-left: 22px;
 }
 
 .tagLineText span {
-  color: #f0f;
+  color: #F7A5F9;
   font-weight: 700;
 }
 
@@ -1417,6 +1418,7 @@ textarea.w-select {
 .uui-heroheader01_content-4 {
   width: 52%;
   padding-right: 50px;
+  padding-top: 90px;
   flex-shrink: 0;
 }
 
@@ -1443,13 +1445,14 @@ textarea.w-select {
 }
 
 .uui-heading-xlarge-8 {
-  color: #0071bc;
+  color: white;
   margin-top: 0;
   margin-bottom: 0;
   padding-inline-start: 1.25rem;
-  font-size: 34px;
-  font-weight: 500;
-  line-height: 1.2em;
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 114.99999999999999%;
+  letter-spacing: 0%;
   text-align: left;
   padding-bottom: 12px;
 }
@@ -1460,20 +1463,19 @@ textarea.w-select {
   font-size: 60px;
   color: #f7a5f9;
   margin: 0px;
-  font-style: italic;
   font-weight: 900;
 }
 
 .uui-heading-xlarge-8 small {
   display: block;
   line-height: 1.2em;
-  font-size: 38px;
-  color: #0071bc;
+  font-size: 28px;
+  color: white;
   margin: 0px;
   font-style: italic;
   font-weight: 400;
   padding-top: 5px;
-  text-align: right;
+  text-align: left;
   padding-bottom: 30px;
   padding-right: 84px;
 }
@@ -6901,16 +6903,19 @@ section#advertisers {
 }
 
 .prim_btn_blue-outlined {
-  background: transparent;
-  color: #0071bc;
+  background: #F7A5F9;
+  color: white;
   border: 1px solid #0071bc;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .prim_btn_blue-outlined:hover,
 .prim_btn_blue-outlined:active {
-  background: #0071bc;
-  color: #fff;
-  border: 1px solid #0071bc;
+  background: #fff;
+  color: #0071bc;
+  border: 1px solid #F7A5F9;
 }
 
 .btn_blue:hover,
@@ -6957,7 +6962,7 @@ section#advertisers {
 
 .autoContent {
   width: 100%;
-  max-width: 1340px;
+  max-width: 1540px;
   padding: 0px 15px;
   margin: auto;
 }
