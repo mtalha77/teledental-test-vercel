@@ -13,6 +13,7 @@ import ConnectDentist from "../Commons/ConnectDentist/ConnectDentist";
 import HomeFaqs from "../Commons/HomeFaqs/HomeFaqs";
 import HomeServices from "./HomeServices/HomeServices";
 import HomeJoinUs from "./HomeJoinUs/HomeJoinUs";
+import HowItWorks from "./HowItWorks";
 
 const useStyles = makeStyles((theme) => ({
   mainLogo: {
@@ -95,7 +96,9 @@ function LandingPageNew() {
         <HeroBanner />
       </section>
 
-      <ConnectDentist />
+      <HowItWorks/>
+
+      {/* <ConnectDentist /> */}
 
       {/* included faq section into the home page */}
       <HomeFaqs />
