@@ -151,6 +151,17 @@
   color: #375077;
 }
 
+.faq {
+  font-family: Piazzolla;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #000000;
+
+}
+
 .font_piazzolla {
   font-family: "Piazzolla", serif !important;
 }

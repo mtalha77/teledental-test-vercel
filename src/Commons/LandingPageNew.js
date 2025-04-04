@@ -16,6 +16,7 @@ import HomeJoinUs from "./HomeJoinUs/HomeJoinUs";
 import HowItWorks from "./HowItWorks";
 import DentalGuidance from "./dental-guidance";
 import ProviderCarousel from "./provider-carousel";
+import Faq from "./faq";
 
 const useStyles = makeStyles((theme) => ({
   mainLogo: {
@@ -102,18 +103,10 @@ function LandingPageNew() {
       
       <DentalGuidance />
       
-      <ProviderCarousel/>
+      <ProviderCarousel />
+      
+      <Faq/>
 
-      {/* <ConnectDentist /> */}
-
-      {/* included faq section into the home page */}
-      <HomeFaqs />
-
-      {/* included services section into the home page */}
-      <HomeServices />
-
-      {/* included Join us section into the home page */}
-      <HomeJoinUs />
 
       <section className="uui-section_heroheader07-2">
         <div className="uui-page-padding-28">
