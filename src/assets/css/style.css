@@ -36,7 +36,7 @@
   text-align: center;
   border-radius: 20px;
   box-shadow: 0px 4px 4px 0px #00000040;
-  transition: all ease-in-out .3;
+  transition: all ease-in-out 0.3;
 }
 
 .pink_btn:hover,
@@ -103,6 +103,19 @@
     width: 388px;
     height: 425px;
   }
+}
+
+.dental_guidance_title {
+  color: #375077;
+  width: 506;
+  height: 168;
+  top: 1828px;
+  left: 779px;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
 }
 
 .slick-next:before,
