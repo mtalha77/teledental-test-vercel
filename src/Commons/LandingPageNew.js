@@ -15,6 +15,7 @@ import HomeServices from "./HomeServices/HomeServices";
 import HomeJoinUs from "./HomeJoinUs/HomeJoinUs";
 import HowItWorks from "./HowItWorks";
 import DentalGuidance from "./dental-guidance";
+import ProviderCarousel from "./provider-carousel";
 
 const useStyles = makeStyles((theme) => ({
   mainLogo: {
@@ -99,7 +100,9 @@ function LandingPageNew() {
 
       <HowItWorks />
       
-      <DentalGuidance/>
+      <DentalGuidance />
+      
+      <ProviderCarousel/>
 
       {/* <ConnectDentist /> */}
 

@@ -3,7 +3,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 
 const DentalGuidance = () => {
   return (
-    <div className="py-5 my-3" style={{ backgroundColor: "#E0F2FC" }}>
+    <div className="py-5" style={{ backgroundColor: "#E0F2FC" }}>
       <Row className="align-items-between">
         {/* Left Column - Image */}
         <Col md={6} className="mb-4 mb-md-0 py-5">
