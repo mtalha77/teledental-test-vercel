@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 const AppointmentBooking = () => {
@@ -62,7 +63,7 @@ const AppointmentBooking = () => {
             placeholder="Email *"
             required
             style={{
-              width: "100%",
+              width: "97%",
               padding: "15px 20px",
               fontSize: "1rem",
               borderRadius: "8px",

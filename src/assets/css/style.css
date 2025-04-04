@@ -8,6 +8,12 @@
 .carousel {
   padding: 0 70px;
 }
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .carousel {
+    padding: 0 10px;
+  }
+}
 .carousel .carousel-item {
   color: #999;
   font-size: 14px;

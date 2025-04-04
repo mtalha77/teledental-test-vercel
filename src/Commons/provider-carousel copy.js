@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Row, Col } from "react-bootstrap";
 
 const ProviderCarousel = () => {
+
   return (
     <div class="py-5" style={{ backgroundColor: "#375077" }}>
       <div class="row pt-3">
@@ -12,9 +13,8 @@ const ProviderCarousel = () => {
           <p className="carosel_subtitle p-0">Become a Virtual Provider</p>
 
           <p className="carosel_keywords">
-            Expand your reach <span className="d-none d-md-inline">|</span> Grow
-            your practice <span className="d-none d-md-inline">|</span> Deliver
-            virtual care
+            Expand your reach <span>|</span> Grow your practice <span>|</span>{" "}
+            Deliver virtual care
           </p>
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             {/* Carousel indicators */}
@@ -55,7 +55,7 @@ const ProviderCarousel = () => {
                         <li>Let us help market your dental practice.</li>
                       </ul>
                     </p>
-                    <div className="text-start ps-md-4">
+                    <div className="text-start ps-4">
                       <Button size="lg" className="btn blue_btn mt-5">
                         Book Now
                       </Button>

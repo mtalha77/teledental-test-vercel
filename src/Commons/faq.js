@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 
 const Faq = () => {
@@ -51,7 +50,7 @@ const Faq = () => {
               style={{
                 borderRadius: "10px 0 0 10px",
                 border: "1px solid #5A5D62",
-                  padding: "10px 15px",
+                padding: "10px 15px",
                 borderRight: "none",
               }}
             />
