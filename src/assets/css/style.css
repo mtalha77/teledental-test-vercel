@@ -159,7 +159,6 @@
   letter-spacing: 0%;
   vertical-align: middle;
   color: #000000;
-
 }
 
 .font_piazzolla {
@@ -297,6 +296,27 @@
   line-height: 100%;
   letter-spacing: 0%;
   vertical-align: middle;
+}
+
+.booking {
+  font-family: Inter;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #ffffff;
+}
+.booking_subtitle {
+  font-family: Piazzolla;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #ffffff;
 }
 
 .slick-next:before,
