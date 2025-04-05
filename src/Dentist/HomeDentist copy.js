@@ -1,8 +1,14 @@
 import Header from "../Commons/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Bootstrap JS for carousel functionality
+import { useState } from "react";
 
 const HomeDentist = () => {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
 
   return (
     <>
@@ -38,7 +44,7 @@ const HomeDentist = () => {
         <div className="">
           <div className="row">
             <div className="col-lg-4 col-md-12 mb-md-4 mb-lg-0 pt-5 mt-5">
-              <div className="d-flex flex-column align-items-center text-center align-items-lg-start text-lg-start ps-lg-5 pt-5 mt-5">
+              <div className="d-flex flex-column align-items-lg-start align-items-center ps-5 pt-5 mt-5">
                 <img
                   src="/images/teledental-logo-without-text.png"
                   alt="Teledental Logo"
@@ -57,9 +63,8 @@ const HomeDentist = () => {
               </div>
             </div>
             <div className="col-lg-8 col-md-12">
-              {/* Desktop version with circles - visible only on large screens */}
               <div
-                className="steps-container position-relative d-none d-lg-block"
+                className="steps-container position-relative"
                 style={{ minHeight: "650px" }}
               >
                 {/* First Circle */}
@@ -124,79 +129,6 @@ const HomeDentist = () => {
                       Create an account and get approved by Teledental. You will
                       be able to set up your availability (days & time)
                     </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile version - visible only on small and medium screens */}
-              <div className="d-block d-lg-none py-4">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-12">
-                      <ul className="list-unstyled mb-0">
-                        <li className="d-flex align-items-center mb-3 py-2">
-                          <span
-                            className="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary text-white fw-bold me-3"
-                            style={{
-                              width: "36px",
-                              height: "36px",
-                              minWidth: "36px",
-                            }}
-                          >
-                            <span className="text-white">1</span>
-                          </span>
-                          <div>
-                            <h4 className="mb-1 fw-bold text-white">
-                              Register as Dentist
-                            </h4>
-                            <p className="mb-0 text-white-50 small">
-                              Create an account and set up your availability
-                            </p>
-                          </div>
-                        </li>
-                        <li className="d-flex align-items-center mb-3 py-2">
-                          <span
-                            className="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary text-white fw-bold me-3"
-                            style={{
-                              width: "36px",
-                              height: "36px",
-                              minWidth: "36px",
-                            }}
-                          >
-                            <span className="text-white">2</span>
-                          </span>
-                          <div>
-                            <h4 className="mb-1 fw-bold text-white">
-                              Receive Appointments
-                            </h4>
-                            <p className="mb-0 text-white-50 small">
-                              Connect with online patients based on your
-                              availability
-                            </p>
-                          </div>
-                        </li>
-                        <li className="d-flex align-items-center py-2">
-                          <span
-                            className="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary text-white fw-bold me-3"
-                            style={{
-                              width: "36px",
-                              height: "36px",
-                              minWidth: "36px",
-                            }}
-                          >
-                            <span className="text-white">3</span>
-                          </span>
-                          <div>
-                            <h4 className="mb-1 fw-bold text-white">
-                              Online Consultations
-                            </h4>
-                            <p className="mb-0 text-white-50 small">
-                              Conduct virtual consultations with patients
-                            </p>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -410,7 +342,7 @@ const HomeDentist = () => {
             </h1>
 
             <p className="fs-5 mb-4 text-carousel-piazzolla-white">
-              Let's get your dental account set up for consultations.
+              Let’s get your dental account set up for consultations.
             </p>
             <input
               type="email"

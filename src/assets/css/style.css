@@ -1,6 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
+.consultation_btn {
+  font-family: Inter;
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #0071bc;
+}
 .slick-next:before,
 .slick-prev:before {
   background-color: #1f2c3d;
@@ -7794,8 +7804,10 @@ input[type="number"] {
 
 .step-circle {
   border-radius: 50%;
-  width: 320px;
-  height: 320px;
+  /* width: 405px;
+  height: 396px; */
+  width: 410px;
+  height: 410px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7803,12 +7815,12 @@ input[type="number"] {
 }
 
 .step-content {
-  padding: 35px;
+  padding: 25px;
   width: 100%;
 }
 
 .step-number {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 700;
   line-height: 0.9;
 }
@@ -7824,6 +7836,9 @@ input[type="number"] {
 
 .step-circle.step-2 {
   background-color: #f7a5f9;
+  width: 450px;
+  height: 430px;
+
 }
 
 .step-circle.step-3 {
