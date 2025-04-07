@@ -1,6 +1,251 @@
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
+/* ------------- Appointments booking ------------ */
+
+:root {
+  --primary: #0d6efd;
+  --teledental-blue: #00a2e8;
+  --teledental-pink: #f26baa;
+  --danger: #dc3545;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.booing_form {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.booing_form .title {
+  font-family: Mulish;
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #0071bc;
+}
+
+.booing_form .subtitle {
+  font-family: Mulish;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 25px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #375077;
+}
+
+.booing_form .section_title {
+  font-family: Mulish;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #375077;
+  margin-top: 1.7rem;
+}
+.section_subtitle {
+  font-family: Mulish;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #375077;
+  text-align: start;
+}
+
+.booing_form input[type="text"],
+.booing_form input[type="email"],
+.booing_form input[type="tel"],
+.booing_form input[type="number"],
+.booing_form input[type="date"],
+.booing_form select,
+.booing_form textarea {
+  border-radius: 8px;
+  border-width: 2px;
+  padding: 22px 10px;
+  font-size: 22px;
+  background: #ffffff;
+  border: 2px solid #0071bc;
+  box-shadow: 0px 4px 4px 0px #00000040 inset;
+}
+
+.cancel_btn {
+  width: 113;
+  height: 16;
+  top: 558px;
+  left: 348px;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 32px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #bc0000;
+}
+
+.text-primary {
+  color: var(--teledental-blue) !important;
+}
+
+.btn-primary {
+  background-color: var(--teledental-blue) !important;
+  border-color: var(--teledental-blue) !important;
+}
+
+.btn-outline-primary {
+  color: var(--teledental-blue) !important;
+  border-color: var(--teledental-blue) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--teledental-blue) !important;
+  color: white !important;
+}
+
+.bg-primary {
+  background-color: var(--teledental-blue) !important;
+}
+
+.text-danger {
+  color: var(--danger) !important;
+}
+
+.form-control:focus {
+  border-color: var(--teledental-blue);
+  box-shadow: 0 0 0 0.2rem rgba(0, 162, 232, 0.25);
+}
+
+/* Custom styles for the dropdown */
+.dropdown-menu {
+  border-radius: 0.375rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Custom styles for checkbox */
+.form-check-input:checked {
+  background-color: var(--teledental-blue);
+  border-color: var(--teledental-blue);
+}
+
+/* Custom styles for file upload area */
+.upload-area {
+  border: 2px dashed #dee2e6;
+  border-radius: 0.375rem;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-area:hover {
+  border-color: var(--teledental-blue);
+}
+
+.group_btn {
+  width: 636;
+  height: 44;
+  border-radius: 8px;
+  border-width: 1px;
+  gap: 4px;
+  padding: 4px;
+  background: #ffffff;
+  border: 2px solid #0071bc;
+  box-shadow: 0px 10px 12px -10px #0000001f;
+}
+
+.btn-primary {
+  background: #0071bc !important;
+  border: 1px solid #0071bc !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  border-radius: 6px !important;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  transition: all ease-in-out 0.3;
+  padding: 10px;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  background: #0071bc !important;
+  color: #fff !important;
+  border: 1px solid #0071bc !important;
+  padding: 10px;
+}
+
+.plus_btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--Colors-Background-container-bg-primary, #ffffff);
+  border: 2px solid #ccc;
+  line-height: 1;
+
+  border-color: var(
+    --Component-colors-Utility-Brand-utility-brand-50_alt,
+    #e5f3ff
+  );
+}
+
+.top_heading {
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #0071bc !important;
+  margin-bottom: 1rem !important;
+}
+.heading_title {
+  font-family: Mulish;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #375077;
+  margin-bottom: 2rem !important;
+}
+
+.payment_heading {
+  font-family: Mulish;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #0071bc;
+}
+
+.back_btn {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #0071bc;
+  animation-duration: 0ms;
+}
+
+/* -------------------------------------- */
 .col-center {
   margin: 0 auto;
   float: none !important;
@@ -7224,6 +7469,36 @@ section#advertisers {
   display: inline-block;
   text-align: center;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .cancel_btn {
+    font-size: 1rem; /* Smaller font size on mobile */
+    top: auto; /* Remove fixed positioning */
+    left: auto;
+    margin: 10px 0; /* Add some margin */
+  }
+
+  .btn_blue {
+    width: 77;
+    height: 27;
+    top: 513px;
+    left: 285px;
+    font-family: Mulish;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #0071bc;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .prim_btn_blue-fill {

@@ -100,6 +100,7 @@ const VideoDentalExam = lazy(() => import("./Commons/VideoDentalExam"));
 const VPAT = lazy(() => import("./Commons/VPAT"));
 const AgoraInformation = lazy(() => import("./Commons/AgoraInformation"));
 const SleepOralHealth = lazy(() => import("./Commons/SleepOralHealth"));
+const AppointmentBooking = lazy(() => import("./Commons/AppointmentBooking"));
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -153,6 +154,12 @@ function AppRouter() {
                 exact
                 path="/dentist-signup"
                 component={withMetaData(DentistSignUp)}
+                restrictIfDentistIsNotActivated
+              />
+              <PublicRoute
+                exact
+                path="/book-appointment"
+                component={withMetaData(AppointmentBooking)}
                 restrictIfDentistIsNotActivated
               />
               <PublicRoute

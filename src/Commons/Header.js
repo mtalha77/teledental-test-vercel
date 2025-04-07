@@ -335,9 +335,9 @@ function Header({ cssClass }) {
                         </li>
 
                         <li className="brix---header-nav-list-item-2">
-                          <button className="w-nav-link btn_blue">
+                          <Link to={'/book-appointment'} className="btn w-nav-link btn_blue">
                             Book Appointment
-                          </button>
+                          </Link>
                         </li>
                         {/* <li class="brix---header-nav-list-item-2 dropdown">
                           <span
