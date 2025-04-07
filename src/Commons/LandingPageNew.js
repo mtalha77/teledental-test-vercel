@@ -14,6 +14,7 @@ import DentalGuidance from "./dental-guidance";
 import ProviderCarousel from "./provider-carousel";
 import Faq from "./faq";
 import AppointmentBooking from "./appointment-booking";
+import GetAppSection from "./get-app-section";
 
 const useStyles = makeStyles((theme) => ({
   mainLogo: {
@@ -106,7 +107,9 @@ function LandingPageNew() {
 
       <AppointmentBooking />
 
-      <section className="uui-section_heroheader07-2">
+      <GetAppSection/>
+
+      {/* <section className="uui-section_heroheader07-2">
         <div className="uui-page-padding-28">
           <div className="uui-container-large-23">
             <div className="uui-padding-vertical-xhuge-24 download-section pt-0">
@@ -162,7 +165,7 @@ function LandingPageNew() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <PatientSignUpModal
         isModalVisible={isSignInModalVisible === "patient"}
