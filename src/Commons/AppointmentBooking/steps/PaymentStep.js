@@ -14,10 +14,9 @@ const schema = z.object({
   }),
 });
 
-const PaymentStep = ({ screenSize }) => {
+const PaymentStep = () => {
   const { nextStep, prevStep } = useAppointmentBookingContext();
 
-  // Initialize react-hook-form
   const {
     register,
     handleSubmit,
