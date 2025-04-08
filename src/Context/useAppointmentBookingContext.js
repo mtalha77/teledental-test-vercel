@@ -38,12 +38,12 @@ export const AppointmentBookingProvider = ({
     lastCleaning: "",
     lastVisit: "",
     lastXrays: "",
-    consultationDuration: '',
+    consultationDuration: "",
     painLevel: "medium",
     hasEmergency: "no",
     dentalIssue: "",
     summary: "",
-    appointmentTime: '',
+    appointmentTime: "",
   });
 
   const updateFormData = (data) => {
@@ -51,6 +51,30 @@ export const AppointmentBookingProvider = ({
       ...prev,
       ...data,
     }));
+  };
+
+  const resetBookingForm = () => {
+    setFormData({
+      email: "",
+      firstName: "",
+      lastName: "",
+      address: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      phone: "",
+      acceptTerms: false,
+      dentalInsurance: "",
+      lastCleaning: "",
+      lastVisit: "",
+      lastXrays: "",
+      consultationDuration: "",
+      painLevel: "medium",
+      hasEmergency: "no",
+      dentalIssue: "",
+      summary: "",
+      appointmentTime: "",
+    });
   };
 
   return (
@@ -62,6 +86,7 @@ export const AppointmentBookingProvider = ({
         goToStep,
         formData,
         updateFormData,
+        resetBookingForm,
       }}
     >
       {children}

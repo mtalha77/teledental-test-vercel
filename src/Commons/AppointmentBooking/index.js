@@ -8,6 +8,7 @@ import ConsultationStep from "./steps/ConsultationStep";
 import PaymentStep from "./steps/PaymentStep";
 import ConfirmationStep from "./steps/ConfirmationStep";
 import AppointmentStep from "./steps/AppointmentStep";
+import CancelConfirmationPopup from "../../shared/CancelConfirmationPopup";
 
 function AppointmentBookingForm() {
   const [currentStep, setCurrentStep] = useState(1);
