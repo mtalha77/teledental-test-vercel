@@ -23,7 +23,6 @@ const schema = z.object({
 const RegistrationStep = () => {
   const { nextStep, updateFormData, formData } = useAppointmentBookingContext();
 
-  // Initialize react-hook-form
   const {
     register,
     handleSubmit,
@@ -51,10 +50,8 @@ const RegistrationStep = () => {
   return (
     <div className="container" style={{ maxWidth: "745px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h3 className="title mb-4">
-          Register With Teledental
-        </h3>
-        <p className="subtitle text-start mb-4">
+        <h3 className="title text-center text-md-start mb-4">Register With Teledental</h3>
+        <p className="subtitle text-md-start mb-4">
           We just need to collect a few details before reserving your
           appointment.
         </p>
@@ -71,7 +68,7 @@ const RegistrationStep = () => {
               <div className="invalid-feedback">{errors.firstName.message}</div>
             )}
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 p-0 ps-md-2">
             <input
               type="text"
               className={`form-control ${errors.lastName ? "is-invalid" : ""}`}
@@ -112,7 +109,7 @@ const RegistrationStep = () => {
               <div className="invalid-feedback">{errors.city.message}</div>
             )}
           </div>
-          <div className="col-md-4 mb-3 mb-md-0">
+          <div className="col-md-4 mb-3 mb-md-0 p-0 ps-md-2 pe-md-2">
             <input
               type="text"
               className={`form-control ${errors.state ? "is-invalid" : ""}`}

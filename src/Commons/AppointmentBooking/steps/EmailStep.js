@@ -55,7 +55,7 @@ const EmailStep = () => {
         </div>
         <div className="d-flex justify-content-between mt-5 px-3">
           <CancelButton />
-          <button type="submit" className="btn btn_blue px-4 py-2">
+          <button type="submit" className="btn btn_blue px-4">
             Continue
           </button>
         </div>

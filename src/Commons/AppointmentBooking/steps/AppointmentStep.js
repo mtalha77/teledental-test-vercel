@@ -43,7 +43,7 @@ const AppointmentStep = () => {
         <div className="row mb-4">
           <div className="col">
             <h3 className="top_heading">Schedule An Appointment</h3>
-            <p className="subtitle text-start">
+            <p className="subtitle text-md-start">
               Find the time that matches with your schedule.
             </p>
           </div>

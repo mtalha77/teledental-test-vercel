@@ -3,7 +3,7 @@ import React from "react";
 
 const ProgressBar = ({ step, totalSteps = 5 }) => {
   return (
-    <div className="d-flex justify-content-center my-4 flex-grow-1" style={{
+    <div className="d-none d-md-flex justify-content-center my-4 flex-grow-1" style={{
       width: "930px",
     }}>
       {Array.from({ length: totalSteps }).map((_, index) => (

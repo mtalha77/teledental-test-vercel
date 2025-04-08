@@ -34,8 +34,8 @@ const VerificationStep = () => {
           <div className="mb-3">
             <Logo size="small" />
           </div>
-          <h2 className="text-primary mb-4 title text-start">Email Verification</h2>
-          <p className="mb-5 subtitle text-start">
+          <h2 className="text-primary mb-4 title text-md-start">Email Verification</h2>
+          <p className="mb-5 subtitle text-md-start">
             Enter the authentication code that we have sent to your email to
             proceed.
           </p>
@@ -56,7 +56,7 @@ const VerificationStep = () => {
           </div>
           <div className="d-flex justify-content-between">
             <CancelButton />
-            <button type="submit" className="btn btn_blue px-4 py-2">
+            <button type="submit" className="btn btn_blue px-4">
               Verify Me
             </button>
           </div>

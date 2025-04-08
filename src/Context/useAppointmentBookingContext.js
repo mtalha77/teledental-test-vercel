@@ -38,6 +38,7 @@ export const AppointmentBookingProvider = ({
     lastCleaning: "",
     lastVisit: "",
     lastXrays: "",
+    consultationDuration: '',
     painLevel: "medium",
     hasEmergency: "no",
     dentalIssue: "",

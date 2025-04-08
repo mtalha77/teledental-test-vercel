@@ -106,22 +106,22 @@ const PatientHistoryStep = () => {
         <div className="row mb-4">
           <div className="col">
             <h4 className="text-primary top_heading">Patient History</h4>
-            <p className="text-muted subtitle text-start">
+            <p className="text-muted subtitle text-md-start">
               Answer a few quick questions for your visit.
             </p>
           </div>
           <div className="col-auto">
-            <h4 className="top_heading">Hello User!</h4>
+            <h4 className="top_heading d-none d-md-block">Hello User!</h4>
           </div>
         </div>
 
         <hr className="mb-4 text_blue" />
 
-        <div className="mb-4 d-flex">
-          <label className="mb-2 col-md-9 heading_title">
+        <div className="mb-4 d-flex flex-column flex-md-row">
+          <label className="mb-2 p-0 col-md-9 heading_title">
             Do you have dental insurance?
           </label>
-          <div className="btn-group group_btn w-100 col-md-3">
+          <div className="btn-group group_btn w-50 col-md-3">
             <input type="hidden" {...register("dentalInsurance")} />
             <button
               type="button"
@@ -282,7 +282,7 @@ const PatientHistoryStep = () => {
         <hr className="mb-4" />
 
         <div className="mb-5">
-          <label className="mb-2 text_blue" style={{ fontSize: "22px" }}>
+          <label className="mb-2 file_upload_title">
             <strong className="heading_title">Upload Photos</strong> of your
             Teeth and Mouth/X-rays{" "}
             <span className="heading_title">(Highly recommended</span> to

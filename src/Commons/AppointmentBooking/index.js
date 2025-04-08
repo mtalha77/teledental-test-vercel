@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppointmentBookingProvider } from "../../Context/useAppointmentBookingContext";
 import EmailStep from "./steps/EmailStep";
 import RegistrationStep from "./steps/RegistrationStep";
@@ -11,6 +11,22 @@ import AppointmentStep from "./steps/AppointmentStep";
 
 function AppointmentBookingForm() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Render the current step
   const renderStep = () => {
@@ -22,13 +38,13 @@ function AppointmentBookingForm() {
       case 3:
         return <VerificationStep />;
       case 4:
-        return <ConsultationStep />;
+        return <ConsultationStep screenSize />;
       case 5:
         return <PatientHistoryStep />;
       case 6:
         return <AppointmentStep />;
       case 7:
-        return <PaymentStep />;
+        return <PaymentStep screenSize />;
       case 8:
         return <ConfirmationStep />;
       default:
