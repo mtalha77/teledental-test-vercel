@@ -322,7 +322,7 @@ function Header({ cssClass }) {
                         </li>
                         <li className="brix---header-nav-list-item-2">
                           <Link
-                            to="/login"
+                            to="/auth"
                             name="patient"
                             className={`brix---header-nav-link-white w-nav-link ${
                               activeTab === "Join Virtual Tele Dental Care" &&

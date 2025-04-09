@@ -1,0 +1,134 @@
+/* Auth Page Styles */
+.auth_container {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  min-height: 75vh;
+  padding: 20px;
+}
+
+.auth_card {
+  width: 100%;
+  max-width: 750px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.auth_title h1 {
+  font-family: Mulish;
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  margin-bottom: 20px;
+}
+
+.role_text {
+  color: #f7a5f9;
+  text-transform: capitalize;
+}
+
+.auth_text {
+  color: #0071bc;
+}
+
+.auth_subtitle {
+  font-family: Mulish;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #375077;
+  margin-bottom: 2.5rem;
+}
+
+.auth_section_title {
+  font-family: Mulish;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #0071bc;
+  margin-bottom: 1rem;
+}
+
+.forgot_password {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.forgot_password a {
+  font-family: Mulish;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #0071bc;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.forgot_password a:hover {
+  text-decoration: underline;
+}
+
+.signup_option {
+  font-family: Mulish;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #0071bc;
+  margin-top: 1rem;
+}
+
+.signup_link {
+  color: #0071bc;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.accept_terms {
+  font-family: Mulish;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #375077;
+  margin-top: 1rem;
+}
+
+.accept_terms span {
+  color: #0071BC;
+}
+
+/* @media screen and (max-width: 768px) {
+  .auth_container {
+    min-height: 100vh;
+  }
+
+  .auth_title h1 {
+    font-size: 35px;
+  }
+
+  .auth_subtitle,
+  .forgot_password a,
+  .signup_option {
+    font-size: 18px;
+  }
+
+  .auth_section_title {
+    font-weight: 700;
+    font-size: 20px;
+  }
+} */
