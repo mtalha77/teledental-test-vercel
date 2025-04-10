@@ -8351,3 +8351,279 @@ input[type="number"] {
     display: none;
   }
 }
+
+/* ==================================================================  Contact Us Page ============================================================== */
+
+.form-control:focus {
+  border-color: #0071bc;
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.accordion-item {
+  transition: all 0.3s ease;
+}
+
+.accordion-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-primary {
+  background-color: #0071bc !important;
+  border-color: #0071bc !important;
+}
+
+.btn-primary:hover {
+  background-color: #005a96 !important;
+  border-color: #005a96 !important;
+}
+
+.text-primary {
+  color: #0071bc !important;
+}
+
+.custom-placeholder::placeholder {
+  color: #555555;
+  opacity: 1;
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .accordion-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .social-icons {
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+
+/* ==================================================================  Join Us Page ============================================================== */
+
+.join-us-page {
+  font-family: "Inter", sans-serif;
+  color: #333;
+}
+
+.join-us-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0071bc;
+  margin-bottom: 0.5rem;
+}
+
+.text-pink {
+  color: #f7a5f9;
+}
+
+.join-us-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.join-form-container {
+  background-color: #fff;
+
+  padding: 2rem;
+}
+
+.submit-btn {
+  background-color: #0071bc !important;
+  border-color: #0071bc !important;
+  border-radius: 30px !important;
+  padding: 0.5rem 2rem !important;
+  height: auto !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 10px rgba(44, 117, 188, 0.2) !important;
+}
+
+.submit-btn:hover {
+  background-color: #1e5c9a !important;
+  border-color: #1e5c9a !important;
+}
+
+.join-teledental-banner {
+  background-color: #0071bc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.teledental-icon {
+  width: 50px;
+  height: auto;
+}
+
+.join-teledental-banner h2 {
+  color: white;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.section-title {
+  color: #0071bc;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #000000 !important;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.accordion-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.accordion-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.accordion-icon {
+  color: #0071bc;
+  font-size: 0.8rem;
+}
+
+.accordion-body {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.accordion-content {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.cta-section {
+  margin-top: 60px;
+}
+
+.cta-section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0071bc;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.teledental-link {
+  color: #0071bc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.teledental-link:hover {
+  text-decoration: underline;
+}
+
+.become-dentist-btn {
+  background-color: #0071bc !important;
+  border-color: #0071bc !important;
+  border-radius: 30px !important;
+  padding: 0.5rem 2rem !important;
+  height: auto !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 10px rgba(44, 117, 188, 0.2) !important;
+  margin-top: 1rem;
+  transition: all 0.3s ease !important;
+}
+
+.become-dentist-btn:hover {
+  background-color: #1e5c9a !important;
+  border-color: #1e5c9a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 12px rgba(44, 117, 188, 0.3) !important;
+}
+
+.cta-section {
+  margin-top: 150px !important;
+}
+
+.ant-select-selector {
+  height: 50px !important;
+  color: #585c5f !important;
+}
+
+.ant-select-selection-item {
+  line-height: 28px !important;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .join-us-title {
+    font-size: 1.8rem;
+  }
+
+  .join-us-subtitle {
+    font-size: 1rem;
+  }
+
+  .join-teledental-banner h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .cta-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .join-form-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .join-us-title {
+    font-size: 1.5rem;
+  }
+
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .submit-btn,
+  .become-dentist-btn {
+    width: 100%;
+  }
+}

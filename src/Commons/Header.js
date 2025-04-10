@@ -45,6 +45,7 @@ function Header({ cssClass }) {
         activeTab[i] =
           strArr[i]?.charAt(0)?.toUpperCase() + strArr[i]?.slice(1);
       }
+      console.log("tab is ", activeTab.join(""));
       setActiveTab(activeTab.join(" "));
     }
   }, [pathname]);
@@ -297,7 +298,7 @@ function Header({ cssClass }) {
 
                         <li className="brix---header-nav-list-item-2">
                           <Link
-                            to="/contact"
+                            to="/contact-us"
                             name="contact"
                             className={`brix---header-nav-link-white w-nav-link ${
                               activeTab === "Contact" && "active selected"
@@ -309,11 +310,10 @@ function Header({ cssClass }) {
 
                         <li className="brix---header-nav-list-item-2">
                           <Link
-                            to="/join-virtual-tele-dental-care"
+                            to="/join-us"
                             name="patient"
                             className={`brix---header-nav-link-white w-nav-link ${
-                              activeTab === "Join Virtual Tele Dental Care" &&
-                              "active selected"
+                              activeTab === "JoinUs" && "active selected"
                             }`}
                             // onClick={() => setIsSignUpModalVisible("patient")}
                           >
@@ -323,10 +323,9 @@ function Header({ cssClass }) {
                         <li className="brix---header-nav-list-item-2">
                           <Link
                             to="/login"
-                            name="patient"
+                            name="login"
                             className={`brix---header-nav-link-white w-nav-link ${
-                              activeTab === "Join Virtual Tele Dental Care" &&
-                              "active selected"
+                              activeTab === "Login" && "active selected"
                             }`}
                             // onClick={() => setIsSignUpModalVisible("patient")}
                           >

@@ -201,7 +201,6 @@ function AppRouter() {
                 path="/tooth-fracture-consult"
                 component={withMetaData(ToothFracture)}
               />
-
               <PublicRoute
                 exact
                 path="/join-virtual-tele-dental-care"
