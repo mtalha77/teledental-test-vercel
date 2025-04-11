@@ -16,8 +16,12 @@ export const signupSchema = z
     email: z.string().email("Please enter a valid email address"),
     confirmEmail: z.string().email("Please enter a valid email address"),
     password: z.string().min(1, "Please enter your password"),
-    isLicensedDentist: z.boolean().optional(),
-    agreeTerms: z.boolean().optional(),
+    isLicensedDentist: z.boolean().refine((val) => val === true, {
+      message: "Please confirm you are a licensed dentist",
+    }),
+    agreeTerms: z.boolean().refine((val) => val === true, {
+      message: "You must agree to the terms and conditions",
+    }),
   })
   .refine((data) => data.email === data.confirmEmail, {
     message: "Emails do not match",

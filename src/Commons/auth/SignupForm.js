@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "./schemas";
+import { useHistory } from "react-router-dom";
 
 function SignupForm({ userRole, toggleForm }) {
+  const history = useHistory();
   // Signup form setup
   const {
     register,
@@ -24,6 +26,8 @@ function SignupForm({ userRole, toggleForm }) {
   const onSignupSubmit = (data) => {
     // Handle signup logic here
     console.log("Signup attempt with:", data);
+
+    history.push("/verify-email/user-email");
   };
 
   return (
@@ -145,20 +149,32 @@ function SignupForm({ userRole, toggleForm }) {
             </h5>
             <div className="mb-3">
               <select
-                className="form-select"
-                {...register("isLicensedDentist")}
+                className={`form-select ${
+                  errors.isLicensedDentist ? "is-invalid" : ""
+                }`}
+                {...register("isLicensedDentist", {
+                  setValueAs: (value) => value === "true",
+                })}
               >
                 <option value="">I am a licensed dentist</option>
                 <option value="true">Yes</option>
                 <option value="false">No</option>
               </select>
+
+              {errors.isLicensedDentist && (
+                <div className="invalid-feedback">
+                  {errors.isLicensedDentist.message}
+                </div>
+              )}
             </div>
 
             <div className="mb-3">
               <div className="form-check text-start">
                 <input
                   type="checkbox"
-                  className="form-check-input"
+                  className={`form-check-input ${
+                    errors.agreeTerms ? "is-invalid" : ""
+                  }`}
                   id="agreeTerms"
                   {...register("agreeTerms")}
                 />
@@ -169,6 +185,12 @@ function SignupForm({ userRole, toggleForm }) {
                   I agree <span>terms of use</span> &{" "}
                   <span>privacy policy</span>
                 </label>
+
+                {errors.agreeTerms && (
+                  <div className="invalid-feedback">
+                    {errors.agreeTerms.message}
+                  </div>
+                )}
               </div>
             </div>
           </>

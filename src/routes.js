@@ -102,6 +102,9 @@ const AgoraInformation = lazy(() => import("./Commons/AgoraInformation"));
 const SleepOralHealth = lazy(() => import("./Commons/SleepOralHealth"));
 const AppointmentBooking = lazy(() => import("./Commons/AppointmentBooking"));
 const Auth = lazy(() => import("./Commons/auth"));
+const EmailVerification = lazy(() =>
+  import("./Commons/auth/EmailVerification")
+);
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -145,6 +148,12 @@ function AppRouter() {
                 path="/auth"
                 component={withMetaData(Auth)}
                 restrictIfDentistIsNotActivated
+              />
+              <PublicRoute
+                exact
+                path="/verify-email/:email"
+                component={withMetaData(EmailVerification)}
+                // restrictIfDentistIsNotActivated
               />
               <PublicRoute
                 exact
