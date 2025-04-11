@@ -10,10 +10,6 @@
   --danger: #dc3545;
 }
 
-/* body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-} */
-
 .booing_form {
   min-height: 100vh;
   display: flex;
@@ -71,7 +67,7 @@ input[type="number"],
 input[type="date"],
 select,
 textarea {
-  border-radius: 8px;
+  border-radius: 8px !important;
   border-width: 2px;
   padding: 22px 10px;
   font-size: 22px;
@@ -83,22 +79,6 @@ textarea {
 .invalid-feedback {
   text-align: start;
 }
-/* .booing_form input[type="text"],
-.booing_form input[type="email"],
-.booing_form input[type="tel"],
-.booing_form input[type="number"],
-.booing_form input[type="date"],
-.booing_form select,
-.booing_form textarea {
-  border-radius: 8px;
-  border-width: 2px;
-  padding: 22px 10px;
-  font-size: 22px;
-  font-style: italic;
-  background: #ffffff;
-  border: 2px solid #0071bc;
-  box-shadow: 0px 4px 4px 0px #00000040 inset;
-} */
 
 .cancel_btn {
   font-family: Montserrat;
@@ -301,22 +281,6 @@ textarea {
     border: 2px solid #0071bc;
     box-shadow: 0px 4px 4px 0px #00000040 inset;
   }
-  /* .booing_form input[type="text"],
-  .booing_form input[type="email"],
-  .booing_form input[type="tel"],
-  .booing_form input[type="number"],
-  .booing_form input[type="date"],
-  .booing_form select,
-  .booing_form textarea {
-    border-radius: 8px;
-    border-width: 2px;
-    padding: 2px 4px;
-    font-size: 14px;
-    font-style: italic;
-    background: #ffffff;
-    border: 2px solid #0071bc;
-    box-shadow: 0px 4px 4px 0px #00000040 inset;
-  } */
 
   .btn-primary {
     background: #0071bc !important;
