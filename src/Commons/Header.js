@@ -1,32 +1,21 @@
 import React, { useState, useEffect } from "react";
-import PatientSignUpModal from "../Auth/PatientSignUpModal";
-import DentistSignUpModal from "../Auth/DentistSignUpModal";
-import SignInModal from "../Auth/SignInModal";
-import VerificationCodeModal from "../Auth/VerificationCodeModal";
+
 import { useUserContext } from "../Context/userContext";
 import { useHistory, useLocation } from "react-router";
 import { Dropdown, Menu, Row } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import Avatar from "antd/lib/avatar/avatar";
-import SignUpSuccessModal from "../Dentist/SignUpSuccessModal";
 import queryString from "query-string";
-// import logo from "../assets/img/logo-new.webp";
 import logoOld from "../assets/img/NewLogo.webp";
 import { Link } from "react-router-dom";
-// import logoNew from "../assets/img/logo-new.webp";
 
 function Header({ cssClass }) {
   const history = useHistory();
   let location = useLocation();
   let { pathname } = location;
   let query = queryString.parse(location.search);
-  const [isSignUpModalVisible, setIsSignUpModalVisible] = React.useState("");
-  const [isSignInModalVisible, setIsSignInModalVisible] = React.useState(false);
-  const [isVerificationModalVisible, setIsVerificationModalVisible] =
-    React.useState(false);
-  const [isSignUpSuccessModalVisible, setIsSignUpSuccessModalVisible] =
-    React.useState(query.notApproved ? true : false);
-  const [entity, setEntity] = React.useState("");
+
+  React.useState(query.notApproved ? true : false);
   const [activeTab, setActiveTab] = React.useState("");
   const { user, profilePhoto, paymentInfo } = useUserContext();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -283,19 +272,6 @@ function Header({ cssClass }) {
                       </>
                     ) : (
                       <ul role="list" className="brix---header-nav-menu-list-2">
-                        {/* <li className="brix---header-nav-list-item-2">
-													<Link
-														to="/how-it-works"
-														name="patient"
-														className={`brix---header-nav-link-white w-nav-link ${
-															activeTab === "How It Works" && "active selected"
-														}`}
-														// onClick={() => setIsSignUpModalVisible("patient")}
-													>
-														How it works
-													</Link>
-												</li> */}
-
                         <li className="brix---header-nav-list-item-2">
                           <Link
                             to="/contact-us"
@@ -334,68 +310,13 @@ function Header({ cssClass }) {
                         </li>
 
                         <li className="brix---header-nav-list-item-2">
-                          <Link to={'/book-appointment'} className="btn w-nav-link btn_blue">
+                          <Link
+                            to={"/book-appointment"}
+                            className="btn w-nav-link btn_blue"
+                          >
                             Book Appointment
                           </Link>
                         </li>
-                        {/* <li class="brix---header-nav-list-item-2 dropdown">
-                          <span
-                            className={`brix---header-nav-link-white w-nav-link ${
-                              activeTab === "Patient Signup" ||
-                              activeTab === "Dentist Signup"
-                                ? "active selected"
-                                : ""
-                            }`}
-                            id="navbarDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Sign Up
-                            <DownOutlined style={{ fontSize: "smaller" }} />
-                          </span>
-
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="navbarDropdown"
-                          >
-                            <Link
-                              to="/patient-signup"
-                              name="patient"
-                              className={`dropdown-item`}
-                              // onClick={() => setIsSignUpModalVisible("patient")}
-                            >
-                              Patient sign up
-                            </Link>
-                            <Link
-                              to="/dentist-signup"
-                              name="dentist"
-                              className={`dropdown-item`}
-                              // onClick={() => setIsSignUpModalVisible("patient")}
-                            >
-                              Dentist sign up
-                            </Link>
-                          </div>
-                        </li> */}
-
-                        {/* <li className="brix---header-nav-list-item-2">
-                          <Link
-                            name="dentist"
-                            to="/dentist-signup"
-                            className={`  w-nav-link btn_pink`}
-                          >
-                            Sign Up
-                          </Link>
-                        </li> */}
-                        {/* <li className="brix---header-nav-list-item-2">
-                          <button
-                            className="w-nav-link btn_blue"
-                            onClick={() => setIsSignInModalVisible(true)}
-                          >
-                            Sign in
-                          </button>
-                        </li> */}
                       </ul>
                     )}
                   </div>
@@ -425,40 +346,7 @@ function Header({ cssClass }) {
     );
   };
 
-  return (
-    <header className="primaryHeader">
-      {oldNav()}
-
-      <PatientSignUpModal
-        isModalVisible={isSignUpModalVisible === "patient"}
-        setIsModalVisible={setIsSignUpModalVisible}
-        setIsVerificationModalVisible={setIsVerificationModalVisible}
-        setEntity={setEntity}
-      />
-      <DentistSignUpModal
-        isModalVisible={isSignUpModalVisible === "dentist"}
-        setIsModalVisible={setIsSignUpModalVisible}
-        setIsVerificationModalVisible={setIsVerificationModalVisible}
-        setEntity={setEntity}
-        setIsSignUpSuccessModalVisible={setIsSignUpSuccessModalVisible}
-      />
-      <SignInModal
-        isModalVisible={isSignInModalVisible}
-        setIsModalVisible={setIsSignInModalVisible}
-        setIsVerificationModalVisible={setIsVerificationModalVisible}
-        setEntity={setEntity}
-      />
-      <VerificationCodeModal
-        isModalVisible={isVerificationModalVisible}
-        setIsModalVisible={setIsVerificationModalVisible}
-        entity={entity}
-      />
-      <SignUpSuccessModal
-        isModalVisible={isSignUpSuccessModalVisible}
-        setIsModalVisible={setIsSignUpSuccessModalVisible}
-      />
-    </header>
-  );
+  return <header className="primaryHeader">{oldNav()}</header>;
 }
 
 export default Header;

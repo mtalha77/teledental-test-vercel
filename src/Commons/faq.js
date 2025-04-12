@@ -108,13 +108,7 @@ const Faq = () => {
           ))}
 
           <div className="text-start mt-5">
-            <button
-              className="btn blue_btn px-4 py-2"
-              style={{
-                backgroundColor: "#0078BE",
-                borderColor: "#0078BE",
-              }}
-            >
+            <button className="btn blue_btn px-4 py-2">
               Find More Questions
             </button>
           </div>
