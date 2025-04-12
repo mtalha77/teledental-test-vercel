@@ -9045,7 +9045,6 @@ input[type="number"] {
 }
 
 /* ================================================================== Footer ============================================================== */
-
 footer {
   font-family: "Inter", sans-serif;
   background-color: #1a2433;
@@ -9145,6 +9144,7 @@ footer {
   font-size: 16px;
   font-weight: 700;
   color: #333;
+  box-sizing: border-box; /* Add this to include padding in width calculation */
 }
 
 .footer-input::placeholder {
@@ -9232,11 +9232,49 @@ footer {
   color: white;
 }
 
+/* Articles Section */
+.footer-articles {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3rem 40px;
+  margin-bottom: 20px;
+}
+
+.footer-articles-column {
+  width: 30%;
+}
+
+.footer-article-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-article-list li {
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.footer-article-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  display: inline-block;
+  line-height: 1.4;
+}
+
+.footer-article-link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
   .footer-content {
     flex-direction: column;
     gap: 50px;
+    margin: 0 2rem;
   }
 
   .footer-social {
@@ -9246,14 +9284,33 @@ footer {
 
   .footer-appointment {
     width: 100%;
+    max-width: 100%;
   }
 
   .social-icons {
     justify-content: flex-start;
   }
+
+  .footer-articles {
+    flex-wrap: wrap;
+    padding: 0 2rem 30px;
+  }
+
+  .footer-articles-column {
+    width: 48%;
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 768px) {
+  .footer-container {
+    padding: 0 1.5rem;
+  }
+
+  .footer-content {
+    margin: 0 1rem;
+  }
+
   .footer-logo-nav {
     flex-direction: column;
     align-items: flex-start;
@@ -9275,18 +9332,81 @@ footer {
     justify-content: center;
     text-align: center;
   }
+
+  .footer-articles {
+    padding: 0 1rem 30px;
+  }
+
+  .footer-articles-column {
+    width: 100%;
+  }
+
+  .footer-form {
+    width: 100%;
+  }
+
+  .footer-input {
+    padding: 16px;
+    height: 55px;
+  }
 }
 
 @media (max-width: 576px) {
+  .footer-container {
+    padding: 0 1rem;
+  }
+
+  .footer-content {
+    margin: 0 0.5rem;
+    padding-bottom: 40px;
+  }
+
   .footer-heading {
     font-size: 20px;
   }
 
   .footer-button {
     width: 100%;
+    padding: 16px 30px;
+    height: 55px;
   }
 
   .social-icons {
     justify-content: center;
+    gap: 25px;
+  }
+
+  .footer-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 18px 15px;
+    height: 60px;
+    font-size: 16px;
+  }
+
+  .footer-articles {
+    padding: 0 0.5rem 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .footer-container {
+    padding: 0 0.75rem;
+  }
+
+  .footer-content {
+    margin: 0;
+  }
+
+  .footer-nav {
+    gap: 15px;
+  }
+
+  .social-icons {
+    gap: 20px;
+  }
+
+  .footer-input {
+    height: 65px;
   }
 }

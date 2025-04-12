@@ -53,7 +53,7 @@ function Footer() {
               <Link to={"/faqs-question"} className="footer-nav-link">
                 FAQ
               </Link>
-              <Link to={"/login"} className="footer-nav-link">
+              <Link to={"/auth"} className="footer-nav-link">
                 Log In
               </Link>
             </div>
@@ -62,6 +62,7 @@ function Footer() {
 
         <div className="footer-divider"></div>
 
+        {/* Main Content */}
         <div className="footer-content">
           <div className="footer-appointment">
             <h2 className="footer-heading" style={{ fontWeight: 900 }}>
@@ -86,7 +87,7 @@ function Footer() {
 
           <div className="footer-social">
             <h2 className="footer-heading-second font_piazzolla">
-              FollowTeledental
+              Follow Teledental
             </h2>
             <div className="social-icons">
               <a href="https://facebook.com" className="social-icon">
@@ -108,6 +109,210 @@ function Footer() {
           </div>
         </div>
 
+                {/* Articles Section */}
+                <div className="footer-articles">
+          <div className="footer-articles-column">
+            <ul className="footer-article-list">
+              <li>
+                <Link
+                  to={
+                    "/cosmetic-teledental-dentistry-teledentistry-treatment-information"
+                  }
+                  className="footer-article-link"
+                >
+                  Cosmetic Dentistry Information
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/local-dental-emergencies-teledental-common-dental-problems-consult"
+                  }
+                  className="footer-article-link"
+                >
+                  Common Local Dental Emergencies
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/local-gingivitis-teledental-periodontal-information-periodontist-consult"
+                  }
+                  className="footer-article-link"
+                >
+                  Gingivitis and Periodontal Information
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/best-teledental-care-local-teledentist-office-information"
+                  }
+                  className="footer-article-link"
+                >
+                  Best Teledental Care, Teledentistry Information
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/local-teledentistry-dental-crown-info-online-teledental-crowns-information"
+                  }
+                  className="footer-article-link"
+                >
+                  Dental Crown Information, Dental Veneers Discussion
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/local-teledentistry-dental-implants-question-info-teledental-dental-implant-answers"
+                  }
+                  className="footer-article-link"
+                >
+                  Teledental Dental Implant Information
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={"/live-teledental-orthodontics-virtual-consult"}
+                  className="footer-article-link"
+                >
+                  Orthodontics and clear aligners
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={"/live-dentist-ai-teledental"}
+                  className="footer-article-link"
+                >
+                  Teledental and AI Dental Care
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={"/virtual-tooth-cavity-teledental"}
+                  className="footer-article-link"
+                >
+                  Tooth Cavity
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={"/sleep-wellness-virtual-dental-care"}
+                  className="footer-article-link"
+                >
+                  Sleep Wellness Virtual Dental Care
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-articles-column">
+            <ul className="footer-article-list">
+              <li>
+                <Link
+                  to={
+                    "/best-teeth-whitening-question-dentist-teledental-dental-veneers-info"
+                  }
+                  className="footer-article-link"
+                >
+                  Teeth Whitening and Dental Veneers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/local-teledental-stem-cells-dentistry-care-information"
+                  }
+                  className="footer-article-link"
+                >
+                  Dental Stem Cell
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/cosmetic-teledental-dentistry-teledentistry-treatment-information"
+                  }
+                  className="footer-article-link"
+                >
+                  Cosmetic Dentistry
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/local-teledentistry-dental-implants-question-info-teledental-dental-implant-answers"
+                  }
+                  className="footer-article-link"
+                >
+                  Dental Implants
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={"/tooth-fracture-consult"}
+                  className="footer-article-link"
+                >
+                  Tooth Fracture Information
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={
+                    "/local-periodontal-questions-about-gum-disease-and-dental-bone-graft-treatment"
+                  }
+                  className="footer-article-link"
+                >
+                  Local Periodontal Questions about Gum Disease and Dental Bone
+                  Graft Treatment
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={"/virtual-teledental-root-canal-treatment-info"}
+                  className="footer-article-link"
+                >
+                  Root canal treatment
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={"/teeth-sensitivity-and-teledental-sensitive-tooth"}
+                  className="footer-article-link"
+                >
+                  Teeth Sensitivity and Teledental Sensitive Tooth
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={"/dental-implant-information"}
+                  className="footer-article-link"
+                >
+                  Live Dental Implant Questions and Information
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={"/dental-insurance"}
+                  className="footer-article-link"
+                >
+                  Local Dental Insurance and Dental Plan Teledental Info
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-combined-legal">
             <strong className="footer-copyright font_piazzolla">

@@ -1,18 +1,19 @@
+"use client"
 
-import React, { useState } from "react";
+import { useState } from "react"
 
 const AppointmentBooking = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("")
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+    setEmail(e.target.value)
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // Handle the booking process here
-    console.log("Booking process started with email:", email);
-  };
+    console.log("Booking process started with email:", email)
+  }
 
   return (
     <div
@@ -35,26 +36,17 @@ const AppointmentBooking = () => {
     >
       {/* Tooth icon with star */}
       <div>
-        <img
-          src="/images/logo.png"
-          alt="Teledental Logo"
-          className="img-fluid"
-        />
+        <img src="/images/logo.png" alt="Teledental Logo" className="img-fluid" />
       </div>
 
       {/* Title */}
       <h1 className="booking">Book Your Appointment</h1>
 
       {/* Subtitle */}
-      <p className="booking_subtitle mb-5">
-        Let's get your appointment set up. Enter your email below.
-      </p>
+      <p className="booking_subtitle mb-5">Let's get your appointment set up. Enter your email below.</p>
 
       {/* Email form */}
-      <form
-        onSubmit={handleSubmit}
-        style={{ width: "100%", maxWidth: "500px" }}
-      >
+      <form onSubmit={handleSubmit} style={{ width: "100%", maxWidth: "500px" }}>
         <div style={{ marginBottom: "30px" }}>
           <input
             type="email"
@@ -69,6 +61,8 @@ const AppointmentBooking = () => {
               borderRadius: "8px",
               border: "none",
               outline: "none",
+              color: "#333", // Added text color
+              backgroundColor: "white", // Explicitly set background color
             }}
           />
         </div>
@@ -81,7 +75,7 @@ const AppointmentBooking = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AppointmentBooking;
+export default AppointmentBooking
