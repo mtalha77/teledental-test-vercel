@@ -12,7 +12,7 @@ const HeroBanner = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="autoContent">
+        <div className="autoContent pb-5">
           <div className="uui-padding-vertical-xhuge-16">
             <div className="uui-heroheader01_component-4">
               <div
