@@ -9253,6 +9253,19 @@ footer {
 .footer-article-list li {
   margin-bottom: 12px;
   position: relative;
+  padding-left: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-article-list li::before {
+  content: "•";
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1.4;
 }
 
 .footer-article-link {
