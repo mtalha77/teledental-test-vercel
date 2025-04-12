@@ -1,11 +1,6 @@
 import React from "react";
-import SignInModal from "../Auth/SignInModal";
 import { Link } from "react-router-dom";
 const HeroBanner = () => {
-  const [isSignInModalVisible, setIsSignInModalVisible] = React.useState(false);
-  const [isVerificationModalVisible, setIsVerificationModalVisible] =
-    React.useState(false);
-  const [entity, setEntity] = React.useState("");
   return (
     <>
       <div
@@ -64,12 +59,6 @@ const HeroBanner = () => {
           </div>
         </div>
       </div>
-      <SignInModal
-        isModalVisible={isSignInModalVisible}
-        setIsModalVisible={setIsSignInModalVisible}
-        setIsVerificationModalVisible={setIsVerificationModalVisible}
-        setEntity={setEntity}
-      />
     </>
   );
 };

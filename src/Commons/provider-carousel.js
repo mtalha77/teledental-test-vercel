@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
 
 const ProviderCarousel = () => {
   return (
@@ -85,15 +84,7 @@ const ProviderCarousel = () => {
                       Let’s <span>collaborate</span> and{" "}
                       <span>revolutionize</span> dental care.
                     </p>
-                    {/* <p
-                      className={`font_piazzolla px-2 fw-medium`}
-                      style={{ fontSize: "1.3rem" }}
-                    >
-                      <ul className="text-start ps-4">
-                        <li>As a Teledental Dentist.</li>
-                        <li>Let us help market your dental practice.</li>
-                      </ul>
-                    </p> */}
+
                     <div className="text-start">
                       <button size="lg" className="btn blue_btn mt-5">
                         Register as Dentist
@@ -122,15 +113,7 @@ const ProviderCarousel = () => {
                       Grow your dental practice by offering{" "}
                       <span>virtual consultations.</span>
                     </p>
-                    {/* <p
-                      className={`font_piazzolla px-2 fw-medium`}
-                      style={{ fontSize: "1.3rem" }}
-                    >
-                      <ul className="text-start ps-4">
-                        <li>As a Teledental Dentist.</li>
-                        <li>Let us help market your dental practice.</li>
-                      </ul>
-                    </p> */}
+
                     <div className="text-start">
                       <button size="lg" className="btn blue_btn mt-5">
                         Register as Dentist
