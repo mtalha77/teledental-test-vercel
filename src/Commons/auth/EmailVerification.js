@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-// import CancelButton from "../../shared/CancelButton";
 import { useHistory } from "react-router-dom";
 import Logo from "../../shared/Logo";
 import Header from "../Header";
@@ -24,6 +23,10 @@ const EmailVerification = () => {
     resolver: zodResolver(schema),
   });
 
+  const handleCancelClick = () => {
+    history.push("/");
+  };
+
   const onSubmit = () => {
     history.push("/");
   };
@@ -31,8 +34,11 @@ const EmailVerification = () => {
   return (
     <div className="d-flex flex-column gap-5">
       <Header />
-      <div className="container text-center mt-3" style={{ maxWidth: "600px", minHeight:'70vh' }}>
-        <form onSubmit={handleSubmit(onSubmit)} >
+      <div
+        className="container text-center mt-3"
+        style={{ maxWidth: "600px", minHeight: "70vh" }}
+      >
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="my-5">
             <div className="mb-3">
               <Logo size="small" />
@@ -60,7 +66,13 @@ const EmailVerification = () => {
               )}
             </div>
             <div className="d-flex justify-content-between">
-              {/* <CancelButton /> */}
+              <button
+                className="btn cancel_btn border-0"
+                onClick={handleCancelClick}
+                type="button"
+              >
+                Cancel
+              </button>
               <button type="submit" className="btn btn_blue px-4">
                 Verify Me
               </button>
