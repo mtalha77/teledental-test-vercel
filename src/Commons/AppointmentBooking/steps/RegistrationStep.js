@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import CancelButton from "../../../shared/CancelButton";
 import { useAppointmentBookingContext } from "../../../Context/useAppointmentBookingContext";
+import { signup } from "../../../Auth/apis/authV1";
+import { useUserContext } from "../../../Context/userContext";
+import { useHistory } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 // Define schema for validation
 const schema = z.object({
@@ -18,10 +22,16 @@ const schema = z.object({
   acceptTerms: z.boolean().refine((val) => val === true, {
     message: "You must accept the terms and conditions",
   }),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 const RegistrationStep = () => {
-  const { nextStep, updateFormData, formData } = useAppointmentBookingContext();
+  const { nextStep, updateFormData, formData, prevStep } =
+    useAppointmentBookingContext();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { setToken } = useUserContext();
+  const history = useHistory();
 
   const {
     register,
@@ -30,27 +40,80 @@ const RegistrationStep = () => {
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      address: formData.address,
-      city: formData.city,
-      state: formData.state,
-      zipCode: formData.zipCode,
-      email: formData.email,
-      phone: formData.phone,
-      acceptTerms: formData.acceptTerms,
+      firstName: formData.firstName || "",
+      lastName: formData.lastName || "",
+      address: formData.address || "",
+      city: formData.city || "",
+      state: formData.state || "",
+      zipCode: formData.zipCode || "",
+      email: formData.email || "",
+      phone: formData.phone || "",
+      acceptTerms: formData.acceptTerms || false,
+      password: formData.password || "",
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     updateFormData(data);
-    nextStep();
+
+    try {
+      setLoading(true);
+      setError("");
+
+      const locationString = `${data.address}, ${data.city}, ${data.state} ${data.zipCode}`;
+
+      const payload = {
+        entity: "patients",
+        body: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          password: data.password,
+          phoneNumber: data.phone,
+          location: {
+            address: locationString,
+            coordinates: [], 
+          },
+        },
+      };
+
+      const res = await signup(payload);
+
+      if (res?.data?.token) {
+        setToken(res.data.token);
+        window.localStorage.setItem("token", res.data.token);
+      }
+
+      nextStep();
+    } catch (error) {
+      setError(error.errMsg || "Registration failed. Please try again.");
+      setLoading(false);
+    }
   };
 
   return (
     <div className="container" style={{ maxWidth: "745px" }}>
+      <div className="position-absolute top-0 start-0 m-3">
+        <button
+          className="btn border-0 p-2"
+          onClick={prevStep}
+          type="button"
+          aria-label="Go back"
+        >
+          <ArrowLeft size={22} />
+        </button>
+      </div>
+
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h3 className="title text-center text-md-start mb-4">Register With Teledental</h3>
+        <h3 className="title text-center text-md-start mb-4">
+          Register With Teledental
+        </h3>
         <p className="subtitle text-md-start mb-4">
           We just need to collect a few details before reserving your
           appointment.
@@ -133,9 +196,9 @@ const RegistrationStep = () => {
           </div>
         </div>
 
-        <h5 className="mb-2 section_title">Contact Information</h5>
+        <h5 className="mb-2 section_title">Account Information</h5>
         <p className="text-muted mb-3 section_subtitle">
-          We will send you a confirmation code for the next page.
+          Create your account for future appointments and access.
         </p>
         <div className="mb-3">
           <input
@@ -148,6 +211,22 @@ const RegistrationStep = () => {
             <div className="invalid-feedback">{errors.email.message}</div>
           )}
         </div>
+        <div className="mb-3">
+          <input
+            type="password"
+            className={`form-control ${errors.password ? "is-invalid" : ""}`}
+            placeholder="Create Password *"
+            {...register("password")}
+          />
+          {errors.password && (
+            <div className="invalid-feedback">{errors.password.message}</div>
+          )}
+        </div>
+
+        <h5 className="mb-2 section_title">Contact Information</h5>
+        <p className="text-muted mb-3 section_subtitle">
+          We will send you a confirmation code for the next page.
+        </p>
         <div className="mb-3">
           <input
             type="tel"
@@ -184,8 +263,12 @@ const RegistrationStep = () => {
 
         <div className="d-flex justify-content-between">
           <CancelButton />
-          <button type="submit" className="btn btn_blue px-4">
-            Finish
+          <button
+            type="submit"
+            className="btn btn_blue px-4"
+            disabled={loading}
+          >
+            {loading ? "Processing..." : "Finish"}
           </button>
         </div>
       </form>

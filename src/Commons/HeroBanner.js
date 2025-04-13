@@ -20,7 +20,7 @@ const HeroBanner = () => {
                 className="uui-heroheader01_content-4 order_change_res"
               >
                 <h1 className="uui-heading-xlarge-8 uui_heading_hero">
-                  <span>Talk with a Live Dentist on</span>
+                  <span>Talk with a Live Dentist on </span>
                   <label className="d-inline">Teledental.com </label>
 
                   <small> Anywhere, 24/7</small>
@@ -30,9 +30,17 @@ const HeroBanner = () => {
                 <div className="brix---buttons-row hero_banner_btn">
                   <div className="brix---button-row-left">
                     <Link
-                      className="brix---btn-secondary w-button prim_btn_blue-outlined"
-                      // onClick={() => setIsSignInModalVisible(true)}
+                      className="btn blue_outline_btn"
                       to={"/book-appointment"}
+                      style={{
+                        width: "350px",
+                        height: "50px",
+                        marginTop: "-10px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "center",
+                      }}
                     >
                       Book Appointment
                     </Link>

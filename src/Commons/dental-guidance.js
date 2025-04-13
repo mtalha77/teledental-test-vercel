@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const DentalGuidance = () => {
   return (
@@ -16,27 +17,31 @@ const DentalGuidance = () => {
 
         {/* Right Column - Content */}
         <Col md={6} className="py-5">
-          <h1 className="dental_guidance_title">The</h1>
-          <h1 className="mb-4 dental_guidance_title">
-            Dental Guidance From Your Home
+          <h1
+            className="mb-4 dental_guidance_title"
+            style={{ fontSize: "3rem" }}
+          >
+            The Dental Guidance From Your Home
           </h1>
           <p
             className={`mt-5 font_piazzolla px-2 fw-medium text_blue `}
             style={{ fontSize: "1.3rem" }}
           >
-            Talk to a Dentist Online — Virtual Dental Help form Live dentists,
+            Talk to a Dentist Online — Virtual Dental Help from Live Dentists,
             Anytime.
           </p>
           <p
             className={`mt-1 font_piazzolla px-2 fw-medium `}
             style={{ fontSize: "1.3rem" }}
           >
-            Instant Online Dental Conssultaion Appointments for Tooth Pain,
-            Teeth Cavities, and Concerns — Get Answer from Real Dentists.
+            Online Dental Consultations for Tooth Pain, Cavities, and Dentistry
+            Concerns — Get Expert Answers from Real Dentists.
           </p>
-          <button size="lg" className="btn pink_btn">
-            Book Now
-          </button>
+          <Link to="/book-appointment" className="mt-5 d-inline-block">
+            <button size="lg" className="btn pink_btn">
+              Book Now
+            </button>
+          </Link>
         </Col>
       </Row>
     </div>

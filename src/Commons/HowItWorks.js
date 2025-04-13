@@ -72,8 +72,8 @@ const HowItWorks = () => {
             <div>
               <Link
                 className="btn blue_outline_btn "
-                to={"#"}
-              >
+                to={"/book-appointment"}
+                >
                 Start Your Consultation
               </Link>
             </div>

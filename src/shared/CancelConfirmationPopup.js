@@ -20,8 +20,8 @@ const CancelConfirmationPopup = ({ isOpen, onClose, onConfirm }) => {
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)", zIndex: 1050 }}
     >
       <div
-        className="bg-white p-4 rounded-3 shadow"
-        style={{ maxWidth: "500px", width: "90%" }}
+        className="bg-white p-4 rounded-3 shadow mx-3"
+        style={{ maxWidth: "500px", width: "100%" }}
       >
         <div className="text-center mb-4">
           <h3 className="text_blue fw-bold">Cancel Booking?</h3>
@@ -30,16 +30,16 @@ const CancelConfirmationPopup = ({ isOpen, onClose, onConfirm }) => {
           </p>
         </div>
 
-        <div className="d-flex justify-content-between">
+        <div className="d-flex flex-column flex-sm-row justify-content-between gap-3">
           <button
-            className="btn fw-bold border-0 px-4 py-2"
+            className="btn fw-bold border-0 px-4 py-2 order-2 order-sm-1"
             onClick={onClose}
             style={{ borderColor: "#0071BC", color: "#0071BC" }}
           >
             Keep Editing
           </button>
           <button
-            className="btn fw-bold px-4 py-2 rounded-5"
+            className="btn fw-bold px-4 py-2 rounded-5 order-1 order-sm-2"
             onClick={handleConfirm}
             style={{ backgroundColor: "#BC0000", color: "white" }}
           >

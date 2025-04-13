@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "./schemas";
 import { useHistory } from "react-router-dom";
+import { signup } from "../../Auth/apis/authV1";
+import { useUserContext } from "../../Context/userContext";
 
 function SignupForm({ userRole, toggleForm }) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const history = useHistory();
+  const { setToken } = useUserContext();
+  const [address, setAddress] = useState({});
+
   // Signup form setup
   const {
     register,
@@ -23,11 +30,51 @@ function SignupForm({ userRole, toggleForm }) {
     },
   });
 
-  const onSignupSubmit = (data) => {
-    // Handle signup logic here
-    console.log("Signup attempt with:", data);
+  const onSignupSubmit = async (data) => {
+    const entity =
+      userRole.toLowerCase() === "patient" ? "patients" : "dentists";
 
-    history.push("/verify-email/user-email");
+    try {
+      setLoading(true);
+
+      const payload = {
+        entity: entity,
+        body: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          password: data.password,
+        },
+      };
+
+      if (entity === "dentists") {
+        payload.body.businessName = data.businessName || "";
+        payload.body.isLicensedDentist = data.isLicensedDentist;
+        payload.body.phoneNumber = data.phoneNumber;
+
+        payload.body.location = {
+          address: data.location,
+          coordinates: [], 
+        };
+      }
+
+      const res = await signup(payload);
+
+      if (entity === "patients") {
+        setToken(res?.data?.token);
+        window.localStorage.setItem("token", res?.data?.token);
+        history.push(`/${entity}/dashboard`);
+      } else {
+        history.push("/verify-email/" + data.email);
+      }
+
+      setError("");
+    } catch (error) {
+      setLoading(false);
+      setError(error.errMsg || "Signup failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -44,13 +91,19 @@ function SignupForm({ userRole, toggleForm }) {
         </p>
       </div>
 
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
+
       <form
         onSubmit={handleSubmit(onSignupSubmit)}
         className="d-flex flex-column gap-2"
       >
         <h5 className="text-start mb-2 auth_section_title">
           {userRole === "dentist"
-            ? "Patient Information:"
+            ? "Dentist Information:"
             : "Patient Information:"}
         </h5>
         <div className="row mb-3">
@@ -143,6 +196,24 @@ function SignupForm({ userRole, toggleForm }) {
         </div>
 
         {userRole === "dentist" && (
+          <div className="mb-3">
+            <input
+              type="tel"
+              placeholder="Phone Number *"
+              className={`form-control ${
+                errors.phoneNumber ? "is-invalid" : ""
+              }`}
+              {...register("phoneNumber")}
+            />
+            {errors.phoneNumber && (
+              <div className="invalid-feedback">
+                {errors.phoneNumber.message}
+              </div>
+            )}
+          </div>
+        )}
+
+        {userRole === "dentist" && (
           <>
             <h5 className="text-start mb-2 auth_section_title">
               Dental Practice:
@@ -208,8 +279,9 @@ function SignupForm({ userRole, toggleForm }) {
                 }
               : {}
           }
+          disabled={loading}
         >
-          Sign Up
+          {loading ? "Signing Up..." : "Sign Up"}
         </button>
       </form>
 

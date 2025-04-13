@@ -5,6 +5,7 @@ import * as z from "zod";
 import ProgressBar from "../../../shared/ProgressBar";
 import CancelButton from "../../../shared/CancelButton";
 import { useAppointmentBookingContext } from "../../../Context/useAppointmentBookingContext";
+import { useUserContext } from "../../../Context/userContext";
 
 // Define schema for validation
 const schema = z.object({
@@ -18,7 +19,8 @@ const schema = z.object({
 const PatientHistoryStep = () => {
   const { nextStep, prevStep, updateFormData, formData } =
     useAppointmentBookingContext();
-  const [files, setFiles] = useState([]);
+  const { user } = useUserContext();
+  const [files, setFiles] = useState(formData.photos || []);
   const [isDragging, setIsDragging] = useState(false);
 
   // Initialize react-hook-form
@@ -111,7 +113,9 @@ const PatientHistoryStep = () => {
             </p>
           </div>
           <div className="col-auto">
-            <h4 className="top_heading d-none d-md-block">Hello User!</h4>
+            <h4 className="top_heading d-none d-md-block">
+              {user?.name ? `Hello ${user.name}!` : "Hello User!"}
+            </h4>
           </div>
         </div>
 
@@ -155,9 +159,6 @@ const PatientHistoryStep = () => {
               {errors.dentalInsurance.message}
             </div>
           )}
-          {/* {watchDentalInsurance === "yes" && (
-            <div className="mt-2 text-danger">YES - drop down text</div>
-          )} */}
         </div>
 
         <h4 className="top_heading">Dental History</h4>
@@ -308,9 +309,7 @@ const PatientHistoryStep = () => {
               className="d-none"
               onChange={handleFileSelect}
             />
-            <div className="mb-3 fs-1 plus_btn">
-              +
-            </div>
+            <div className="mb-3 fs-1 plus_btn">+</div>
             <div className="text-muted small">
               Drag and drop files here or{" "}
               <span

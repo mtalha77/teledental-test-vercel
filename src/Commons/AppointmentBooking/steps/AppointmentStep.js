@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import ProgressBar from "../../../shared/ProgressBar";
 import CancelButton from "../../../shared/CancelButton";
 import { useAppointmentBookingContext } from "../../../Context/useAppointmentBookingContext";
+import { useUserContext } from "../../../Context/userContext";
+import { useHistory } from "react-router";
+import { serialize } from "object-to-formdata";
+import { createRequest } from "../../../Patient/apis/patientV1";
 
 // Define schema for validation
 const schema = z.object({
@@ -12,8 +16,12 @@ const schema = z.object({
 });
 
 const AppointmentStep = () => {
-  const { nextStep, prevStep, updateFormData, formData } =
+  const { nextStep, prevStep, updateFormData, formData, resetBookingForm } =
     useAppointmentBookingContext();
+  const { user, refetch } = useUserContext();
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // Initialize react-hook-form
   const {
@@ -31,9 +39,51 @@ const AppointmentStep = () => {
 
   const watchAppointmentTime = watch("appointmentTime");
 
-  const onSubmit = (data) => {
-    updateFormData(data);
-    nextStep();
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+      updateFormData(data);
+
+      // Prepare data from all steps for submission
+      const appointmentData = {
+        // Map form data to API expected format
+        title: formData.summary || formData.dentalIssue.substring(0, 50),
+        description: formData.dentalIssue,
+        type: [
+          formData.consultationDuration === "10min"
+            ? "15-min Video consultation"
+            : formData.consultationDuration === "30min"
+            ? "30-min Video consultation"
+            : "60-min Video consultation",
+        ],
+        painLevel: formData.painLevel,
+        isEmergency: formData.hasEmergency === "yes",
+        lastCleaning: formData.lastCleaning,
+        lastVisit: formData.lastVisit,
+        lastDentalXRay: formData.lastXrays,
+        dentalInsurance: formData.dentalInsurance === "yes",
+        appointmentTime: data.appointmentTime,
+      };
+
+      // Create form data for submission
+      const formDataToSubmit = serialize(appointmentData);
+
+      // Add images if they exist
+      if (formData.photos && formData.photos.length > 0) {
+        formData.photos.forEach((file) => {
+          formDataToSubmit.append("images", file, file.name);
+        });
+      }
+
+      // Submit the request
+      await createRequest({ body: formDataToSubmit });
+      setLoading(false);
+      resetBookingForm();
+      history.push("/patients/messages");
+    } catch (error) {
+      setLoading(false);
+      setError(error.errMsg || "Failed to create appointment request");
+    }
   };
 
   return (
@@ -104,7 +154,9 @@ const AppointmentStep = () => {
               </div>
               <div className="col-md-6">
                 <select className="form-select py-2">
-                  <option value="" disabled>Select Time</option>
+                  <option value="" disabled>
+                    Select Time
+                  </option>
                   <option value="morning">Morning (8AM - 12PM)</option>
                   <option value="afternoon">Afternoon (12PM - 5PM)</option>
                   <option value="evening">Evening (5PM - 8PM)</option>
@@ -116,6 +168,8 @@ const AppointmentStep = () => {
 
         <hr className="my-4" />
 
+        {error && <div className="alert alert-danger">{error}</div>}
+
         <div className="d-flex justify-content-between">
           <CancelButton />
           <div>
@@ -126,8 +180,12 @@ const AppointmentStep = () => {
             >
               Back
             </button>
-            <button type="submit" className="btn btn_blue px-4">
-              Continue
+            <button
+              type="submit"
+              className="btn btn_blue px-4"
+              disabled={loading}
+            >
+              {loading ? "Submitting..." : "Submit"}
             </button>
           </div>
         </div>

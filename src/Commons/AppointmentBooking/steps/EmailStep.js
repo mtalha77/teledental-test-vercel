@@ -5,6 +5,8 @@ import * as z from "zod";
 import { useAppointmentBookingContext } from "../../../Context/useAppointmentBookingContext";
 import Logo from "../../../shared/Logo";
 import CancelButton from "../../../shared/CancelButton";
+import { ArrowLeft } from "lucide-react";
+import { useHistory } from "react-router-dom";
 
 // Define schema for validation
 const schema = z.object({
@@ -12,7 +14,9 @@ const schema = z.object({
 });
 
 const EmailStep = () => {
-  const { nextStep, updateFormData, formData } = useAppointmentBookingContext();
+  const { nextStep, updateFormData, formData, resetBookingForm } =
+    useAppointmentBookingContext();
+  const history = useHistory();
 
   // Initialize react-hook-form
   const {
@@ -31,14 +35,29 @@ const EmailStep = () => {
     nextStep();
   };
 
+  const handleBack = () => {
+    resetBookingForm();
+    history.push("/");
+  };
+
   return (
     <div className="text-center">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="position-absolute top-0 start-0 m-3">
+        <button
+          className="btn border-0 p-2"
+          onClick={handleBack}
+          type="button"
+          aria-label="Go back"
+        >
+          <ArrowLeft size={22} />
+        </button>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="px-3 px-md-0">
         <Logo both={true} />
-        <h3 className="subtitle mb-2">
+        <h3 className="subtitle mb-2 px-2">
           Let's get your appointment set up. Enter your email below.
         </h3>
-        <div className="mb-4 mt-4 mx-3">
+        <div className="mb-4 mt-4 mx-auto" style={{ maxWidth: "500px" }}>
           <input
             type="email"
             className={`form-control form-control-lg ${
@@ -53,8 +72,11 @@ const EmailStep = () => {
             </div>
           )}
         </div>
-        <div className="d-flex justify-content-between mt-5 px-3">
-          <CancelButton />
+        <div
+          className="d-flex justify-content-between mt-5 mx-auto"
+          style={{ maxWidth: "500px" }}
+        >
+          <CancelButton onCancelComplete={handleBack} />
           <button type="submit" className="btn btn_blue px-4">
             Continue
           </button>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { ChevronDown } from "lucide-react";
 import { useAppointmentBookingContext } from "../../../Context/useAppointmentBookingContext";
+import { useUserContext } from "../../../Context/userContext";
 import CancelButton from "../../../shared/CancelButton";
 import ProgressBar from "../../../shared/ProgressBar";
 
@@ -21,6 +22,7 @@ const schema = z.object({
 const ConsultationStep = ({ screenSize }) => {
   const { nextStep, prevStep, updateFormData, formData } =
     useAppointmentBookingContext();
+  const { user } = useUserContext();
 
   const {
     register,
@@ -61,7 +63,9 @@ const ConsultationStep = ({ screenSize }) => {
             </p>
           </div>
           <div className="col-auto d-none d-md-block">
-            <h4 className="top_heading">Hello User</h4>
+            <h4 className="top_heading">
+              {user?.name ? `Hello ${user.name}` : "Hello User"}
+            </h4>
           </div>
         </div>
 
@@ -153,7 +157,7 @@ const ConsultationStep = ({ screenSize }) => {
         <div className="d-flex flex-column">
           <div className="mb-4 d-flex flex-column  order-2 order-md-1">
             <label className="mb-2 heading_title">
-              {screenSize.width < 768
+              {screenSize?.width < 768
                 ? "Pain Level?"
                 : "Are you experiencing any dental pain?"}
             </label>
@@ -253,7 +257,7 @@ const ConsultationStep = ({ screenSize }) => {
             className={`form-control ${errors.dentalIssue ? "is-invalid" : ""}`}
             rows="4"
             placeholder={
-              screenSize.width < 768
+              screenSize?.width < 768
                 ? "Please provide details about your problems.."
                 : "Please write your dental issue or inquiry here."
             }

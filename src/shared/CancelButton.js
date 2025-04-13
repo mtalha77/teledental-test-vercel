@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useAppointmentBookingContext } from "../Context/useAppointmentBookingContext";
 import CancelConfirmationPopup from "./CancelConfirmationPopup";
+import { useHistory } from "react-router-dom";
 
-const CancelButton = () => {
+const CancelButton = ({ onCancelComplete }) => {
   const { goToStep } = useAppointmentBookingContext();
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const history = useHistory();
 
   const handleCancelClick = () => {
     setShowConfirmation(true);
@@ -16,7 +18,11 @@ const CancelButton = () => {
 
   const handleConfirmCancel = () => {
     setShowConfirmation(false);
-    goToStep(1);
+    if (onCancelComplete) {
+      onCancelComplete();
+    } else {
+      history.push("/");
+    }
   };
 
   return (

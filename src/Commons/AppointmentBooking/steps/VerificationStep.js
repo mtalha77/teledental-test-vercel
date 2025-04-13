@@ -5,6 +5,7 @@ import * as z from "zod";
 import CancelButton from "../../../shared/CancelButton";
 import { useAppointmentBookingContext } from "../../../Context/useAppointmentBookingContext";
 import Logo from "../../../shared/Logo";
+import { ArrowLeft } from "lucide-react";
 
 // Define schema for validation
 const schema = z.object({
@@ -12,7 +13,7 @@ const schema = z.object({
 });
 
 const VerificationStep = () => {
-  const { nextStep } = useAppointmentBookingContext();
+  const { nextStep, prevStep } = useAppointmentBookingContext();
 
   // Initialize react-hook-form
   const {
@@ -29,12 +30,25 @@ const VerificationStep = () => {
 
   return (
     <div className="container text-center" style={{ maxWidth: "600px" }}>
+      <div className="position-absolute top-0 start-0 m-3">
+        <button
+          className="btn border-0 p-2"
+          onClick={prevStep}
+          type="button"
+          aria-label="Go back"
+        >
+          <ArrowLeft size={22} />
+        </button>
+      </div>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="my-5">
           <div className="mb-3">
             <Logo size="small" />
           </div>
-          <h2 className="text-primary mb-4 title text-md-start">Email Verification</h2>
+          <h2 className="text-primary mb-4 title text-md-start">
+            Email Verification
+          </h2>
           <p className="mb-5 subtitle text-md-start">
             Enter the authentication code that we have sent to your email to
             proceed.

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Faq = () => {
   const [openItem, setOpenItem] = useState(null);
@@ -33,7 +34,7 @@ const Faq = () => {
   ];
 
   return (
-    <div className="px-1 my-5 py-5">
+    <div id="faq" className="px-1 my-5 py-5">
       <div className="row gap-2">
         <div className="col-md-4 text-center mb-4">
           <img
@@ -108,9 +109,9 @@ const Faq = () => {
           ))}
 
           <div className="text-start mt-5">
-            <button className="btn blue_btn px-4 py-2">
+            <Link to="/faqs-question" className="btn blue_btn px-4 py-2">
               Find More Questions
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,23 +1,72 @@
-import { useLocation } from "react-router";
+import { useLocation, useHistory } from "react-router";
 import DentistSignUpModal from "../Auth/DentistSignUpModal";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Footer() {
   const location = useLocation();
+  const history = useHistory();
   const [isSignUpModalVisible, setIsSignUpModalVisible] = React.useState("");
   const [isVerificationModalVisible, setIsVerificationModalVisible] =
     React.useState(false);
   const [entity, setEntity] = React.useState("");
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    setEmailError("");
   };
 
   const handleStartConsultation = () => {
+    // Check if email is entered
+    if (!email || !email.trim()) {
+      setEmailError("Please enter your email");
+      return;
+    }
+
+    // Check if email format is valid
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email");
+      return;
+    }
+
     // Consultation functionality would go here
     console.log("Start consultation with email:", email);
+
+    // Navigate to booking page
+    history.push("/book-appointment");
+  };
+
+  const scrollToFAQ = (e) => {
+    e.preventDefault();
+
+    // If not on homepage, first navigate to homepage
+    if (location.pathname !== "/") {
+      history.push("/");
+      // Need to wait for navigation to complete before scrolling
+      setTimeout(() => {
+        const faqElement = document.getElementById("faq");
+        if (faqElement) {
+          // Scroll to the FAQ element with an offset of 100px from the top
+          window.scrollTo({
+            top: faqElement.offsetTop - 100,
+            behavior: "smooth",
+          });
+        }
+      }, 500);
+    } else {
+      // Already on homepage, just scroll
+      const faqElement = document.getElementById("faq");
+      if (faqElement) {
+        // Scroll to the FAQ element with an offset of 100px from the top
+        window.scrollTo({
+          top: faqElement.offsetTop - 100,
+          behavior: "smooth",
+        });
+      }
+    }
   };
 
   return (
@@ -50,9 +99,9 @@ function Footer() {
               <Link to={"/join-us"} className="footer-nav-link">
                 Join Us
               </Link>
-              <Link to={"/faqs-question"} className="footer-nav-link">
+              <a href="#faq" className="footer-nav-link" onClick={scrollToFAQ}>
                 FAQ
-              </Link>
+              </a>
               <Link to={"/auth"} className="footer-nav-link">
                 Log In
               </Link>
@@ -75,10 +124,24 @@ function Footer() {
                 value={email}
                 onChange={handleEmailChange}
                 className="footer-input"
+                style={{ padding: "10px 12px", height: "42px" }}
               />
+              {emailError && (
+                <div
+                  style={{
+                    color: "#ff6b6b",
+                    fontSize: "0.8rem",
+                    marginTop: "0.25rem",
+                    textAlign: "left",
+                  }}
+                >
+                  {emailError}
+                </div>
+              )}
               <button
-                className="footer-button"
+                className="footer-button mt-4"
                 onClick={handleStartConsultation}
+                style={{ width: "210px" }}
               >
                 <strong>Start Consultation</strong>
               </button>
@@ -109,8 +172,8 @@ function Footer() {
           </div>
         </div>
 
-                {/* Articles Section */}
-                <div className="footer-articles">
+        {/* Articles Section */}
+        <div className="footer-articles">
           <div className="footer-articles-column">
             <ul className="footer-article-list">
               <li>
@@ -225,9 +288,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  to={
-                    "/local-teledental-stem-cells-dentistry-care-information"
-                  }
+                  to={"/local-teledental-stem-cells-dentistry-care-information"}
                   className="footer-article-link"
                 >
                   Dental Stem Cell
