@@ -64,7 +64,7 @@ const HowItWorks = () => {
             <div>
               <Link
                 className="btn pink_btn"
-                to={"#"}
+                to={"/faqs-question"}
               >
                 Find Out More
               </Link>

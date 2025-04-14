@@ -169,9 +169,10 @@ const ContactForm = () => {
                         {...field}
                         rows={4}
                         placeholder="Message..."
-                        className={`form-control custom-placeholder ${
+                        className={`form-control py-2 custom-placeholder ${
                           errors.comment ? "is-invalid" : ""
                         }`}
+                        style={{ fontSize: "20px" }}
                       />
                     )}
                   />
