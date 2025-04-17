@@ -40,6 +40,7 @@ const HeroBanner = () => {
                         alignItems: "center",
                         justifyContent: "center",
                         textAlign: "center",
+                        maxWidth: "100%",
                       }}
                     >
                       Book Appointment
